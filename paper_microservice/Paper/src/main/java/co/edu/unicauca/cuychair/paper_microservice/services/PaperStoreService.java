@@ -1,6 +1,6 @@
 package co.edu.unicauca.cuychair.paper_microservice.services;
 
-import co.edu.unicauca.cuychair.paper_microservice.dataaccess.IRepositoryPaper;
+import co.edu.unicauca.cuychair.paper_microservice.dataacces.IRepositoryPaper;
 import co.edu.unicauca.cuychair.paper_microservice.domain.Paper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

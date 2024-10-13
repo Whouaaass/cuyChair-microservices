@@ -1,7 +1,7 @@
 package co.edu.unicauca.cuychair.paper_microservice.Paper;
 
-import co.edu.unicauca.cuychair.paper_microservice.dataaccess.IRepositoryPaper;
-import co.edu.unicauca.cuychair.paper_microservice.dataaccess.RepositoryPaper;
+import co.edu.unicauca.cuychair.paper_microservice.dataacces.IRepositoryPaper;
+import co.edu.unicauca.cuychair.paper_microservice.dataacces.RepositoryPaper;
 import co.edu.unicauca.cuychair.paper_microservice.domain.Paper;
 import co.edu.unicauca.cuychair.paper_microservice.domain.User;
 import co.edu.unicauca.cuychair.paper_microservice.domain.Conference;

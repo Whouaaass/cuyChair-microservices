@@ -1,4 +1,4 @@
-package co.edu.unicauca.cuychair.paper_microservice.dataaccess;
+package co.edu.unicauca.cuychair.paper_microservice.dataacces;
 
 import co.edu.unicauca.cuychair.paper_microservice.domain.Paper;
 import org.springframework.stereotype.Repository;
