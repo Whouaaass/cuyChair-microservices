@@ -17,6 +17,5 @@ public class ClienteDTO {
 	private Date createAt;
 
 	public ClienteDTO() {
-
 	}
 }

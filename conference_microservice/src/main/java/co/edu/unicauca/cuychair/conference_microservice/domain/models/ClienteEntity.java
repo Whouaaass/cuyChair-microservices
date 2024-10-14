@@ -17,6 +17,6 @@ public class ClienteEntity {
 	private Date createAt;
 
 	public ClienteEntity() {
-
+		
 	}
 }

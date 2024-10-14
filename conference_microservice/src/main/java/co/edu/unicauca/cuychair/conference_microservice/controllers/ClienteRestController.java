@@ -23,7 +23,7 @@ import co.edu.unicauca.cuychair.conference_microservice.services_layer.services.
 
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/test")
 public class ClienteRestController {
 
 	@Autowired
