@@ -2,6 +2,8 @@ package co.edu.unicauca.cuychair.user.user_microservice.servicesFacade.services;
 
 import java.util.List;
 
+import co.edu.unicauca.cuychair.user.user_microservice.servicesFacade.DTO.UserDTO;
+
 public interface IUserService {
 /**
      * @brief Registra un usuario al final del repositorio

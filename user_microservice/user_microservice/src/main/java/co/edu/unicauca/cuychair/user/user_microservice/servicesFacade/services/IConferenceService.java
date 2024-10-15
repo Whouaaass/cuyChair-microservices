@@ -6,7 +6,7 @@ import co.edu.unicauca.cuychair.user.user_microservice.servicesFacade.DTO.Confer
 
 public interface IConferenceService {
     /**
-     * @brief Añade una conferencia al repositorio
+     * @brief Añade una conferencia al final repositorio
      * @param conferenceDTO conferencia a registrar
      * @return La conferencia añadida
      */

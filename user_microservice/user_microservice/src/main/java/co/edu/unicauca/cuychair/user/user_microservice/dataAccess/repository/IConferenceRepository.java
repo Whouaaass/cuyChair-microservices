@@ -6,7 +6,7 @@ import co.edu.unicauca.cuychair.user.user_microservice.dataAccess.domain.Confere
 
 public interface IConferenceRepository {
     /**
-     * @brief Añade una conferencia al repositorio
+     * @brief Añade una conferencia al final del repositorio
      * @param conference conferencia a registrar
      * @return La conferencia añadida
      */

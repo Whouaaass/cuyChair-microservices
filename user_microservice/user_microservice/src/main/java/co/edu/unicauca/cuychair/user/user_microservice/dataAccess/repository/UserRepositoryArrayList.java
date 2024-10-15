@@ -3,8 +3,11 @@ package co.edu.unicauca.cuychair.user.user_microservice.dataAccess.repository;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import co.edu.unicauca.cuychair.user.user_microservice.dataAccess.domain.UserEntity;
 
+@Repository
 public class UserRepositoryArrayList implements IUserRepository{
     private ArrayList<UserEntity> userList;
     
