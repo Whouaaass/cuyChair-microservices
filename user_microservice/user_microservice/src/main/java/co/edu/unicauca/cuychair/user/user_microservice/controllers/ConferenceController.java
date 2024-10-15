@@ -45,7 +45,7 @@ public class ConferenceController {
         return conferenceService.getConference(id);
     }
 
-    @GetMapping("/getConferenceByOwner/{id}")
+    @GetMapping("/getConferenceByOwner/{idOwner}")
     public ConferenceDTO getConferenceByOwner(@PathVariable int idOwner) {
         return conferenceService.getConferenceByOwner(idOwner);
     }
@@ -57,7 +57,7 @@ public class ConferenceController {
 
     @GetMapping("/conferenceExist/{id}")
     public boolean conferenceExist(@PathVariable int id) {
-        return false;
+        return conferenceService.conferenceExist(id);
     }
     
 }

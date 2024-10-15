@@ -54,7 +54,7 @@ public class ConferenceRepositoryArrayList implements IConferenceRepository{
 
     @Override
     public ConferenceEntity updateConference(int id, ConferenceEntity conference) {
-        return conferenceList.get(getIdx(id));
+        return conferenceList.set(getIdx(id), conference);
     }
 
     @Override
@@ -74,7 +74,7 @@ public class ConferenceRepositoryArrayList implements IConferenceRepository{
 
     @Override
     public ConferenceEntity deleteConference(int id) {
-        return deleteConference(getIdx(id));
+        return conferenceList.remove(getIdx(id));
     }
 
     @Override

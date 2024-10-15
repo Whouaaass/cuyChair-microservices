@@ -56,7 +56,7 @@ public class UserRepositoryArrayList implements IUserRepository{
     @Override
     public UserEntity getUserByEmail(String email) {
         for(int i=0;i<userList.size();i++){
-            if(userList.get(i).getEmail()==email){
+            if(userList.get(i).getEmail().equals(email)){
                 return userList.get(i);
             }
         }
@@ -65,7 +65,7 @@ public class UserRepositoryArrayList implements IUserRepository{
 
     @Override
     public UserEntity updateUser(int id, UserEntity user) {
-        return userList.set(id, user);
+        return userList.set(getIdx(id), user);
     }
 
     @Override
@@ -75,7 +75,7 @@ public class UserRepositoryArrayList implements IUserRepository{
 
     @Override
     public boolean userExist(int id) {
-        return (getIdx(id)!=1);
+        return (getIdx(id)!=-1);
     }
     
 }

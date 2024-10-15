@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.unicauca.cuychair.user.user_microservice.servicesFacade.DTO.UserDTO;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController
@@ -29,7 +29,7 @@ public class UserController {
     }
 
     @PostMapping("/addUser")
-    public UserDTO addUser(@RequestParam UserDTO userDTO) {
+    public UserDTO addUser(@RequestBody UserDTO userDTO) {
         return userService.addUser(userDTO);
     }
 
@@ -44,7 +44,7 @@ public class UserController {
         return userService.getUser(id);
     }
 
-    @GetMapping("/getUserByEmail/{email}")
+    @GetMapping("/getUserByEmail")
     public UserDTO getUserByEmail(@RequestParam String email) {
         return userService.getUserByEmail(email);
     }
