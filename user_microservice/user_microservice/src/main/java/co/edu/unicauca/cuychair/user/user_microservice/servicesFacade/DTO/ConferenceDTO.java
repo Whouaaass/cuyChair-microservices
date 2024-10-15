@@ -1,15 +1,15 @@
-package co.edu.unicauca.cuychair.user.user_microservice.dataAccess.domain;
+package co.edu.unicauca.cuychair.user.user_microservice.servicesFacade.DTO;
+
 import java.util.ArrayList;
 
-import lombok.AllArgsConstructor;
+import co.edu.unicauca.cuychair.user.user_microservice.dataAccess.domain.UserEntity;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
-public class ConferenceEntity {
-    public ConferenceEntity(){};
+public class ConferenceDTO {
+    public ConferenceDTO(){};
     private int id;
     private String title;
     private String city;

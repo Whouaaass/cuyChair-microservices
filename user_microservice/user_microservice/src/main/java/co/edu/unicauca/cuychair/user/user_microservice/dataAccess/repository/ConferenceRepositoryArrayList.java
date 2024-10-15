@@ -4,8 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import co.edu.unicauca.cuychair.user.user_microservice.dataAccess.domain.ConferenceEntity;
+import org.springframework.stereotype.Repository;
 
+import co.edu.unicauca.cuychair.user.user_microservice.dataAccess.domain.ConferenceEntity;
+import co.edu.unicauca.cuychair.user.user_microservice.dataAccess.domain.UserEntity;
+
+@Repository
 public class ConferenceRepositoryArrayList implements IConferenceRepository{
     private ArrayList<ConferenceEntity> conferenceList;
     private AtomicInteger idCounter;
@@ -16,49 +20,65 @@ public class ConferenceRepositoryArrayList implements IConferenceRepository{
     }
 
     private void uploadDefaultData() {
-        ConferenceEntity conference1 = new ConferenceEntity();//TODO
+        //Usuarios admin de prueba
+        UserEntity user1 = new UserEntity(1000,"Juan","Meneses","juanMeneses@gmail.com","Contrasima123","Un tipo ramdom1",310382822);
+        UserEntity user2 = new UserEntity(1001,"Juliano","Manino","julianoMan@gmail.com","1234oasm","Un tipo ramdom2",31032822);
+        //Conferencias de prueba
+        ConferenceEntity conference1 = new ConferenceEntity(100,"Hackaton","Cali","2025/08/20",null,user1);
+        ConferenceEntity conference2 = new ConferenceEntity(101,"Matematicon","Bogotá","2024/12/20",null,user2);
+        //Añadimos conferencias
+        conferenceList.add(conference1);
+        conferenceList.add(conference2);
+    }
+
+    private int getIdx(int id) {
+        for(int i=0;i<conferenceList.size();i++){
+            if(conferenceList.get(i).getId()==id){
+                return i;
+            }
+        }
+        return -1;
     }
 
     @Override
     public ConferenceEntity addConference(ConferenceEntity conference) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addConference'");
+        conference.setId(idCounter.incrementAndGet());
+        conferenceList.add(conference);
+        return conferenceList.getLast();
     }
 
     @Override
     public List<ConferenceEntity> listConferences() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'listConferences'");
+        return conferenceList;
     }
 
     @Override
     public ConferenceEntity updateConference(int id, ConferenceEntity conference) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updateConference'");
+        return conferenceList.get(getIdx(id));
     }
 
     @Override
     public ConferenceEntity getConference(int id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getConference'");
+        return conferenceList.get(getIdx(id));
     }
 
     @Override
     public ConferenceEntity getConferenceByOwner(int idOwner) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getConferenceByOwner'");
+        for(int i=0;i<conferenceList.size();i++){
+            if(conferenceList.get(i).getOwner().getId()==idOwner){
+                return conferenceList.get(i);
+            }
+        }
+        return null;
     }
 
     @Override
     public ConferenceEntity deleteConference(int id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteConference'");
+        return deleteConference(getIdx(id));
     }
 
     @Override
-    public ConferenceEntity conferenceExist(int id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'conferenceExist'");
+    public boolean conferenceExist(int id) {
+        return (conferenceList.get(getIdx(id))!=null);
     }
-    
 }

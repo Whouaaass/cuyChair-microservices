@@ -1,46 +1,46 @@
-package co.edu.unicauca.cuychair.user.user_microservice.dataAccess.repository;
+package co.edu.unicauca.cuychair.user.user_microservice.servicesFacade.services;
 
 import java.util.List;
 
-import co.edu.unicauca.cuychair.user.user_microservice.dataAccess.domain.ConferenceEntity;
+import co.edu.unicauca.cuychair.user.user_microservice.servicesFacade.DTO.ConferenceDTO;;
 
-public interface IConferenceRepository {
+public interface IConferenceService {
     /**
      * @brief Añade una conferencia al repositorio
-     * @param conference conferencia a registrar
+     * @param conferenceDTO conferencia a registrar
      * @return La conferencia añadida
      */
-    public ConferenceEntity addConference(ConferenceEntity conference);
+    public ConferenceDTO addConference(ConferenceDTO conferenceDTO);
     /**
      * @brief Lista las conferencias registradas en el repositorio
      * @return Lista de las conferencias registradas
      */
-    public List<ConferenceEntity> listConferences();
+    public List<ConferenceDTO> listConferences();
     /**
      * @brief Actualiza la conferencia indicada por el id
      * @param id id de la conferencia a actualizar
-     * @param conference datos de la conferencia actualizada
+     * @param conferenceDTO datos de la conferencia actualizada
      * @return La conferencia actualizada
      */
-    public ConferenceEntity updateConference(int id, ConferenceEntity conference);
+    public ConferenceDTO updateConference(int id, ConferenceDTO conferenceDTO);
     /**
      * @brief Consulta la conferencia el id indicado 
      * @param id id de la conferencia consultada
      * @return Conferencia consultada
      */
-    public ConferenceEntity getConference(int id);
+    public ConferenceDTO getConference(int id);
     /**
      * @brief Consulta una conferencia según su dueño
      * @param idOwner identificación del usuario propietario de la conferencia
      * @return Conferencia consultada
      */
-    public ConferenceEntity getConferenceByOwner(int idOwner);
+    public ConferenceDTO getConferenceByOwner(int idOwner);
     /** 
      * @brief Elimina la conferencia indicada por el id
      * @param id id de la conferencia a borrar
      * @return La conferencia eliminada
      */
-    public ConferenceEntity deleteConference(int id);
+    public ConferenceDTO deleteConference(int id);
     /**
      * @brief Verifica si la conferencia existe
      * @param id id de la conferencia consultada
