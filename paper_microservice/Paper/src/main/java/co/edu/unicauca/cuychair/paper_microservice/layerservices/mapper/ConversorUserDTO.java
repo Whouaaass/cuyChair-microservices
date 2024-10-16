@@ -1,12 +1,11 @@
-package co.edu.unicauca.cuychair.paper_microservice.layerservices.DTO;
+package co.edu.unicauca.cuychair.paper_microservice.layerservices.mapper;
 
 import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.domain.User;
+import co.edu.unicauca.cuychair.paper_microservice.layerservices.DTO.UserDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 
 public class ConversorUserDTO {
-    @Autowired
     private ModelMapper modelMapper;
 
     public ConversorUserDTO() {

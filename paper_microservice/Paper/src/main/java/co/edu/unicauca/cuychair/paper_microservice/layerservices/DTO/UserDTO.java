@@ -12,9 +12,4 @@ public class UserDTO {
 
     public UserDTO() {}
 
-    public void set(UserDTO userDTO){
-        this.id = userDTO.id;
-        this.name = userDTO.name;
-        this.email = userDTO.email;
-    }
 }

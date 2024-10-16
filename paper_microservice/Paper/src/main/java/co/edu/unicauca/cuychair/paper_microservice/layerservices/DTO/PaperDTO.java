@@ -1,24 +1,19 @@
 package co.edu.unicauca.cuychair.paper_microservice.layerservices.DTO;
 
-import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.domain.User;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Setter
 @Getter
+@AllArgsConstructor
 public class PaperDTO {
     private int id;
     private String title;
     private String description;
-    private UserDTO author;
+    private Long idAuthor;
+    private Long idConference;
 
     public PaperDTO() {
-    }
-
-    public void set(PaperDTO paperDTO){
-        this.id = paperDTO.id;
-        this.title = paperDTO.title;
-        this.description = paperDTO.description;
-        this.author = paperDTO.author;
     }
 }

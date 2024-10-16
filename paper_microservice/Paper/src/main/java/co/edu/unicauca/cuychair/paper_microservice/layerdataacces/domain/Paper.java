@@ -13,6 +13,9 @@ public class Paper {
     private String title;
     private String description;
     private User author;
+    private Conference conference;
+
+    public Paper(){}
 
     @Override
     public boolean equals(Object obj) {

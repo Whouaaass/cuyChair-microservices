@@ -9,9 +9,9 @@ import lombok.Setter;
 @AllArgsConstructor
 public class User {
 
-    private long id;
+    private Long id;
     private String name;
     private String email;
 
-
+    public User(){}
 }

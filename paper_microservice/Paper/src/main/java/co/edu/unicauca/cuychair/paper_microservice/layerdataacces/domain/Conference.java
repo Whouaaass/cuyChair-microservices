@@ -5,22 +5,24 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.Objects;
 
 @Setter
 @Getter
 @AllArgsConstructor
 public class Conference {
 
-    private int id;
+    private Long id;
     private String title;
     private String description;
     private String city;
-    private List<Paper> listPapers ;
+
+    public Conference(){}
 
     @Override
     public boolean equals(Object obj) {
         if(obj instanceof Conference){
-            return id==((Conference)obj).getId();
+            return Objects.equals(id, ((Conference) obj).getId());
         }
         return false;
     }

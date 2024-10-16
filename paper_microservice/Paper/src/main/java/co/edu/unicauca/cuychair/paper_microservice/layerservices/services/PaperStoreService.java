@@ -1,7 +1,10 @@
 package co.edu.unicauca.cuychair.paper_microservice.layerservices.services;
 
+import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.repositorys.IRepositoryConference;
 import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.repositorys.IRepositoryPaper;
 import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.domain.Paper;
+import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.repositorys.IRepositoryUser;
+import co.edu.unicauca.cuychair.paper_microservice.layerservices.DTO.PaperDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,21 +14,22 @@ import java.util.List;
 @Service
 public class PaperStoreService {
     IRepositoryPaper repositoryPaper;
+    IRepositoryUser repositoryUser;
+    IRepositoryConference repositoryConference;
 
-    /**
-     * Instancia un objeto de la clase PaperStoreService
-     * @param objRepositoryPaperRef Repositorio que utilizara el servicio
-     */
     @Autowired
-    public PaperStoreService(IRepositoryPaper objRepositoryPaperRef) {
-        this.repositoryPaper = objRepositoryPaperRef;
+    public PaperStoreService(IRepositoryPaper repositoryPaper, IRepositoryUser repositoryUser, IRepositoryConference repositoryConference) {
+        this.repositoryPaper = repositoryPaper;
+        this.repositoryUser = repositoryUser;
+        this.repositoryConference = repositoryConference;
     }
+
     /**
      * @brief Guardar un Paper
      * @param objPaper Paper a guardar
      * @return Confirmación
      */
-    public boolean storePaper ( Paper objPaper){
+    public boolean storePaper ( PaperDTO objPaper){
         return repositoryPaper.storePaper(objPaper);
     }
     /**

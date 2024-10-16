@@ -13,15 +13,6 @@ public class ConferenceDTO {
     private String title;
     private String description;
     private String city;
-    private List<PaperDTO> listPapers ;
 
     public ConferenceDTO() {}
-
-    public void set (ConferenceDTO conferenceDTO){
-        this.id=conferenceDTO.id;
-        this.title= conferenceDTO.title;
-        this.description= conferenceDTO.description;
-        this.city= conferenceDTO.city;
-        this.listPapers=conferenceDTO.listPapers;
-    }
 }
