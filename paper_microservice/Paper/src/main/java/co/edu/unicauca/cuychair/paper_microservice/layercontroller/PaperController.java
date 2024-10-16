@@ -1,8 +1,7 @@
-package co.edu.unicauca.cuychair.paper_microservice.controller;
+package co.edu.unicauca.cuychair.paper_microservice.layercontroller;
 
-import co.edu.unicauca.cuychair.paper_microservice.domain.Paper;
-import co.edu.unicauca.cuychair.paper_microservice.services.PaperStoreService;
-import org.springframework.beans.factory.annotation.Autowired;
+import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.domain.Paper;
+import co.edu.unicauca.cuychair.paper_microservice.layerservices.services.PaperStoreService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
