@@ -12,7 +12,7 @@ import java.util.Objects;
 @AllArgsConstructor
 public class Conference {
 
-    private Long id;
+    private int id;
     private String title;
     private String description;
     private String city;

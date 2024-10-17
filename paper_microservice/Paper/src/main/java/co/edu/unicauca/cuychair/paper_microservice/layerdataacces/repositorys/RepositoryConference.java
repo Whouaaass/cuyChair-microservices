@@ -17,12 +17,12 @@ public class RepositoryConference implements IRepositoryConference{
     }
 
     @Override
-    public void addConference(Conference objConference) {
-        listConference.add(objConference);
+    public boolean addConference(Conference objConference) {
+        return listConference.add(objConference);
     }
 
     @Override
-    public Conference getConferenceById(Long id) {
+    public Conference getConferenceById(int id) {
         for(Conference conf:listConference){
             if(Objects.equals(conf.getId(), id)){
                 return conf;

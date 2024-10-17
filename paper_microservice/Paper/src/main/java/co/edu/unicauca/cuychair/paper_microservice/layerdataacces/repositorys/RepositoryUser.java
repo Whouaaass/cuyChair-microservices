@@ -16,12 +16,12 @@ public class RepositoryUser implements IRepositoryUser {
     }
 
     @Override
-    public void addUser(User objUser) {
-        listUser.add(objUser);
+    public boolean addUser(User objUser) {
+        return listUser.add(objUser);
     }
 
     @Override
-    public User getUserById(Long id) {
+    public User getUserById(int id) {
         for(User us:listUser){
             if(Objects.equals(us.getId(), id)){
                 return us;

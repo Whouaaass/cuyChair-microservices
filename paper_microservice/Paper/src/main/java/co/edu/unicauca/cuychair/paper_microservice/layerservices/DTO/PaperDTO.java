@@ -11,8 +11,8 @@ public class PaperDTO {
     private int id;
     private String title;
     private String description;
-    private Long idAuthor;
-    private Long idConference;
+    private int idAuthor;
+    private int idConference;
 
     public PaperDTO() {
     }

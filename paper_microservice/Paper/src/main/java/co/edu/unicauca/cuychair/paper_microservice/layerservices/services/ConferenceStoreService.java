@@ -2,6 +2,8 @@ package co.edu.unicauca.cuychair.paper_microservice.layerservices.services;
 
 import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.domain.Conference;
 import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.repositorys.IRepositoryConference;
+import co.edu.unicauca.cuychair.paper_microservice.layerservices.DTO.ConferenceDTO;
+import co.edu.unicauca.cuychair.paper_microservice.layerservices.mapper.ConversorConferenceDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,11 +17,12 @@ public class ConferenceStoreService {
         this.repositoryConference = repositoryConference;
     }
 
-    public void addConference(Conference conference) {
-        repositoryConference.addConference(conference);
+    public boolean addConference(ConferenceDTO conference) {
+        ConversorConferenceDTO map=new ConversorConferenceDTO();
+        return repositoryConference.addConference(map.DTOinConference(conference));
     }
 
-    public Conference getConferenceById(Long id) {
+    public Conference getConferenceById(int id) {
         return repositoryConference.getConferenceById(id);
     }
 }

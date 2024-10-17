@@ -5,7 +5,7 @@ import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.domain.User;
 
 public interface IRepositoryUser {
 
-    public void addUser(User objUser);
+    public boolean addUser(User objUser);
 
-    public User getUserById(Long id);
+    public User getUserById(int id);
 }

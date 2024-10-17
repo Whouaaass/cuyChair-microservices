@@ -4,7 +4,7 @@ import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.domain.Confere
 
 public interface IRepositoryConference {
 
-    public void addConference(Conference objConference);
+    public boolean addConference(Conference objConference);
 
-    public Conference getConferenceById(Long id);
+    public Conference getConferenceById(int id);
 }
