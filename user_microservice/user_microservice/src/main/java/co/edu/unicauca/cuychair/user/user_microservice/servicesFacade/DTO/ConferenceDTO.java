@@ -16,6 +16,6 @@ public class ConferenceDTO {
     private String title;
     private String city;
     private String date;
-    private ArrayList<UserEntity> participantsList;
-    private UserEntity owner;
+    private ArrayList<UserDTO> participantsList;
+    private UserDTO owner;
 }
