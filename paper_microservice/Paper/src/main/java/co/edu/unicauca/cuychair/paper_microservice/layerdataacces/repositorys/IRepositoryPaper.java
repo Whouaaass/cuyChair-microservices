@@ -1,6 +1,6 @@
-package co.edu.unicauca.cuychair.paper_microservice.dataacces;
+package co.edu.unicauca.cuychair.paper_microservice.layerdataacces.repositorys;
 
-import co.edu.unicauca.cuychair.paper_microservice.domain.Paper;
+import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.domain.Paper;
 
 import java.util.List;
 
