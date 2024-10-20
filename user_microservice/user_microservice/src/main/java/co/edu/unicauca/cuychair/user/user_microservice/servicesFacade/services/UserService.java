@@ -23,10 +23,11 @@ public class UserService implements IUserService{
 	@Autowired
 	private Publisher publisher;
 	
-	public void sendUserToRabbit(int id) {	
+	public UserDTO sendUserToRabbit(int id) {	
         UserDTO userDTO=getUser(id);
 		log.info("Message '{}'  Name of user: '{}' will be send ... ", userDTO,userDTO.getName());
 		this.publisher.sendUserDTO(userDTO);
+        return userDTO;
 	}
 
 

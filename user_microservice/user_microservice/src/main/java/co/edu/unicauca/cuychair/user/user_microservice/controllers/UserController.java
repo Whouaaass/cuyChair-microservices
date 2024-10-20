@@ -1,7 +1,6 @@
 package co.edu.unicauca.cuychair.user.user_microservice.controllers;
 
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,10 +24,10 @@ public class UserController {
     @Autowired
     UserService userService;
 	
-    //Test de envío de usuarios a rabbitmq
+    //Envío de usuarios a rabbitmq
 	@GetMapping("/SendUser/{id}")
-	public void SendUser(@PathVariable int id) {
-		this.userService.sendUserToRabbit(id);
+	public UserDTO SendUser(@PathVariable int id) {
+		return this.userService.sendUserToRabbit(id);
 	}
 	
     public UserController(UserService userService){
