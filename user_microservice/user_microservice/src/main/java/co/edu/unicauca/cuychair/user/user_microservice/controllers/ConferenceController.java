@@ -25,6 +25,11 @@ public class ConferenceController {
         this.conferenceService = conferenceService;
     }
 
+    @GetMapping("/sendConference/{id}")
+    public ConferenceDTO SendConference(@PathVariable int id){
+        return conferenceService.sendConferenceToRabbit(id);
+    }
+
     @PostMapping("/addConference")
     public ConferenceDTO addConference(@RequestBody ConferenceDTO conferenceDTO) {
         return conferenceService.addConference(conferenceDTO);
