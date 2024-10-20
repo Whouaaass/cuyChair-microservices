@@ -1,5 +1,7 @@
 package co.edu.unicauca.cuychair.user.user_microservice.publisher;
 
+import java.util.List;
+
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -31,5 +33,13 @@ public class Publisher {
     
     public void sendConferenceDTO(ConferenceDTO conferenceDTO) {
         rabbitTemplate.convertAndSend(conferenceQueue.getName(), conferenceDTO);
+    }
+
+    @Autowired
+    @Qualifier("userListQueue")
+    private Queue userListQueue;
+
+    public void sendListUserDTO(List<UserDTO> userList){
+        rabbitTemplate.convertAndSend(userListQueue.getName(),userList);
     }
 }
