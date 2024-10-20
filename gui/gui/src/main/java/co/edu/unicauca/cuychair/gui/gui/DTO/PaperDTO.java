@@ -4,10 +4,19 @@
  */
 package co.edu.unicauca.cuychair.gui.gui.DTO;
 
-/**
- *
- * @author julia
- */
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
+@AllArgsConstructor
 public class PaperDTO {
-    
+    private Integer id;
+    private String title;
+    private String Abstract;
+    private String subtitle;
+
+    public PaperDTO() {
+    }
 }

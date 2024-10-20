@@ -4,10 +4,22 @@
  */
 package co.edu.unicauca.cuychair.gui.gui.DTO;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
 /**
- *
- * @author julia
+ * Data transfer object for Conference
  */
+@Getter
+@Setter
+@AllArgsConstructor
 public class ConferenceDTO {
-    
+    private Integer id;
+    private String name;
+    private String subject;
+    private String description;
+
+
+    public ConferenceDTO() {}
 }
