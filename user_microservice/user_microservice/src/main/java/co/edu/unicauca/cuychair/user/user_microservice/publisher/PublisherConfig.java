@@ -24,5 +24,12 @@ public class PublisherConfig {
         return new Queue(messageConferenceDTO, true);
     }
 
+    @Value("${co.edu.unicauca.cuychair.user.userListDTO.queue}")
+    private String messageUserListDTO;
+
+    @Bean
+    public Queue userListQueue() {
+        return new Queue(messageUserListDTO, true);
+    }
 }
 

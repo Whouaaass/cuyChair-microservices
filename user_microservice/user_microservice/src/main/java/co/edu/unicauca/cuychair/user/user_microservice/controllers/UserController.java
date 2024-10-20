@@ -30,6 +30,12 @@ public class UserController {
 		return this.userService.sendUserToRabbit(id);
 	}
 	
+    @GetMapping("/SendUserList")
+    public List<UserDTO> sendUserList() {
+        return this.userService.sendUserListToRabbit();
+    }
+    
+    
     public UserController(UserService userService){
         this.userService = userService;
     }
