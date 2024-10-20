@@ -4,17 +4,31 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import lombok.extern.slf4j.Slf4j;
 
 import co.edu.unicauca.cuychair.user.user_microservice.dataAccess.domain.UserEntity;
 import co.edu.unicauca.cuychair.user.user_microservice.dataAccess.repository.IUserRepository;
+import co.edu.unicauca.cuychair.user.user_microservice.publisher.Publisher;
 import co.edu.unicauca.cuychair.user.user_microservice.servicesFacade.DTO.ConversorUserDTO;
 import co.edu.unicauca.cuychair.user.user_microservice.servicesFacade.DTO.UserDTO;
 
+@Slf4j
 @Service
 public class UserService implements IUserService{
     @Autowired
     private IUserRepository userRepository;
     private ConversorUserDTO conversorUserDTO;
+
+    //Metodo para enviar usuarios a rabiitMQ
+	@Autowired
+	private Publisher publisher;
+	
+	public void sendUserToRabbit(int id) {	
+        UserDTO userDTO=getUser(id);
+		log.info("Message '{}'  Name of user: '{}' will be send ... ", userDTO,userDTO.getName());
+		this.publisher.sendUserDTO(userDTO);
+	}
+
 
     public UserService(IUserRepository userRepository){
         this.userRepository = userRepository;
