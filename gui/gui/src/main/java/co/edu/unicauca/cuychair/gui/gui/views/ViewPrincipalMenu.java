@@ -33,6 +33,7 @@ public class ViewPrincipalMenu extends javax.swing.JFrame {
         jButtonConferences = new javax.swing.JButton();
         jButtonPapers = new javax.swing.JButton();
         jButtonProfile = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBarMain = new javax.swing.JMenuBar();
         jMenuPerfil = new javax.swing.JMenu();
         jMenuCheckProfile = new javax.swing.JMenuItem();
@@ -45,9 +46,8 @@ public class ViewPrincipalMenu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(42, 71, 94));
-
         jLabelMainTitle.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabelMainTitle.setForeground(new java.awt.Color(199, 213, 224));
         jLabelMainTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelMainTitle.setText("MENU PRINCIPAL");
 
@@ -67,8 +67,6 @@ public class ViewPrincipalMenu extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
-        jPanel2.setBackground(new java.awt.Color(199, 213, 224));
-
         jButtonExit.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButtonExit.setText("Salir");
 
@@ -81,29 +79,27 @@ public class ViewPrincipalMenu extends javax.swing.JFrame {
         jButtonProfile.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButtonProfile.setText("Perfil");
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/PosibleLogo.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(132, 132, 132)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonPapers)
-                            .addComponent(jButtonExit))
-                        .addGap(20, 20, 20))
-                    .addComponent(jButtonConferences)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jButtonProfile)))
-                .addContainerGap(146, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(62, 62, 62)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButtonExit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonConferences, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonPapers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonProfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(150, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(21, 21, 21)
                 .addComponent(jButtonProfile)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonConferences)
@@ -111,7 +107,11 @@ public class ViewPrincipalMenu extends javax.swing.JFrame {
                 .addComponent(jButtonPapers)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonExit)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(128, 128, 128)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
@@ -164,6 +164,7 @@ public class ViewPrincipalMenu extends javax.swing.JFrame {
     private javax.swing.JButton jButtonExit;
     private javax.swing.JButton jButtonPapers;
     private javax.swing.JButton jButtonProfile;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelMainTitle;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBarMain;

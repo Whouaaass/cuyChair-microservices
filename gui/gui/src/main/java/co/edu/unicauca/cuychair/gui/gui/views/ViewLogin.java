@@ -18,8 +18,9 @@ public class ViewLogin extends javax.swing.JFrame {
      */
     public ViewLogin() {
         initComponents();
+        
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,8 +42,6 @@ public class ViewLogin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(27, 40, 56));
-
         jLabelMainTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabelMainTitle.setForeground(new java.awt.Color(199, 213, 224));
         jLabelMainTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -61,7 +60,6 @@ public class ViewLogin extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
-        jPanel2.setBackground(new java.awt.Color(42, 71, 94));
         jPanel2.setPreferredSize(new java.awt.Dimension(409, 219));
 
         jTextFieldEmail.setText("@gmail.com");
@@ -139,7 +137,7 @@ public class ViewLogin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
         //Recuperamos los datos
         String email = this.jTextFieldEmail.getText();
