@@ -6,8 +6,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import org.springframework.stereotype.Repository;
 
-import co.edu.unicauca.cuychair.user.user_microservice.dataAccess.domain.ConferenceEntity;
-import co.edu.unicauca.cuychair.user.user_microservice.dataAccess.domain.UserEntity;
+import co.edu.unicauca.cuychair.user.user_microservice.domain.ConferenceEntity;
+import co.edu.unicauca.cuychair.user.user_microservice.domain.UserEntity;
 
 @Repository
 public class ConferenceRepositoryArrayList implements IConferenceRepository{

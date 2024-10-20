@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import co.edu.unicauca.cuychair.user.user_microservice.dataAccess.domain.UserEntity;
+import co.edu.unicauca.cuychair.user.user_microservice.domain.UserEntity;
 
 @Repository
 public class UserRepositoryArrayList implements IUserRepository{

@@ -1,4 +1,4 @@
-package co.edu.unicauca.cuychair.user.user_microservice.dataAccess.domain;
+package co.edu.unicauca.cuychair.user.user_microservice.domain;
 import java.util.ArrayList;
 
 import lombok.AllArgsConstructor;

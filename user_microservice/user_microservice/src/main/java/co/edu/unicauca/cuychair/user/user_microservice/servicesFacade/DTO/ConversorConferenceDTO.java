@@ -6,7 +6,7 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import co.edu.unicauca.cuychair.user.user_microservice.dataAccess.domain.ConferenceEntity;
+import co.edu.unicauca.cuychair.user.user_microservice.domain.ConferenceEntity;
 
 public class ConversorConferenceDTO {
 @Autowired

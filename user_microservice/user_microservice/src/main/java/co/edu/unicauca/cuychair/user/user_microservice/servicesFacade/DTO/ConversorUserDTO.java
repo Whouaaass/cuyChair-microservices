@@ -6,7 +6,7 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import co.edu.unicauca.cuychair.user.user_microservice.dataAccess.domain.UserEntity;
+import co.edu.unicauca.cuychair.user.user_microservice.domain.UserEntity;
 
 public class ConversorUserDTO {
     @Autowired

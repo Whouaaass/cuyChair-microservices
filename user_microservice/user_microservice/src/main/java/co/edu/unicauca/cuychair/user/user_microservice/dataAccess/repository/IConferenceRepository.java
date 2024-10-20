@@ -2,7 +2,7 @@ package co.edu.unicauca.cuychair.user.user_microservice.dataAccess.repository;
 
 import java.util.List;
 
-import co.edu.unicauca.cuychair.user.user_microservice.dataAccess.domain.ConferenceEntity;
+import co.edu.unicauca.cuychair.user.user_microservice.domain.ConferenceEntity;
 
 public interface IConferenceRepository {
     /**
