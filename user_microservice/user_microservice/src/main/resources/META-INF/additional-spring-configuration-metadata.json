@@ -1,5 +1,0 @@
-{"properties": [{
-  "name": "co.edu.unicauca.cuychair.user.name.queue",
-  "type": "java.lang.String",
-  "description": "Cola de mensajes para consumir del microservicio"
-}]}

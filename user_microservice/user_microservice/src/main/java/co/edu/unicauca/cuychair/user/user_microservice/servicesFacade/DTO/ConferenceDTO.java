@@ -2,7 +2,6 @@ package co.edu.unicauca.cuychair.user.user_microservice.servicesFacade.DTO;
 
 import java.util.ArrayList;
 
-import co.edu.unicauca.cuychair.user.user_microservice.domain.UserEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
