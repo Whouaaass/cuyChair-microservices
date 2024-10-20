@@ -46,8 +46,6 @@ public class ViewPrincipalMenu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(42, 71, 94));
-
         jLabelMainTitle.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelMainTitle.setForeground(new java.awt.Color(199, 213, 224));
         jLabelMainTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -68,8 +66,6 @@ public class ViewPrincipalMenu extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_START);
-
-        jPanel2.setBackground(new java.awt.Color(199, 213, 224));
 
         jButtonExit.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButtonExit.setText("Salir");
