@@ -4,10 +4,19 @@
  */
 package co.edu.unicauca.cuychair.gui.gui.DTO;
 
-/**
- *
- * @author julia
- */
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
 public class UserDTO {
-    
+    private Integer id;
+    private String nombre;    
+    private String email;
+    private String phone;
+    private String description;    
+
+    public UserDTO() {}   
 }
