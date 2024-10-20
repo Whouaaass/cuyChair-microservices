@@ -12,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 public class Consumer {
 
-	@RabbitListener(queues = { "${co.edu.unicauca.cuychair.user.name.queue}" })
+	@RabbitListener(queues = { "${co.edu.unicauca.cuychair.user.userDTO.queue}" })
 	public void receiveUserDTO(@Payload UserDTO userDTO) {
 
 		log.info("Received message {} User name: {}", userDTO, userDTO.getName());
@@ -20,13 +20,12 @@ public class Consumer {
 		makeSlow();
 
 	}
+	
 
-
-    @RabbitListener(queues = { "${co.edu.unicauca.cuychair.user.name.queue}" })
+    @RabbitListener(queues = { "${co.edu.unicauca.cuychair.user.conferenceDTO.queue}" })
     public void receiveConferenceDTO(@Payload ConferenceDTO conferenceDTO) {
 
 		log.info("Received message {} Conference title: {}", conferenceDTO, conferenceDTO.getTitle());
-
 		makeSlow();
 
 	}
