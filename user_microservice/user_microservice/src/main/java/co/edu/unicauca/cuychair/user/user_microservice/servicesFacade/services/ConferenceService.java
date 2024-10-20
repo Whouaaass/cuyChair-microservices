@@ -5,10 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
-
-
-import co.edu.unicauca.cuychair.user.user_microservice.dataAccess.domain.ConferenceEntity;
 import co.edu.unicauca.cuychair.user.user_microservice.dataAccess.repository.IConferenceRepository;
+import co.edu.unicauca.cuychair.user.user_microservice.domain.ConferenceEntity;
 import co.edu.unicauca.cuychair.user.user_microservice.publisher.Publisher;
 import co.edu.unicauca.cuychair.user.user_microservice.servicesFacade.DTO.ConferenceDTO;
 import co.edu.unicauca.cuychair.user.user_microservice.servicesFacade.DTO.ConversorConferenceDTO;
