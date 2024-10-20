@@ -62,6 +62,7 @@ public class ViewListConferences extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(42, 71, 94));
 
+        jTableConferences.setBackground(new java.awt.Color(27, 40, 56));
         jTableConferences.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
