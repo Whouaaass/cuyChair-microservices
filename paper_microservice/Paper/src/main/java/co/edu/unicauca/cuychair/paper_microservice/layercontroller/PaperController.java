@@ -33,8 +33,7 @@ public class PaperController {
      * @param objPaper Paper a guardar
      * @return Confirmación
      */
-    @RequestMapping(method = RequestMethod.POST, produces = "application/json")
-    @ResponseBody
+    @PostMapping("/paper")
     public boolean storePaper (@RequestBody PaperDTO objPaper){
         return servicePaper.storePaper(objPaper);
     }
@@ -68,5 +67,10 @@ public class PaperController {
     @PostMapping("/conference")
     public boolean addConference(@RequestBody ConferenceDTO objConference){
         return serviceConference.addConference(objConference);
+    }
+
+    @PostMapping("/edit")
+    public PaperDTO editPaper(@RequestBody PaperDTO objPaper){
+        return servicePaper.editPaper(objPaper);
     }
 }

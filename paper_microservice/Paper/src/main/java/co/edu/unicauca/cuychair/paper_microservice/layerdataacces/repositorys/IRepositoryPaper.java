@@ -24,4 +24,8 @@ public interface IRepositoryPaper {
      * @return lista de todos los paper
      * */
     List<Paper> listPapers();
+
+    Paper editPaper (Paper objPaper);
+
+
 }

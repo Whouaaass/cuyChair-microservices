@@ -52,4 +52,8 @@ public class PaperStoreService {
     public List<Paper> listPapers (){
         return repositoryPaper.listPapers();
     }
+
+    public PaperDTO editPaper(PaperDTO objPaper){
+        return map.PaperinDTO(repositoryPaper.editPaper(map.DTOinPaper(objPaper)));
+    }
 }

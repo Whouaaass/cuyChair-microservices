@@ -14,6 +14,4 @@ public class PaperDTO {
     private int idAuthor;
     private int idConference;
 
-    public PaperDTO() {
-    }
 }

@@ -33,4 +33,11 @@ public class RepositoryPaper implements IRepositoryPaper{
         return paperList;
     }
 
+    @Override
+    public Paper editPaper(Paper objPaper) {
+        int index=paperList.indexOf(objPaper);
+        paperList.set(index, objPaper);
+        return objPaper;
+    }
+
 }

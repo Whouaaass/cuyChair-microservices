@@ -7,17 +7,16 @@ import co.edu.unicauca.cuychair.paper_microservice.layerservices.DTO.UserDTO;
 import org.modelmapper.ModelMapper;
 
 public class ConversorConferenceDTO {
-    private ModelMapper modelMapper;
+
 
     public ConversorConferenceDTO() {
-        this.modelMapper = new ModelMapper();
     }
 
     public ConferenceDTO ConferenceinDTO(Conference conference){
-        return modelMapper.map(conference, ConferenceDTO.class);
+        return new ConferenceDTO(conference.getId(), conference.getTitle(), conference.getDescription(), conference.getCity());
     }
 
     public Conference DTOinConference(ConferenceDTO conferenceDTO){
-        return modelMapper.map(conferenceDTO, Conference.class);
+        return new Conference(conferenceDTO.getId(), conferenceDTO.getTitle(), conferenceDTO.getDescription(), conferenceDTO.getCity());
     }
 }

@@ -20,7 +20,7 @@ public class Paper {
     @Override
     public boolean equals(Object obj) {
         if(obj instanceof Paper){
-            return id == ((Paper) obj).getId();
+            return author.getId() == ((Paper) obj).getAuthor().getId();
         }
         return false;
     }

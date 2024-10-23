@@ -1,10 +1,11 @@
 package co.edu.unicauca.cuychair.paper_microservice.Paper;
 
-import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.repositorys.IRepositoryPaper;
-import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.repositorys.RepositoryPaper;
+import co.edu.unicauca.cuychair.paper_microservice.PaperApplication;
+import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.repositorys.*;
 import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.domain.Paper;
 import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.domain.User;
 import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.domain.Conference;
+import co.edu.unicauca.cuychair.paper_microservice.layerservices.DTO.PaperDTO;
 import co.edu.unicauca.cuychair.paper_microservice.layerservices.services.PaperStoreService;
 import org.junit.Test;
 
@@ -16,40 +17,56 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class ServicePaperTest {
 
     private IRepositoryPaper repository;
+    private IRepositoryConference repositoryConference;
+    private IRepositoryUser repositoryUser;
     private PaperStoreService service;
-    private Paper paper;
+    private Conference conference;
+    private User user;
 
     public void setUp(){
+        conference = new Conference(123,"Critica a las empanadas","Las mejores cirticas hacia las empanadas conteporaneas","Tamalito");
+        user = new User(164,"Carlito Fuentes","carlitos@gmail.com");
         repository=new RepositoryPaper();
-        service=new PaperStoreService(repository);
-        paper=new Paper();
-        User author=new User();
-        Conference conference=new Conference();
-        paper.setTitle("Matemáticas");
-        paper.setDescription("Lo mejor de las matemáticas");
-        paper.setAuthor(author);
-        paper.setConference(conference);
+        repositoryConference=new RepositoryConference();
+        repositoryUser=new RepositoryUser();
+        repositoryConference.addConference(conference);
+        repositoryUser.addUser(user);
+        service=new PaperStoreService(repository,repositoryUser,repositoryConference);
     }
 
     @Test
     public void testSavePaper (){
         setUp();
-        service.storePaper(paper);
-        assertEquals(paper.getTitle(),service.listPapers().getFirst().getTitle());
+        PaperDTO paperDTO=new PaperDTO(12,"Los tamales de maria","Los tamales de maria son los mejores",164,123);
+        service.storePaper(paperDTO);
+        assertEquals(paperDTO.getTitle(),service.listPapers().getFirst().getTitle());
     }
 
     @Test
     public void testDelatePaper(){
         setUp();
-        service.storePaper(paper);
-        service.delatePaper(paper);
+        PaperDTO paperDTO=new PaperDTO(0,"Los tamales de maria","Los tamales de maria son los mejores",164,123);
+        service.storePaper(paperDTO);
+        service.delatePaper(paperDTO);
         assertTrue(service.listPapers().isEmpty());
+    }
+
+    @Test
+    public void testEditPaper(){
+        setUp();
+        PaperDTO paperDTO=new PaperDTO(0,"Los tamales de maria","Los tamales de maria son los mejores",164,123);
+        PaperDTO paperDTO2=new PaperDTO(0,"Los grandes tamales de maria","Los tamales grandes son los mejores",164,123);
+        service.storePaper(paperDTO);
+        service.editPaper(paperDTO2);
+        assertEquals(paperDTO2.getTitle(),service.listPapers().getFirst().getTitle());
+        assertEquals(paperDTO2.getDescription(),service.listPapers().getFirst().getDescription());
     }
 
     @Test
     public void testListPaper(){
         setUp();
-        service.storePaper(paper);
+        PaperDTO paperDTO=new PaperDTO(12,"Los tamales de maria","Los tamales de maria son los mejores",164,123);
+        service.storePaper(paperDTO);
         assertNotNull(service.listPapers());
     }
 }
