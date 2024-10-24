@@ -19,7 +19,7 @@ public class ConferenceDTO {
     private String name;
     private String subject;
     private String description;
-
+    private UserDTO owner;
 
     public ConferenceDTO() {}
 }

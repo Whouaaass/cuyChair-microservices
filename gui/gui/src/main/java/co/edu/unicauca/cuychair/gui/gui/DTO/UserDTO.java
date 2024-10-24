@@ -17,6 +17,7 @@ public class UserDTO {
     private String email;
     private String phone;
     private String description;    
-
+    private ConferenceDTO ownedConferences;
+    private ConferenceDTO guessConferences;
     public UserDTO() {}   
 }

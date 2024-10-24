@@ -4,6 +4,8 @@
  */
 package co.edu.unicauca.cuychair.gui.gui.views;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author julia
@@ -60,24 +62,38 @@ public class ViewPrincipalMenu extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabelMainTitle)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 12, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
         jButtonExit.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButtonExit.setText("Salir");
+        jButtonExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExitActionPerformed(evt);
+            }
+        });
 
         jButtonConferences.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButtonConferences.setText("Conferencias");
+        jButtonConferences.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConferencesActionPerformed(evt);
+            }
+        });
 
         jButtonPapers.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButtonPapers.setText("Papers");
 
         jButtonProfile.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButtonProfile.setText("Perfil");
+        jButtonProfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonProfileActionPerformed(evt);
+            }
+        });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/PosibleLogo.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -87,19 +103,24 @@ public class ViewPrincipalMenu extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButtonExit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonConferences, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonPapers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonProfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(150, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonConferences)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(72, 72, 72)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jButtonPapers, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButtonExit, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(138, 138, 138)
+                            .addComponent(jButtonProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(140, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addContainerGap()
                 .addComponent(jButtonProfile)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonConferences)
@@ -110,7 +131,7 @@ public class ViewPrincipalMenu extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(128, 128, 128)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -121,6 +142,11 @@ public class ViewPrincipalMenu extends javax.swing.JFrame {
         jMenuCheckProfile.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuCheckProfile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/user_7099740.png"))); // NOI18N
         jMenuCheckProfile.setText("Ver perfil");
+        jMenuCheckProfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuCheckProfileActionPerformed(evt);
+            }
+        });
         jMenuPerfil.add(jMenuCheckProfile);
 
         jMenuItemEditProfile.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK));
@@ -140,6 +166,11 @@ public class ViewPrincipalMenu extends javax.swing.JFrame {
         jMenuItemConferences.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItemConferences.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/presentation_426378.jpg"))); // NOI18N
         jMenuItemConferences.setText("Conferencias");
+        jMenuItemConferences.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemConferencesActionPerformed(evt);
+            }
+        });
         jMenuConferencias.add(jMenuItemConferences);
 
         jMenuBarMain.add(jMenuConferencias);
@@ -157,6 +188,37 @@ public class ViewPrincipalMenu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonConferencesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConferencesActionPerformed
+        ViewListConferences viewListConferences = new ViewListConferences();
+        viewListConferences.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        viewListConferences.setVisible(true);
+    }//GEN-LAST:event_jButtonConferencesActionPerformed
+
+    private void jMenuItemConferencesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConferencesActionPerformed
+        ViewListConferences viewListConferences = new ViewListConferences();
+        viewListConferences.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        viewListConferences.setVisible(true);
+    }//GEN-LAST:event_jMenuItemConferencesActionPerformed
+
+    private void jMenuCheckProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCheckProfileActionPerformed
+        ViewCheckUser viewCheckUser = new ViewCheckUser();
+        viewCheckUser.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        viewCheckUser.setVisible(true);
+    }//GEN-LAST:event_jMenuCheckProfileActionPerformed
+
+    private void jButtonProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProfileActionPerformed
+        ViewCheckUser viewCheckUser = new ViewCheckUser();
+        viewCheckUser.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        viewCheckUser.setVisible(true);
+    }//GEN-LAST:event_jButtonProfileActionPerformed
+
+    private void jButtonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExitActionPerformed
+        ViewLogin viewLogin = new ViewLogin();
+        viewLogin.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        viewLogin.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButtonExitActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
