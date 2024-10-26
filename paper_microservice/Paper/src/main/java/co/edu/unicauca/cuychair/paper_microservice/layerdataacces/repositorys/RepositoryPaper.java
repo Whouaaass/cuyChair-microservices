@@ -21,6 +21,9 @@ public class RepositoryPaper implements IRepositoryPaper{
     @Override
     public boolean storePaper(Paper objPaper) {
         objPaper.setId(indexCounter.getAndIncrement());
+        if(objPaper.getAuthor()==null || objPaper.getConference()==null){
+            return false;
+        }
         return paperList.add(objPaper);
     }
 
