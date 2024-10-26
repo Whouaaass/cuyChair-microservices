@@ -4,22 +4,22 @@
  */
 package co.edu.unicauca.cuychair.gui.gui.DTO;
 
+
+import java.util.ArrayList;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-/**
- * Data transfer object for Conference
- */
 @Getter
 @Setter
 @AllArgsConstructor
 public class ConferenceDTO {
-    private Integer id;
-    private String name;
-    private String subject;
-    private String description;
-
-
-    public ConferenceDTO() {}
+    public ConferenceDTO(){};
+    private int id;
+    private String title;
+    private String city;
+    private String date;
+    private ArrayList<UserDTO> participantsList;
+    private UserDTO owner;
 }

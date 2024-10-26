@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package co.edu.unicauca.cuychair.gui.gui.views;
 
@@ -10,7 +10,7 @@ import javax.swing.JFrame;
  *
  * @author julia
  */
-public class ViewListConferences extends javax.swing.JPanel {
+public class ViewListConferences extends javax.swing.JFrame {
 
     /**
      * Creates new form ViewListConferences
@@ -35,20 +35,18 @@ public class ViewListConferences extends javax.swing.JPanel {
         jTableConferences = new javax.swing.JTable();
         jButtonAddConference = new javax.swing.JButton();
 
-        setLayout(new java.awt.BorderLayout());
-
-        jPanel1.setBackground(new java.awt.Color(199, 213, 224));
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabelMainTitle.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelMainTitle.setForeground(new java.awt.Color(0, 0, 0));
         jLabelMainTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelMainTitle.setText("LISTA CONFERENCIAS");
+        jLabelMainTitle.setText("CONFERENCIAS");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelMainTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 461, Short.MAX_VALUE)
+            .addComponent(jLabelMainTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -58,7 +56,7 @@ public class ViewListConferences extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        add(jPanel1, java.awt.BorderLayout.PAGE_START);
+        getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
         jTableConferences.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -68,15 +66,18 @@ public class ViewListConferences extends javax.swing.JPanel {
                 {null, null, null}
             },
             new String [] {
-                "Titulo", "Ciudad", "Fecha"
+                "Titulo", "Tema", "Descripcion"
             }
         ));
         jScrollPane1.setViewportView(jTableConferences);
+        if (jTableConferences.getColumnModel().getColumnCount() > 0) {
+            jTableConferences.getColumnModel().getColumn(0).setPreferredWidth(6);
+            jTableConferences.getColumnModel().getColumn(1).setPreferredWidth(6);
+        }
 
         jButtonAddConference.setBackground(new java.awt.Color(102, 192, 244));
-        jButtonAddConference.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButtonAddConference.setForeground(new java.awt.Color(0, 0, 0));
-        jButtonAddConference.setText("Añadir conferencia");
+        jButtonAddConference.setText("Registrar conferencia");
         jButtonAddConference.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAddConferenceActionPerformed(evt);
@@ -88,29 +89,33 @@ public class ViewListConferences extends javax.swing.JPanel {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButtonAddConference)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addGap(38, 38, 38)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(38, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonAddConference)
+                .addGap(148, 148, 148))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonAddConference)
-                .addGap(23, 23, 23))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
-        add(jPanel2, java.awt.BorderLayout.CENTER);
+        getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAddConferenceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddConferenceActionPerformed
-        ViewAddConference viewAddConference = new ViewAddConference();
-        viewAddConference.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        viewAddConference.setVisible(true);
+        ViewAddConference viewAddConferences = new ViewAddConference();
+        viewAddConferences.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        viewAddConferences.setVisible(true);
     }//GEN-LAST:event_jButtonAddConferenceActionPerformed
 
 
