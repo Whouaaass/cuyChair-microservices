@@ -1,8 +1,6 @@
 package co.edu.unicauca.cuychair.paper_microservice.layercontroller;
 
-import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.domain.Conference;
 import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.domain.Paper;
-import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.domain.User;
 import co.edu.unicauca.cuychair.paper_microservice.layerservices.DTO.ConferenceDTO;
 import co.edu.unicauca.cuychair.paper_microservice.layerservices.DTO.PaperDTO;
 import co.edu.unicauca.cuychair.paper_microservice.layerservices.DTO.UserDTO;
@@ -72,5 +70,10 @@ public class PaperController {
     @PostMapping("/edit")
     public PaperDTO editPaper(@RequestBody PaperDTO objPaper){
         return servicePaper.editPaper(objPaper);
+    }
+
+    @GetMapping("/paperAuthor/{authorId}")
+    public List<PaperDTO> getPapersByAuthor (@PathVariable int authorId){
+        return servicePaper.getPaperByAuthor(authorId);
     }
 }

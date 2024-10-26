@@ -12,6 +12,7 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ConversorPaperDTO {
@@ -31,10 +32,14 @@ public class ConversorPaperDTO {
         return new Paper(paperDTO.getId(), paperDTO.getTitle(), paperDTO.getDescription(), repositoryUser.getUserById(paperDTO.getIdAuthor()),repositoryConference.getConferenceById(paperDTO.getIdConference()));
     }
 
-    /*
+
     public List<PaperDTO> listPaperinDTO(List<Paper> papers){
-        return modelMapper.map(papers, new TypeToken<List<PaperDTO>>() {}.getType());
+        List<PaperDTO> paperDTOs = new ArrayList<>();
+        for(Paper paper : papers){
+            paperDTOs.add(PaperinDTO(paper));
+        }
+        return paperDTOs;
     }
-    */
+
 
 }

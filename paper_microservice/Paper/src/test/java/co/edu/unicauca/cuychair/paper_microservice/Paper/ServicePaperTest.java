@@ -69,4 +69,15 @@ public class ServicePaperTest {
         service.storePaper(paperDTO);
         assertNotNull(service.listPapers());
     }
+
+    @Test
+    public void testPapersAuthor(){
+        setUp();
+        PaperDTO paperDTO=new PaperDTO(12,"Los tamales de maria","Los tamales de maria son los mejores",164,123);
+        PaperDTO paperDTO2=new PaperDTO(12,"Los almuerzos de Juan","Juan cocina las mejores Papitas",164,123);
+        service.storePaper(paperDTO);
+        service.storePaper(paperDTO2);
+        assertEquals(paperDTO.getTitle(),service.getPaperByAuthor(164).getFirst().getTitle());
+        assertEquals(paperDTO2.getTitle(),service.getPaperByAuthor(164).getLast().getTitle());
+    }
 }
