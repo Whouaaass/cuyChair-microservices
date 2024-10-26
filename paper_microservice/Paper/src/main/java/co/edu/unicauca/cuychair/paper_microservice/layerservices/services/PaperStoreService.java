@@ -21,7 +21,6 @@ public class PaperStoreService {
     IRepositoryUser repositoryUser;
     IRepositoryConference repositoryConference;
     ConversorPaperDTO map;
-    ConversorUserDTO mapUser;
 
     @Autowired
     public PaperStoreService(IRepositoryPaper repositoryPaper, IRepositoryUser repositoryUser, IRepositoryConference repositoryConference) {

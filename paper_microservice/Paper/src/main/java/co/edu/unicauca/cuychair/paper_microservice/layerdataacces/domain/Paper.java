@@ -11,7 +11,8 @@ public class Paper {
 
     private int id;
     private String title;
-    private String description;
+    private String Abstract;
+    private String subtitle;
     private User author;
     private Conference conference;
 

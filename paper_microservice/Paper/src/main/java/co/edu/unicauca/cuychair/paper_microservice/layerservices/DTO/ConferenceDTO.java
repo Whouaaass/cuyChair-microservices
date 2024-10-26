@@ -12,8 +12,8 @@ import java.util.List;
 @AllArgsConstructor
 public class ConferenceDTO {
     private int id;
-    private String title;
+    private String name;
+    private String subject;
     private String description;
-    private String city;
 
 }

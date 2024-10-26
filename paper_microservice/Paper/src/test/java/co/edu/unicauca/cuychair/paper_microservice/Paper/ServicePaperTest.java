@@ -1,8 +1,6 @@
 package co.edu.unicauca.cuychair.paper_microservice.Paper;
 
-import co.edu.unicauca.cuychair.paper_microservice.PaperApplication;
 import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.repositorys.*;
-import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.domain.Paper;
 import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.domain.User;
 import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.domain.Conference;
 import co.edu.unicauca.cuychair.paper_microservice.layerservices.DTO.PaperDTO;
@@ -37,7 +35,7 @@ public class ServicePaperTest {
     @Test
     public void testSavePaper (){
         setUp();
-        PaperDTO paperDTO=new PaperDTO(12,"Los tamales de maria","Los tamales de maria son los mejores",164,123);
+        PaperDTO paperDTO=new PaperDTO(12,"Los tamales de maria","Los tamales de maria son los mejores","No se",164,123);
         service.storePaper(paperDTO);
         assertEquals(paperDTO.getTitle(),service.listPapers().getFirst().getTitle());
     }
@@ -45,7 +43,7 @@ public class ServicePaperTest {
     @Test
     public void testDelatePaper(){
         setUp();
-        PaperDTO paperDTO=new PaperDTO(0,"Los tamales de maria","Los tamales de maria son los mejores",164,123);
+        PaperDTO paperDTO=new PaperDTO(0,"Los tamales de maria","Los tamales de maria son los mejores","No se",164,123);
         service.storePaper(paperDTO);
         service.delatePaper(paperDTO);
         assertTrue(service.listPapers().isEmpty());
@@ -54,18 +52,18 @@ public class ServicePaperTest {
     @Test
     public void testEditPaper(){
         setUp();
-        PaperDTO paperDTO=new PaperDTO(0,"Los tamales de maria","Los tamales de maria son los mejores",164,123);
-        PaperDTO paperDTO2=new PaperDTO(0,"Los grandes tamales de maria","Los tamales grandes son los mejores",164,123);
+        PaperDTO paperDTO=new PaperDTO(0,"Los tamales de maria","Los tamales de maria son los mejores","No se",164,123);
+        PaperDTO paperDTO2=new PaperDTO(0,"Los grandes tamales de maria","Los tamales grandes son los mejores","No se",164,123);
         service.storePaper(paperDTO);
         service.editPaper(paperDTO2);
         assertEquals(paperDTO2.getTitle(),service.listPapers().getFirst().getTitle());
-        assertEquals(paperDTO2.getDescription(),service.listPapers().getFirst().getDescription());
+        assertEquals(paperDTO2.getAbstract(),service.listPapers().getFirst().getAbstract());
     }
 
     @Test
     public void testListPaper(){
         setUp();
-        PaperDTO paperDTO=new PaperDTO(12,"Los tamales de maria","Los tamales de maria son los mejores",164,123);
+        PaperDTO paperDTO=new PaperDTO(12,"Los tamales de maria","Los tamales de maria son los mejores","No se",164,123);
         service.storePaper(paperDTO);
         assertNotNull(service.listPapers());
     }
@@ -73,8 +71,8 @@ public class ServicePaperTest {
     @Test
     public void testPapersAuthor(){
         setUp();
-        PaperDTO paperDTO=new PaperDTO(12,"Los tamales de maria","Los tamales de maria son los mejores",164,123);
-        PaperDTO paperDTO2=new PaperDTO(12,"Los almuerzos de Juan","Juan cocina las mejores Papitas",164,123);
+        PaperDTO paperDTO=new PaperDTO(12,"Los tamales de maria","Los tamales de maria son los mejores","No se",164,123);
+        PaperDTO paperDTO2=new PaperDTO(12,"Los almuerzos de Juan","Juan cocina las mejores Papitas","No se",164,123);
         service.storePaper(paperDTO);
         service.storePaper(paperDTO2);
         assertEquals(paperDTO.getTitle(),service.getPaperByAuthor(164).getFirst().getTitle());

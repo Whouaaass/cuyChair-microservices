@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
 import java.util.Objects;
 
 @Setter
@@ -14,8 +13,8 @@ public class Conference {
 
     private int id;
     private String title;
+    private String subject;
     private String description;
-    private String city;
 
     public Conference(){}
 
