@@ -16,6 +16,8 @@ public class PaperDTO {
     private String title;
     private String Abstract;
     private String subtitle;
+    private int authorId;
+    private int conferemceId;
 
     public PaperDTO() {
     }
