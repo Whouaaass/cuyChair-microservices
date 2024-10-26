@@ -149,7 +149,7 @@ public class ViewAddPaper extends javax.swing.JFrame {
         PaperDTO paper=new PaperDTO();
         paper.setTitle(textTitle.getText());
         paper.setAbstract(textAbstract.getText());
-        paper.setSubtitle(textSubtitle.getText());
+        paper.setSubTitle(textSubtitle.getText());
     }//GEN-LAST:event_buttonSubmitActionPerformed
 
     

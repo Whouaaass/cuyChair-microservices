@@ -12,9 +12,11 @@ import lombok.Setter;
 @Getter
 @AllArgsConstructor
 public class PaperDTO {
-    private Integer id;
+    private int id;
     private String title;
     private String Abstract;
-    private String subtitle;
-    public PaperDTO(){}
+    private String subTitle;
+    private int idAuthor;
+    private int idConference;
+    public PaperDTO(){};
 }

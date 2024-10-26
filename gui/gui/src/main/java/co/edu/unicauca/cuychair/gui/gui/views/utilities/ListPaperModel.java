@@ -41,7 +41,7 @@ public class ListPaperModel extends AbstractTableModel{
         switch (columnIndex) {
             case 0: return paper.getTitle();
             case 1: return paper.getAbstract();
-            case 2: return paper.getSubtitle();
+            case 2: return paper.getSubTitle();
             case 3: return "Editar / Eliminar"; // Texto genérico para los botones
             default: return null;
         }
