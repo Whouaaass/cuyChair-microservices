@@ -69,6 +69,7 @@ public class ViewListPaper extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        TablePapers.setRowHeight(70);
         jScrollPane1.setViewportView(TablePapers);
 
         buttonListPaper.setBackground(new java.awt.Color(102, 192, 244));
