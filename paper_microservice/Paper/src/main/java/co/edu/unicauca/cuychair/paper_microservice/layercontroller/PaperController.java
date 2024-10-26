@@ -1,8 +1,6 @@
 package co.edu.unicauca.cuychair.paper_microservice.layercontroller;
 
-import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.domain.Conference;
 import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.domain.Paper;
-import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.domain.User;
 import co.edu.unicauca.cuychair.paper_microservice.layerservices.DTO.ConferenceDTO;
 import co.edu.unicauca.cuychair.paper_microservice.layerservices.DTO.PaperDTO;
 import co.edu.unicauca.cuychair.paper_microservice.layerservices.DTO.UserDTO;
@@ -33,8 +31,7 @@ public class PaperController {
      * @param objPaper Paper a guardar
      * @return Confirmación
      */
-    @RequestMapping(method = RequestMethod.POST, produces = "application/json")
-    @ResponseBody
+    @PostMapping("/paper")
     public boolean storePaper (@RequestBody PaperDTO objPaper){
         return servicePaper.storePaper(objPaper);
     }
@@ -68,5 +65,15 @@ public class PaperController {
     @PostMapping("/conference")
     public boolean addConference(@RequestBody ConferenceDTO objConference){
         return serviceConference.addConference(objConference);
+    }
+
+    @PostMapping("/edit")
+    public PaperDTO editPaper(@RequestBody PaperDTO objPaper){
+        return servicePaper.editPaper(objPaper);
+    }
+
+    @GetMapping("/paperAuthor/{authorId}")
+    public List<PaperDTO> getPapersByAuthor (@PathVariable int authorId){
+        return servicePaper.getPaperByAuthor(authorId);
     }
 }

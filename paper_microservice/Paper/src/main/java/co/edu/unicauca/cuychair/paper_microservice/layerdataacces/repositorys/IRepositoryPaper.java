@@ -1,6 +1,7 @@
 package co.edu.unicauca.cuychair.paper_microservice.layerdataacces.repositorys;
 
 import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.domain.Paper;
+import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.domain.User;
 
 import java.util.List;
 
@@ -24,4 +25,10 @@ public interface IRepositoryPaper {
      * @return lista de todos los paper
      * */
     List<Paper> listPapers();
+
+    Paper editPaper (Paper objPaper);
+
+    List<Paper> getPapersByAuthor (int authorId);
+
+
 }

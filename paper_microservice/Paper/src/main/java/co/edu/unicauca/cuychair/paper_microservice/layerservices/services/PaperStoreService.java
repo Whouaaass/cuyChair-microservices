@@ -1,11 +1,14 @@
 package co.edu.unicauca.cuychair.paper_microservice.layerservices.services;
 
+import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.domain.User;
 import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.repositorys.IRepositoryConference;
 import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.repositorys.IRepositoryPaper;
 import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.domain.Paper;
 import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.repositorys.IRepositoryUser;
 import co.edu.unicauca.cuychair.paper_microservice.layerservices.DTO.PaperDTO;
+import co.edu.unicauca.cuychair.paper_microservice.layerservices.DTO.UserDTO;
 import co.edu.unicauca.cuychair.paper_microservice.layerservices.mapper.ConversorPaperDTO;
+import co.edu.unicauca.cuychair.paper_microservice.layerservices.mapper.ConversorUserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -51,5 +54,13 @@ public class PaperStoreService {
      */
     public List<Paper> listPapers (){
         return repositoryPaper.listPapers();
+    }
+
+    public PaperDTO editPaper(PaperDTO objPaper){
+        return map.PaperinDTO(repositoryPaper.editPaper(map.DTOinPaper(objPaper)));
+    }
+
+    public List<PaperDTO> getPaperByAuthor(int authorId){
+        return map.listPaperinDTO(repositoryPaper.getPapersByAuthor(authorId));
     }
 }

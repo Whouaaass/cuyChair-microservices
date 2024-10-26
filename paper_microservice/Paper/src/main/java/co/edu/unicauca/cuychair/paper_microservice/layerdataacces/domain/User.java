@@ -14,4 +14,12 @@ public class User {
     private String email;
 
     public User(){}
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof User){
+            return id == ((User)obj).id;
+        }
+        return false;
+    }
 }

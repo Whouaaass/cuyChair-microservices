@@ -6,17 +6,16 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class ConversorUserDTO {
-    private ModelMapper modelMapper;
 
     public ConversorUserDTO() {
-        this.modelMapper = new ModelMapper();
+
     }
 
     public UserDTO UserinDTO(User user){
-        return modelMapper.map(user, UserDTO.class);
+        return new UserDTO(user.getId(), user.getName(), user.getEmail());
     }
 
     public User DTOinUser(UserDTO userDTO){
-        return modelMapper.map(userDTO, User.class);
+        return new User(userDTO.getId(), userDTO.getName(), userDTO.getEmail());
     }
 }
