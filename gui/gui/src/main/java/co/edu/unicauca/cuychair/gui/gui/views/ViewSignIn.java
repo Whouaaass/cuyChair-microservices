@@ -42,17 +42,18 @@ public class ViewSignIn extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jTextFieldEmail = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
         jTextFieldName = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jPasswordField2 = new javax.swing.JPasswordField();
         jButtonSignedIn = new javax.swing.JButton();
         jButtonHasAnAccount = new javax.swing.JButton();
-        jTextFieldIdentification = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        jTextFieldIdentification = new javax.swing.JTextField();
+        jPasswordField3 = new javax.swing.JPasswordField();
+        jPasswordField4 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(450, 400));
 
         jLabelMainTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabelMainTitle.setForeground(new java.awt.Color(199, 213, 224));
@@ -74,7 +75,7 @@ public class ViewSignIn extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
-        jPanel2.setPreferredSize(new java.awt.Dimension(409, 219));
+        jPanel2.setPreferredSize(new java.awt.Dimension(409, 230));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(199, 213, 224));
@@ -88,8 +89,6 @@ public class ViewSignIn extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("CONTRASEÑA");
 
-        jPasswordField1.setText("CONTRA123");
-
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(199, 213, 224));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -99,8 +98,6 @@ public class ViewSignIn extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(199, 213, 224));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("CONFIRMA CONTRASEÑA");
-
-        jPasswordField2.setText("CONTRA123");
 
         jButtonSignedIn.setBackground(new java.awt.Color(102, 192, 244));
         jButtonSignedIn.setForeground(new java.awt.Color(0, 0, 0));
@@ -125,19 +122,14 @@ public class ViewSignIn extends javax.swing.JFrame {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("IDENTIFICACION");
 
+        jPasswordField3.setText("CONTRA123");
+
+        jPasswordField4.setText("CONTRA123");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(51, 161, Short.MAX_VALUE)
-                        .addComponent(jTextFieldIdentification, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(160, 160, 160))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -149,12 +141,12 @@ public class ViewSignIn extends javax.swing.JFrame {
                             .addComponent(jTextFieldEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
                             .addComponent(jTextFieldName, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPasswordField4)
+                    .addComponent(jPasswordField3))
                 .addGap(42, 42, 42))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -165,24 +157,30 @@ public class ViewSignIn extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jButtonHasAnAccount)
                         .addGap(151, 151, 151))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                    .addComponent(jTextFieldIdentification))
+                .addGap(160, 160, 160))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(2, 2, 2)
                 .addComponent(jTextFieldIdentification, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPasswordField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPasswordField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -205,11 +203,10 @@ public class ViewSignIn extends javax.swing.JFrame {
 
     private void jButtonSignedInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSignedInActionPerformed
         //Recuperación de datos
-        
         String name=this.jTextFieldEmail.getText();
         String email=this.jTextFieldEmail.getText();
-        char[] passwordChar=this.jPasswordField1.getPassword();
-        char[] passwordChar2=this.jPasswordField2.getPassword();
+        char[] passwordChar=this.jPasswordField3.getPassword();
+        char[] passwordChar2=this.jPasswordField4.getPassword();
         String password = new String(passwordChar);
         String password2 = new String(passwordChar2);
         int id=-1;
@@ -227,10 +224,8 @@ public class ViewSignIn extends javax.swing.JFrame {
             return;
         }
         //Verificamos que las dos contraseñas sean iguales
-
-        
         if(!password.equals(password2)){
-            System.out.println(password.toString()+" - "+password2.toString());
+            System.out.println(password+" - "+password2);
             setAlert("Contraseñas no coinciden","Por favor haga coincidir las contraseñas");
             return;
         }
@@ -243,6 +238,7 @@ public class ViewSignIn extends javax.swing.JFrame {
         
         if(null!=userServices.addUser(userDTO)){
             setAlert("Usuario registrado","Registro exitoso");
+            System.out.println("Usuario registrado con id:"+userDTO.getId()+"Contraseña:"+userDTO.getPassword()+"email:"+userDTO.getEmail());
             return;
         }
         setAlert("Error de registro","Registro fallido");
@@ -266,8 +262,8 @@ public class ViewSignIn extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelMainTitle;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
+    private javax.swing.JPasswordField jPasswordField3;
+    private javax.swing.JPasswordField jPasswordField4;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JTextField jTextFieldEmail;
     private javax.swing.JTextField jTextFieldIdentification;

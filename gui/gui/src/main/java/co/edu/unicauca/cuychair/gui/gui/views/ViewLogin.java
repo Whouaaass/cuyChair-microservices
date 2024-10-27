@@ -42,12 +42,13 @@ public class ViewLogin extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jTextFieldEmail = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jPasswordFieldPassword = new javax.swing.JPasswordField();
         jButtonLogin = new javax.swing.JButton();
         jButtonNoAccount = new javax.swing.JButton();
+        jPasswordField1 = new javax.swing.JPasswordField();
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(409, 400));
 
         jLabelMainTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabelMainTitle.setForeground(new java.awt.Color(199, 213, 224));
@@ -86,6 +87,8 @@ public class ViewLogin extends javax.swing.JFrame {
             }
         });
 
+        jPasswordField1.setText("CONTRA123");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -103,9 +106,9 @@ public class ViewLogin extends javax.swing.JFrame {
                         .addComponent(jButtonLogin))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(123, 123, 123)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonNoAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPasswordFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButtonNoAccount, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                            .addComponent(jPasswordField1))))
                 .addContainerGap(124, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -119,8 +122,8 @@ public class ViewLogin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPasswordFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
+                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonLogin)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonNoAccount)
@@ -150,12 +153,12 @@ public class ViewLogin extends javax.swing.JFrame {
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
         //Recuperamos los datos
         String email = this.jTextFieldEmail.getText();
-        char[] passwordChar = this.jPasswordFieldPassword.getPassword();
+        char[] passwordChar = this.jPasswordField1.getPassword();
         String password = new String(passwordChar);
         //Verificar si coinciden
         UserDTO userDTO = this.userServices.getUserByEmail(email);
         System.out.println("Comparacion"+email+"-"+userDTO.getEmail()+" "+password+"-"+userDTO.getPassword());
-        if(!(userDTO.getEmail()==email&&userDTO.getPassword().equals(password))){
+        if(!(userDTO.getPassword().equals(password))){
             setAlert("Error de inicio de sesión", "Usuario no encontrado o contraseña incorrecta");
             return;
         }
@@ -163,6 +166,8 @@ public class ViewLogin extends javax.swing.JFrame {
         ViewPrincipalMenu viewPrincipalMenu = new ViewPrincipalMenu();
         viewPrincipalMenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         viewPrincipalMenu.setVisible(true);
+        AppContext appContext = AppContext.getInstance();
+        appContext.setLoggedUser(userDTO);
         this.setVisible(false);
     }//GEN-LAST:event_jButtonLoginActionPerformed
 
@@ -182,7 +187,7 @@ public class ViewLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelMainTitle;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordFieldPassword;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextFieldEmail;
     // End of variables declaration//GEN-END:variables
 }
