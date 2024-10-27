@@ -1,0 +1,93 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "microservicios_prueba_conferencias",
+    "collectionId": "50549eee-b7af-4c30-a646-baa1940027a4",
+    "dateExported": "2024-10-27T15:12:03.123Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "c925d640-e9f3-46ed-abba-027dfea040cc",
+            "colId": "50549eee-b7af-4c30-a646-baa1940027a4",
+            "containerId": "",
+            "name": "getConferencia",
+            "url": "localhost:8091/user_microservice/conference/getConference/100",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-10-15T02:38:06.955Z",
+            "modified": "2024-10-15T02:52:24.716Z",
+            "headers": []
+        },
+        {
+            "_id": "08b6f12f-d6de-47ce-8c7d-6280e47aa508",
+            "colId": "50549eee-b7af-4c30-a646-baa1940027a4",
+            "containerId": "",
+            "name": "listConferences",
+            "url": "localhost:8091/user_microservice/conference/listConferences",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-10-15T02:52:36.782Z",
+            "modified": "2024-10-15T02:52:51.944Z",
+            "headers": []
+        },
+        {
+            "_id": "1e6bdbd3-8bbd-471e-b1fa-679d414e9c48",
+            "colId": "50549eee-b7af-4c30-a646-baa1940027a4",
+            "containerId": "",
+            "name": "addConference",
+            "url": "localhost:8091/user_microservice/conference/addConference",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-10-15T02:53:13.107Z",
+            "modified": "2024-10-15T02:54:43.316Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"id\": 103,\n    \"title\": \"Conferencia por la paz\",\n    \"city\": \"El plateado\",\n    \"date\": \"2030/08/20\",\n    \"participantsList\": null,\n    \"owner\": {\n      \"id\": 1000,\n      \"name\": \"Pedro\",\n      \"lastName\": \"Tulio\",\n      \"email\": \"pedroTulio@gmail.com\",\n      \"password\": \"Contrasima123\",\n      \"description\": \"Un tipo no muy ramdom1\",\n      \"phone\": 320382822\n    }\n  }",
+                "form": []
+            }
+        },
+        {
+            "_id": "b84aa965-05b6-4431-9ebe-5ea21d89e5c7",
+            "colId": "50549eee-b7af-4c30-a646-baa1940027a4",
+            "containerId": "",
+            "name": "updateConference",
+            "url": "localhost:8091/user_microservice/conference/updateConference/100",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2024-10-15T02:58:44.910Z",
+            "modified": "2024-10-15T02:59:47.456Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"id\": 100,\n    \"title\": \"Hackaton modificada\",\n    \"city\": \"Cali tuneado\",\n    \"date\": \"2077/08/20\",\n    \"participantsList\": null,\n    \"owner\": {\n      \"id\": 1000,\n      \"name\": \"JuanTuned\",\n      \"lastName\": \"MenesesTuned2\",\n      \"email\": \"juanMeneses777@gmail.com\",\n      \"password\": \"Contrasima123Tuneada\",\n      \"description\": \"Un tipo ramdom1Tuneado\",\n      \"phone\": 31087777\n    }\n  }",
+                "form": []
+            }
+        },
+        {
+            "_id": "833510de-60ae-4c25-a10b-9318bec3218c",
+            "colId": "50549eee-b7af-4c30-a646-baa1940027a4",
+            "containerId": "",
+            "name": "getConferenceByOwner",
+            "url": "localhost:8091/user_microservice/conference/deleteConference/100",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2024-10-15T03:04:46.902Z",
+            "modified": "2024-10-15T03:08:13.240Z",
+            "headers": []
+        },
+        {
+            "_id": "fdebc3f5-39c4-4d7d-a307-a986024df643",
+            "colId": "50549eee-b7af-4c30-a646-baa1940027a4",
+            "containerId": "",
+            "name": "conferenceExist",
+            "url": "localhost:8091/user_microservice/conference/conferenceExist/101",
+            "method": "GET",
+            "sortNum": 60000,
+            "created": "2024-10-15T03:09:40.680Z",
+            "modified": "2024-10-15T03:11:03.703Z",
+            "headers": []
+        }
+    ],
+    "ref": "OCHkhi1SOF4xgvzwjM-P6Bh-zksQagoaxDDf-x3G8vQvY6ium9TwHLCsOPBSYasI7-gP4fbaXO3M5B3xI3aOJQ"
+}

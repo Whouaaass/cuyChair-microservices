@@ -7,13 +7,7 @@ package co.edu.unicauca.cuychair.gui.gui.DTO;
 
 import java.util.ArrayList;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
-@AllArgsConstructor
 public class ConferenceDTO {
     public ConferenceDTO(){};
     private int id;
@@ -22,4 +16,53 @@ public class ConferenceDTO {
     private String date;
     private ArrayList<UserDTO> participantsList;
     private UserDTO owner;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public ArrayList<UserDTO> getParticipantsList() {
+        return participantsList;
+    }
+
+    public void setParticipantsList(ArrayList<UserDTO> participantsList) {
+        this.participantsList = participantsList;
+    }
+
+    public UserDTO getOwner() {
+        return owner;
+    }
+
+    public void setOwner(UserDTO owner) {
+        this.owner = owner;
+    }
+    
 }

@@ -47,5 +47,10 @@ public interface IUserRepository {
      * @return si el usuario existe
      */
     public boolean userExist(int id);
-
+    /**
+     * @brief Trae el idx de un usuario
+     * @param id id del usuario
+     * @return idx en el repositorio del usuario
+     */
+    public int getIdx(int id);
 }

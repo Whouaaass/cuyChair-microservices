@@ -27,8 +27,8 @@ public class UserRepositoryArrayList implements IUserRepository{
         userList.add(user3);
         userList.add(user4);
     }
-
-    private int getIdx(int id) {
+    @Override
+    public int getIdx(int id) {
         for(int i=0;i<userList.size();i++){
             if(userList.get(i).getId()==id){
                 return i;
@@ -39,8 +39,9 @@ public class UserRepositoryArrayList implements IUserRepository{
 
     @Override
     public UserEntity addUser(UserEntity user) {
+        System.out.println("\n\n\n"+user.getName()+"\n\n\n");
         userList.add(user);
-        return userList.getLast();
+        return user;
     }
 
     @Override
@@ -49,8 +50,11 @@ public class UserRepositoryArrayList implements IUserRepository{
     }    
 
     @Override
-    public UserEntity getUser(int id) {
-        return userList.get(getIdx(id));
+    public UserEntity getUser(int index) {
+        if (index < 0 || index >= userList.size()) {
+            throw new IndexOutOfBoundsException("Índice fuera de límites: " + index);
+        }
+        return userList.get(index);
     }
 
     @Override

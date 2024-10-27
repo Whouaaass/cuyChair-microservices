@@ -24,19 +24,11 @@ public class UserService implements IUserService{
 
 	//Envia un usuario especificado por la id a rabbit
 	public UserDTO sendUserToRabbit(int id) {	
-        UserDTO userDTO=getUser(id);
+        UserDTO userDTO=getUser(userRepository.getIdx(id));
 		log.info("Message '{}'  Name of user: '{}' will be send ... ", userDTO,userDTO.getName());
 		this.publisher.sendUserDTO(userDTO);
         return userDTO;
 	}
-    //Envía lista de usuarios a rabbit
-    public List<UserDTO> sendUserListToRabbit(){
-        List<UserDTO> userDTOList= this.listUsers();
-        log.info("Message '{}' Tamaño de lista: '{}'",userDTOList.size());
-        this.publisher.sendListUserDTO(userDTOList);
-        return userDTOList;
-    }
-
     public UserService(IUserRepository userRepository){
         this.userRepository = userRepository;
         this.conversorUserDTO = new ConversorUserDTO();

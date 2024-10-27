@@ -1,0 +1,112 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "microservicios_prueba_usuarios",
+    "collectionId": "04838d46-e756-4226-92a2-26ad45ebb839",
+    "dateExported": "2024-10-27T15:11:45.645Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "66cfa24b-f9cc-4eea-ac4c-29ced19b847d",
+            "colId": "04838d46-e756-4226-92a2-26ad45ebb839",
+            "containerId": "",
+            "name": "getUser",
+            "url": "localhost:8091/user_microservice/user/getUser/1001",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-10-15T03:11:36.674Z",
+            "modified": "2024-10-15T03:16:27.555Z",
+            "headers": []
+        },
+        {
+            "_id": "3cbca64f-775f-4951-9712-75087417d140",
+            "colId": "04838d46-e756-4226-92a2-26ad45ebb839",
+            "containerId": "",
+            "name": "listUsers",
+            "url": "localhost:8091/user_microservice/user/listUsers",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-10-15T03:16:00.312Z",
+            "modified": "2024-10-15T03:16:16.967Z",
+            "headers": []
+        },
+        {
+            "_id": "88f34b5c-d32c-450b-87a5-f5f146724f29",
+            "colId": "04838d46-e756-4226-92a2-26ad45ebb839",
+            "containerId": "",
+            "name": "addUser",
+            "url": "localhost:8091/user_microservice/user/addUser",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-10-15T03:17:09.163Z",
+            "modified": "2024-10-15T03:20:28.472Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": " {\n   \"id\": 1005,\n    \"name\": \"NuevoUsuario\",\n    \"lastName\": \"GansoManso\",\n    \"email\": \"NuevoUsuarioGansoManso@gmail.com\",\n    \"password\": \"Contrasima123\",\n    \"description\": \"Un tipo manso1\",\n    \"phone\": 310382821\n  }",
+                "form": []
+            }
+        },
+        {
+            "_id": "ec2fc2f7-65b7-4adb-b1e8-75633f8dff66",
+            "colId": "04838d46-e756-4226-92a2-26ad45ebb839",
+            "containerId": "",
+            "name": "getUserByEmail",
+            "url": "localhost:8091/user_microservice/user/getUserByEmail?email=juanMeneses@gmail.com",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-10-15T03:21:17.278Z",
+            "modified": "2024-10-15T03:28:52.083Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "email",
+                    "value": "juanMeneses@gmail.com",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "23373ff8-4ffd-457f-8952-1c93b0355f5a",
+            "colId": "04838d46-e756-4226-92a2-26ad45ebb839",
+            "containerId": "",
+            "name": "deleteUser",
+            "url": "localhost:8091/user_microservice/user/deleteUser/1000",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2024-10-15T03:38:56.443Z",
+            "modified": "2024-10-15T03:39:39.894Z",
+            "headers": []
+        },
+        {
+            "_id": "356a2b55-fa69-4c11-bba7-6f6dcc36fa3c",
+            "colId": "04838d46-e756-4226-92a2-26ad45ebb839",
+            "containerId": "",
+            "name": "updateUser",
+            "url": "localhost:8091/user_microservice/user/updateUser/1001",
+            "method": "PUT",
+            "sortNum": 60000,
+            "created": "2024-10-15T03:39:59.537Z",
+            "modified": "2024-10-15T03:41:01.770Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"id\": 1001,\n  \"name\": \"JuanModificado\",\n  \"lastName\": \"MenesesTuneado\",\n  \"email\": \"juanMenesesTuned@gmail.com\",\n  \"password\": \"Contrasima123\",\n  \"description\": \"Un tipo ramdom1Tuneado\",\n  \"phone\": 31038242\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "94e1e6d9-b990-45bc-b5ee-8fd06249c805",
+            "colId": "04838d46-e756-4226-92a2-26ad45ebb839",
+            "containerId": "",
+            "name": "userExist",
+            "url": "localhost:8091/user_microservice/user/userExist/1000",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2024-10-15T03:41:26.512Z",
+            "modified": "2024-10-15T03:45:36.053Z",
+            "headers": []
+        }
+    ],
+    "ref": "qlttZBe6R58RWwwD1cKDsvd9RCDQDOYXfIMbudw0pnKGRyne-DJgAjncn27jjyHliuwYCcqpZ_ZCfoyD6R7dSw"
+}

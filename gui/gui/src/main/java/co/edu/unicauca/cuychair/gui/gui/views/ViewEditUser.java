@@ -4,17 +4,37 @@
  */
 package co.edu.unicauca.cuychair.gui.gui.views;
 
+import co.edu.unicauca.cuychair.gui.gui.Context.AppContext;
+import co.edu.unicauca.cuychair.gui.gui.DTO.UserDTO;
+import co.edu.unicauca.cuychair.gui.gui.services.UserServices;
+import static co.edu.unicauca.cuychair.gui.gui.views.utilities.Utilities.setAlert;
+import static java.lang.Integer.parseInt;
+import javax.swing.JFrame;
+
 /**
  *
  * @author julia
  */
 public class ViewEditUser extends javax.swing.JFrame {
 
+    private UserServices userServices;
+    private UserDTO userLogged;
+
     /**
      * Creates new form ViewEditUser
      */
     public ViewEditUser() {
         initComponents();
+        AppContext appContext = AppContext.getInstance();
+        userServices = appContext.getUserService();
+        userLogged = appContext.getLoggedUser();
+        //Llenar labels con los datos del usuario logeado
+        this.jTextFieldName.setText(userLogged.getName());
+        this.jTextFieldEmail.setText(userLogged.getEmail());
+        this.jTextAreaDescription.setText(userLogged.getDescription());
+        this.jPasswordField1.setText(userLogged.getPassword());
+        this.jPasswordField2.setText(userLogged.getPassword());
+        this.JTextFieldPhone.setText(Integer.toString(userLogged.getPhone()));
     }
 
     /**
@@ -32,9 +52,9 @@ public class ViewEditUser extends javax.swing.JFrame {
         jTextFieldName = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextFieldEmail = new javax.swing.JTextField();
         jScrollPaneDescription = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jTextAreaDescription = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         JTextFieldPhone = new javax.swing.JTextField();
@@ -43,6 +63,7 @@ public class ViewEditUser extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jPasswordField2 = new javax.swing.JPasswordField();
         jButtonEditar = new javax.swing.JButton();
+        jButtonBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,9 +89,9 @@ public class ViewEditUser extends javax.swing.JFrame {
 
         jLabel2.setText("Email");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPaneDescription.setViewportView(jTextArea1);
+        jTextAreaDescription.setColumns(20);
+        jTextAreaDescription.setRows(5);
+        jScrollPaneDescription.setViewportView(jTextAreaDescription);
 
         jLabel4.setText("Descripcion");
 
@@ -87,6 +108,20 @@ public class ViewEditUser extends javax.swing.JFrame {
         jButtonEditar.setBackground(new java.awt.Color(102, 192, 244));
         jButtonEditar.setForeground(new java.awt.Color(0, 0, 0));
         jButtonEditar.setText("Editar");
+        jButtonEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditarActionPerformed(evt);
+            }
+        });
+
+        jButtonBack.setBackground(new java.awt.Color(81, 153, 195));
+        jButtonBack.setForeground(new java.awt.Color(0, 0, 0));
+        jButtonBack.setText("Volver");
+        jButtonBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBackActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -106,12 +141,14 @@ public class ViewEditUser extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jScrollPaneDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButtonEditar, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jButtonBack)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonEditar)))
                 .addGap(41, 41, 41))
         );
         jPanel2Layout.setVerticalGroup(
@@ -123,7 +160,7 @@ public class ViewEditUser extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -143,7 +180,8 @@ public class ViewEditUser extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonEditar))
+                    .addComponent(jButtonEditar)
+                    .addComponent(jButtonBack))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -152,8 +190,50 @@ public class ViewEditUser extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
+        //Recuperamos los datos
+        String name=this.jTextFieldName.getText();
+        String email=this.jTextFieldEmail.getText();
+        String description=this.jTextAreaDescription.getText();
+        String password1=new String(this.jPasswordField1.getPassword());
+        String password2=new String(this.jPasswordField2.getPassword());
+        int phone=parseInt(this.JTextFieldPhone.getText());
+        //Los campos email, password no pueden ser nulos
+        if(email.isEmpty()||password1.isEmpty()||password2.isEmpty()){
+            setAlert("Campos obligatorios nulos","Los campos email, password no pueden ser nulos");
+        }
+        //Las contraseñas deben coincidir
+        if(!password1.equals(password2)){
+            setAlert("Contraseñas diferentes","Las contraseñas deben coincidir");
+        }
+        //Envío al servicio
+        UserDTO userDTO = new UserDTO();
+        userDTO.setEmail(email);
+        userDTO.setDescription(description);
+        userDTO.setPassword(password2);
+        userDTO.setPhone(phone);
+        userDTO.setName(name);
+        
+        if(userServices.updateUser(this.userLogged.getId(), userDTO)==null){
+            setAlert("Error en el update","Error de actualizar datos");
+            return;
+        }
+        setAlert("Datos actualizados","Datos actualizados correctamente");
+        AppContext appContext = AppContext.getInstance();
+        userLogged=userDTO;
+        appContext.setLoggedUser(userLogged);
+    }//GEN-LAST:event_jButtonEditarActionPerformed
+
+    private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
+        ViewPrincipalMenu viewPrincipalMenu = new ViewPrincipalMenu();
+        viewPrincipalMenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        viewPrincipalMenu.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButtonBackActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField JTextFieldPhone;
+    private javax.swing.JButton jButtonBack;
     private javax.swing.JButton jButtonEditar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -167,8 +247,8 @@ public class ViewEditUser extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JScrollPane jScrollPaneDescription;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextArea jTextAreaDescription;
+    private javax.swing.JTextField jTextFieldEmail;
     private javax.swing.JTextField jTextFieldName;
     // End of variables declaration//GEN-END:variables
 }

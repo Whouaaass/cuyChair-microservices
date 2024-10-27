@@ -4,14 +4,16 @@
 
 package co.edu.unicauca.cuychair.gui.gui;
 
+import co.edu.unicauca.cuychair.gui.gui.Context.AppContext;
 import co.edu.unicauca.cuychair.gui.gui.views.ViewLogin;
 import javax.swing.JFrame;
 
 public class Gui {
 
 	public static void main(String[] args) {
-            ViewLogin viewLogin = new ViewLogin();
-            viewLogin.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            viewLogin.setVisible(true);
+        AppContext.init();
+        ViewLogin viewLogin = new ViewLogin();
+        viewLogin.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        viewLogin.setVisible(true);
 	}
 }
