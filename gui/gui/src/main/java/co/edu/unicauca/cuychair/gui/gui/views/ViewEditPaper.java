@@ -22,7 +22,7 @@ public class ViewEditPaper extends javax.swing.JFrame {
         initComponents();
         textTitle.setText(paper.getTitle());
         textAbstract.setText(paper.getAbstract());
-        textSubtitle.setText(paper.getSubtitle());
+        textSubtitle.setText(paper.getSubTitle());
     }
 
     /**
@@ -162,7 +162,7 @@ public class ViewEditPaper extends javax.swing.JFrame {
     private void buttonSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSubmitActionPerformed
         paper.setTitle(textTitle.getText());
         paper.setAbstract(textAbstract.getText());
-        paper.setSubtitle(textSubtitle.getText());
+        paper.setSubTitle(textSubtitle.getText());
     }//GEN-LAST:event_buttonSubmitActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
