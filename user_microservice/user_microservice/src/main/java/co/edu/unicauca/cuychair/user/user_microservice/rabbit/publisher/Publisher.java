@@ -1,4 +1,5 @@
 package co.edu.unicauca.cuychair.user.user_microservice.rabbit.publisher;
+import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -12,24 +13,21 @@ import co.edu.unicauca.cuychair.user.user_microservice.servicesFacade.DTO.UserDT
 @Component
 @EnableRabbit
 public class Publisher {
-	
-    @Autowired
-	private RabbitTemplate rabbitTemplate;
 
-    @Autowired
-    @Qualifier("userQueue")
-    private Queue userQueue;
-    
-    public void sendUserDTO(UserDTO UserDTO) {
-        rabbitTemplate.convertAndSend(userQueue.getName(), UserDTO);
+	private final RabbitTemplate amqpTemplate;
+    private final String exchange = "exchangeUser";
+    private final String routingKey = "routingKey";
+
+    public Publisher(RabbitTemplate prmAmqpTemplate){
+        amqpTemplate=prmAmqpTemplate;
     }
 
-    @Autowired
-    @Qualifier("conferenceQueue")
-    private Queue conferenceQueue;
-    
+    public void sendUserDTO(UserDTO UserDTO) {
+        amqpTemplate.convertAndSend(exchange, routingKey, UserDTO);
+    }
+
     public void sendConferenceDTO(ConferenceDTO conferenceDTO) {
-        rabbitTemplate.convertAndSend(conferenceQueue.getName(), conferenceDTO);
+        amqpTemplate.convertAndSend(exchange,routingKey, conferenceDTO);
     }
 
 }
