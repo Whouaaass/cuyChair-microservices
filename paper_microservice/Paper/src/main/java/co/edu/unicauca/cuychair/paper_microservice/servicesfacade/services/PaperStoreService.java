@@ -31,9 +31,8 @@ public class PaperStoreService {
     @Autowired
     private Publisher publisher;
 
-    public PaperDTO sendPaperDTORabbit(PaperDTO paperDTO) {
+    public void sendPaperDTORabbit(PaperDTO paperDTO) {
         publisher.sendPaperDTO(paperDTO);
-        return paperDTO;
     }
 
     /**
@@ -42,7 +41,9 @@ public class PaperStoreService {
      * @return Confirmación
      */
     public boolean storePaper (PaperDTO objPaper){
-        return repositoryPaper.storePaper(map.DTOinPaper(objPaper));
+        boolean status=repositoryPaper.storePaper(map.DTOinPaper(objPaper));
+        publisher.sendPaperDTO(objPaper);
+        return status;
     }
     /**
      * @brief Eliminar un Paper
