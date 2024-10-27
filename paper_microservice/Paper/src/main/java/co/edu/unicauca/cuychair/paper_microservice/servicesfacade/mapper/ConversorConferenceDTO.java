@@ -1,7 +1,7 @@
-package co.edu.unicauca.cuychair.paper_microservice.layerservices.mapper;
+package co.edu.unicauca.cuychair.paper_microservice.servicesfacade.mapper;
 
-import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.domain.Conference;
-import co.edu.unicauca.cuychair.paper_microservice.layerservices.DTO.ConferenceDTO;
+import co.edu.unicauca.cuychair.paper_microservice.domain.Conference;
+import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.DTO.ConferenceDTO;
 
 public class ConversorConferenceDTO {
 

@@ -1,4 +1,4 @@
-package co.edu.unicauca.cuychair.paper_microservice.layerdataacces.domain;
+package co.edu.unicauca.cuychair.paper_microservice.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,7 +11,11 @@ public class User {
 
     private int id;
     private String name;
+    private String lastName;
     private String email;
+    private String password;
+    private String description;
+    private int phone;
 
     public User(){}
 

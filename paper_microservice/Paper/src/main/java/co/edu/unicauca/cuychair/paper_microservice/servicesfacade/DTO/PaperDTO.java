@@ -1,4 +1,4 @@
-package co.edu.unicauca.cuychair.paper_microservice.layerservices.DTO;
+package co.edu.unicauca.cuychair.paper_microservice.servicesfacade.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

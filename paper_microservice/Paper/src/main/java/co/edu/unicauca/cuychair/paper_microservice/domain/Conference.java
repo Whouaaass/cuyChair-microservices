@@ -1,4 +1,4 @@
-package co.edu.unicauca.cuychair.paper_microservice.layerdataacces.domain;
+package co.edu.unicauca.cuychair.paper_microservice.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,7 +11,7 @@ import java.util.Objects;
 @AllArgsConstructor
 public class Conference {
 
-    private int id;
+    private Integer id;
     private String title;
     private String subject;
     private String description;

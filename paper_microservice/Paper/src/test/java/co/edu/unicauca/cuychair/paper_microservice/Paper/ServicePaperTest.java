@@ -1,10 +1,10 @@
 package co.edu.unicauca.cuychair.paper_microservice.Paper;
 
-import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.repositorys.*;
-import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.domain.User;
-import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.domain.Conference;
-import co.edu.unicauca.cuychair.paper_microservice.layerservices.DTO.PaperDTO;
-import co.edu.unicauca.cuychair.paper_microservice.layerservices.services.PaperStoreService;
+import co.edu.unicauca.cuychair.paper_microservice.dataacces.repositorys.*;
+import co.edu.unicauca.cuychair.paper_microservice.domain.User;
+import co.edu.unicauca.cuychair.paper_microservice.domain.Conference;
+import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.DTO.PaperDTO;
+import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.services.PaperStoreService;
 import org.junit.Test;
 
 

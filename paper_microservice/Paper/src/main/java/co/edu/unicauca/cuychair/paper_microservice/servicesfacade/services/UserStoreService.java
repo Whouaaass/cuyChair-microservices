@@ -1,9 +1,9 @@
-package co.edu.unicauca.cuychair.paper_microservice.layerservices.services;
+package co.edu.unicauca.cuychair.paper_microservice.servicesfacade.services;
 
-import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.domain.User;
-import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.repositorys.IRepositoryUser;
-import co.edu.unicauca.cuychair.paper_microservice.layerservices.DTO.UserDTO;
-import co.edu.unicauca.cuychair.paper_microservice.layerservices.mapper.ConversorUserDTO;
+import co.edu.unicauca.cuychair.paper_microservice.domain.User;
+import co.edu.unicauca.cuychair.paper_microservice.dataacces.repositorys.IRepositoryUser;
+import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.DTO.UserDTO;
+import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.mapper.ConversorUserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,6 @@
-package co.edu.unicauca.cuychair.paper_microservice.layerdataacces.repositorys;
+package co.edu.unicauca.cuychair.paper_microservice.dataacces.repositorys;
 
-import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.domain.User;
+import co.edu.unicauca.cuychair.paper_microservice.domain.User;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

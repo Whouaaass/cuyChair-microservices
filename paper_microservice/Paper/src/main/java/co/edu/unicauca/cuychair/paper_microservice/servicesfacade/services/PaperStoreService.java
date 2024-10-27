@@ -1,14 +1,11 @@
-package co.edu.unicauca.cuychair.paper_microservice.layerservices.services;
+package co.edu.unicauca.cuychair.paper_microservice.servicesfacade.services;
 
-import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.domain.User;
-import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.repositorys.IRepositoryConference;
-import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.repositorys.IRepositoryPaper;
-import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.domain.Paper;
-import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.repositorys.IRepositoryUser;
-import co.edu.unicauca.cuychair.paper_microservice.layerservices.DTO.PaperDTO;
-import co.edu.unicauca.cuychair.paper_microservice.layerservices.DTO.UserDTO;
-import co.edu.unicauca.cuychair.paper_microservice.layerservices.mapper.ConversorPaperDTO;
-import co.edu.unicauca.cuychair.paper_microservice.layerservices.mapper.ConversorUserDTO;
+import co.edu.unicauca.cuychair.paper_microservice.dataacces.repositorys.IRepositoryConference;
+import co.edu.unicauca.cuychair.paper_microservice.dataacces.repositorys.IRepositoryPaper;
+import co.edu.unicauca.cuychair.paper_microservice.domain.Paper;
+import co.edu.unicauca.cuychair.paper_microservice.dataacces.repositorys.IRepositoryUser;
+import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.DTO.PaperDTO;
+import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.mapper.ConversorPaperDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
