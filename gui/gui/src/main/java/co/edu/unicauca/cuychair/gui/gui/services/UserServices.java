@@ -10,6 +10,7 @@ import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import org.glassfish.jersey.jackson.JacksonFeature;
 
@@ -20,7 +21,7 @@ public class UserServices {
     private Client client;
 
     public UserServices() {
-        this.endPoint = "http://localhost:8091/user_microservice/User";
+        this.endPoint = "http://localhost:8091/user_microservice/user";
         this.client = ClientBuilder.newClient().register(new JacksonFeature());
     }
 
@@ -32,9 +33,24 @@ public class UserServices {
 
     // Método para agregar un usuario
     public UserDTO addUser(UserDTO userDTO) {
-        WebTarget target = client.target(endPoint + "/addUser");
-        return target.request(MediaType.APPLICATION_JSON)
-                     .post(Entity.entity(userDTO, MediaType.APPLICATION_JSON), UserDTO.class);
+    WebTarget target = client.target(endPoint + "/addUser");
+    try {
+        // Hacer la solicitud POST y obtener la respuesta
+        Response response = target.request(MediaType.APPLICATION_JSON).post(Entity.entity(userDTO, MediaType.APPLICATION_JSON));
+        // Comprobar el estado HTTP de la respuesta
+        if (response.getStatus() == Response.Status.OK.getStatusCode() || 
+            response.getStatus() == Response.Status.CREATED.getStatusCode()) {
+            return response.readEntity(UserDTO.class); // Leer y devolver el usuario
+        } else {
+            System.err.println("Error en la solicitud. Código de estado: " + response.getStatus());
+            System.err.println("Mensaje de error: " + response.readEntity(String.class));
+            return null;
+        }
+    } catch (Exception e) {
+        System.err.println("Excepción al agregar usuario: " + e.getMessage());
+        e.printStackTrace();
+        return null;
+    }
     }
 }
 

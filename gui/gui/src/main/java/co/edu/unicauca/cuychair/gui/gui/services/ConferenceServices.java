@@ -26,7 +26,7 @@ public class ConferenceServices {
     
     public ConferenceServices(){
         this.endPoint="http://localhost:8092/conference_microservice/Conferences";
-        Client client = ClientBuilder.newClient().register(new JacksonFeature());
+        client = ClientBuilder.newClient().register(new JacksonFeature());
     }
     // Revisar si el path es correcto
     public List<ConferenceDTO> getAllConferences() {
