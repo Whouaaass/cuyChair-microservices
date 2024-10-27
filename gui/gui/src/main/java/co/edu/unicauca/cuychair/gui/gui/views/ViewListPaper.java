@@ -117,7 +117,7 @@ public class ViewListPaper extends javax.swing.JFrame {
         paper.setId(1);
         paper.setTitle("ff");
         paper.setAbstract("fff");
-        paper.setSubtitle("aaaa");
+        paper.setSubTitle("aaaa");
         papers.add(paper);
         
         ListPaperModel model=new ListPaperModel(papers);
