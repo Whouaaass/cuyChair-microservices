@@ -203,7 +203,7 @@ public class ViewSignIn extends javax.swing.JFrame {
 
     private void jButtonSignedInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSignedInActionPerformed
         //Recuperación de datos
-        String name=this.jTextFieldEmail.getText();
+        String name=this.jTextFieldName.getText();
         String email=this.jTextFieldEmail.getText();
         char[] passwordChar=this.jPasswordField3.getPassword();
         char[] passwordChar2=this.jPasswordField4.getPassword();
