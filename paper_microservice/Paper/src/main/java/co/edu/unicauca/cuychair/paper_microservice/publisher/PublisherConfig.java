@@ -18,13 +18,13 @@ public class PublisherConfig {
     public Queue queuePaper(){
         return new Queue(messagePaper,true);
     }
-
+    /* 
     @Value("")
     private String messageListPaper;
     @Bean
     public Queue queueListPaper(){
         return new Queue(messageListPaper,true);
-    }
+    }*/
 
 
 }
