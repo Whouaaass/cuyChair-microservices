@@ -24,7 +24,7 @@ public class UserService implements IUserService{
 
 	//Envia un usuario especificado por la id a rabbit
 	public UserDTO sendUserToRabbit(int id) {	
-        UserDTO userDTO=getUser(1005);//Encuentra un usuario con id especificada
+        UserDTO userDTO=getUser(id);//Encuentra un usuario con id especificada
 		log.info("Message '{}'  Name of user: '{}' will be send with id '{}' ... ", userDTO,userDTO.getName(),userDTO.getId());
 		this.publisher.sendUserDTO(userDTO);//Envia usuario a rabbit
         return userDTO;
