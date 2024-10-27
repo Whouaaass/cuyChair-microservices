@@ -152,11 +152,21 @@ public class ViewPrincipalMenu extends javax.swing.JFrame {
         jMenuItemEditProfile.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItemEditProfile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/profile_14551139.png"))); // NOI18N
         jMenuItemEditProfile.setText("Editar perfil");
+        jMenuItemEditProfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemEditProfileActionPerformed(evt);
+            }
+        });
         jMenuPerfil.add(jMenuItemEditProfile);
 
         jMenuItemLogOut.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         jMenuItemLogOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/log-out_10024482.png"))); // NOI18N
         jMenuItemLogOut.setText("Salir");
+        jMenuItemLogOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemLogOutActionPerformed(evt);
+            }
+        });
         jMenuPerfil.add(jMenuItemLogOut);
 
         jMenuBarMain.add(jMenuPerfil);
@@ -219,6 +229,20 @@ public class ViewPrincipalMenu extends javax.swing.JFrame {
         viewLogin.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButtonExitActionPerformed
+
+    private void jMenuItemEditProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEditProfileActionPerformed
+        ViewEditUser viewEditUser = new ViewEditUser();
+        viewEditUser.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        viewEditUser.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jMenuItemEditProfileActionPerformed
+
+    private void jMenuItemLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemLogOutActionPerformed
+        ViewLogin viewLogin = new ViewLogin();
+        viewLogin.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        viewLogin.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jMenuItemLogOutActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

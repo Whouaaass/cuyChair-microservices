@@ -12,12 +12,12 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class UserDTO {
-    private Integer id;
-    private String nombre;    
+    public UserDTO(){}
+    private int id;
+    private String name;
+    private String lastName;
     private String email;
-    private String phone;
-    private String description;    
-    private ConferenceDTO ownedConferences;
-    private ConferenceDTO guessConferences;
-    public UserDTO() {}   
+    private String password;
+    private String description;
+    private int phone;
 }

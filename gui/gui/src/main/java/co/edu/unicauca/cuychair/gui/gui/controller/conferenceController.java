@@ -14,7 +14,7 @@ import co.edu.unicauca.cuychair.gui.gui.DTO.ConferenceDTO;
 import co.edu.unicauca.cuychair.gui.gui.DTO.PaperDTO;
 
 @Service
-public class conferenceController {
+public class ConferenceController {
     @Autowired
     private WebClient.Builder webClientBuilder;
     

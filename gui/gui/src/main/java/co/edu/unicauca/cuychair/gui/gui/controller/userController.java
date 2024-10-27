@@ -16,7 +16,7 @@ import reactor.core.publisher.Mono;
  *
  * @author julia
  */
-public class userController {
+public class UserController {
     @Autowired
     private WebClient.Builder webClientBuilder;
     

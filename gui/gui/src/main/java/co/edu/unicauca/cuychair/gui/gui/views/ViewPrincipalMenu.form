@@ -33,6 +33,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Editar perfil"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemEditProfileActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemLogOut">
               <Properties>
@@ -44,6 +47,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Salir"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemLogOutActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
