@@ -4,7 +4,13 @@
  */
 package co.edu.unicauca.cuychair.gui.gui.views;
 
+import static co.edu.unicauca.cuychair.gui.gui.views.utilities.Utilities.setAlert;
+
 import javax.swing.JFrame;
+
+import co.edu.unicauca.cuychair.gui.gui.Context.AppContext;
+import co.edu.unicauca.cuychair.gui.gui.DTO.UserDTO;
+import co.edu.unicauca.cuychair.gui.gui.services.UserServices;
 
 /**
  *
@@ -12,11 +18,13 @@ import javax.swing.JFrame;
  */
 public class ViewLogin extends javax.swing.JFrame {
     
-    
+    UserServices userServices;
     /**
      * Creates new form ViewSignUp
      */
     public ViewLogin() {
+        AppContext appContext = AppContext.getInstance();
+        userServices = appContext.getUserService();
         initComponents();
     }
     
@@ -143,10 +151,12 @@ public class ViewLogin extends javax.swing.JFrame {
         //Recuperamos los datos
         String email = this.jTextFieldEmail.getText();
         char[] passwordChar = this.jPasswordFieldPassword.getPassword();
-        String password = passwordChar.toString();
+        String password = new String(passwordChar);
         //Verificar si coinciden
-        if(false){
-            //TODO 
+        UserDTO userDTO = this.userServices.getUserByEmail(email);
+        System.out.println("Comparacion"+email+"-"+userDTO.getEmail()+" "+password+"-"+userDTO.getPassword());
+        if(!(userDTO.getEmail()==email&&userDTO.getPassword().equals(password))){
+            setAlert("Error de inicio de sesión", "Usuario no encontrado o contraseña incorrecta");
             return;
         }
         //Ir a menu principal
