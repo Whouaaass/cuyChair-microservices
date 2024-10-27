@@ -24,7 +24,7 @@ public class Consumer {
     @RabbitListener(queues = { "${co.edu.unicauca.cuychair.user.userDTO.queue}" })
     public void receiveUser(@Payload UserDTO userDTO){
         log.info("Received message {} User name: {}", userDTO, userDTO.getName());
-        userStoreService.addUser(userDTO);
+        System.out.println(userStoreService.addUser(userDTO));
         makeSlow();
     }
 
