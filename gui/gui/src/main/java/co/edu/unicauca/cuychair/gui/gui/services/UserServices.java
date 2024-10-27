@@ -30,7 +30,7 @@ public class UserServices {
         WebTarget target = client.target(endPoint + "/getUser/" + id);
         return target.request(MediaType.APPLICATION_JSON).get(new GenericType<UserDTO>() {});
     }
-// Método para obtener un usuario por Email
+    // Método para obtener un usuario por Email
     public UserDTO getUserByEmail(String email) {
         try {
             WebTarget target = client.target(endPoint + "/getUserByEmail?email=" + email);
@@ -39,6 +39,13 @@ public class UserServices {
             System.out.println("Error en la solicitud: " + e.getMessage());
         }
         return null;
+    }
+    
+    //Metodo para hacer set de un usuario
+    public UserDTO updateUser(int id, UserDTO userDTO) {
+        WebTarget target = client.target(endPoint + "/updateUser/" + id);
+        return target.request(MediaType.APPLICATION_JSON).method("PUT", Entity.
+                entity(userDTO, MediaType.APPLICATION_JSON), UserDTO.class);
     }
 
     // Método para agregar un usuario
