@@ -29,12 +29,6 @@ public class UserController {
 	public UserDTO SendUser(@PathVariable int id) {
 		return this.userService.sendUserToRabbit(id);
 	}
-	
-    @GetMapping("/SendUserList")
-    public List<UserDTO> sendUserList() {
-        return this.userService.sendUserListToRabbit();
-    }
-    
     
     public UserController(UserService userService){
         this.userService = userService;
@@ -42,6 +36,7 @@ public class UserController {
 
     @PostMapping("/addUser")
     public UserDTO addUser(@RequestBody UserDTO userDTO) {
+        SendUser(userDTO.getId());
         return userService.addUser(userDTO);
     }
 

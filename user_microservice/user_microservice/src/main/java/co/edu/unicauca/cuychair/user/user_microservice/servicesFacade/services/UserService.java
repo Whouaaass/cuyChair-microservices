@@ -29,14 +29,6 @@ public class UserService implements IUserService{
 		this.publisher.sendUserDTO(userDTO);
         return userDTO;
 	}
-    //Envía lista de usuarios a rabbit
-    public List<UserDTO> sendUserListToRabbit(){
-        List<UserDTO> userDTOList= this.listUsers();
-        log.info("Message '{}' Tamaño de lista: '{}'",userDTOList.size());
-        this.publisher.sendListUserDTO(userDTOList);
-        return userDTOList;
-    }
-
     public UserService(IUserRepository userRepository){
         this.userRepository = userRepository;
         this.conversorUserDTO = new ConversorUserDTO();

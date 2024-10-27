@@ -4,6 +4,7 @@
  */
 package co.edu.unicauca.cuychair.gui.gui.views;
 
+import co.edu.unicauca.cuychair.gui.gui.Context.AppContext;
 import co.edu.unicauca.cuychair.gui.gui.DTO.UserDTO;
 import co.edu.unicauca.cuychair.gui.gui.services.UserServices;
 import static co.edu.unicauca.cuychair.gui.gui.views.utilities.Utilities.setAlert;
@@ -20,7 +21,8 @@ public class ViewSignIn extends javax.swing.JFrame {
      * Creates new form ViewLogin
      */
     public ViewSignIn() {
-        userServices = new UserServices();
+        AppContext appContext = AppContext.getInstance();
+        userServices = appContext.getUserService();
         initComponents();
     }
 

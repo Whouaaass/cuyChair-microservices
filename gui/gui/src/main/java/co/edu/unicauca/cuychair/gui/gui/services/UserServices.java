@@ -4,20 +4,37 @@
  */
 package co.edu.unicauca.cuychair.gui.gui.services;
 
-import co.edu.unicauca.cuychair.gui.gui.DTO.UserDTO;
-import co.edu.unicauca.cuychair.gui.gui.controller.UserController;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.GenericType;
+import javax.ws.rs.core.MediaType;
 
-/**
- *
- * @author julia
- */
+import org.glassfish.jersey.jackson.JacksonFeature;
+
+import co.edu.unicauca.cuychair.gui.gui.DTO.UserDTO;
+
 public class UserServices {
-    UserController userController;
-    public UserDTO getUserById(int id) {
-        return userController.getUserById(id);
+    private String endPoint;
+    private Client client;
+
+    public UserServices() {
+        this.endPoint = "http://localhost:8091/user_microservice/User";
+        this.client = ClientBuilder.newClient().register(new JacksonFeature());
     }
 
+    // Método para obtener un usuario por ID
+    public UserDTO getUserById(int id) {
+        WebTarget target = client.target(endPoint + "/getUser/" + id);
+        return target.request(MediaType.APPLICATION_JSON).get(new GenericType<UserDTO>() {});
+    }
+
+    // Método para agregar un usuario
     public UserDTO addUser(UserDTO userDTO) {
-        return userController.addUser(userDTO);
+        WebTarget target = client.target(endPoint + "/addUser");
+        return target.request(MediaType.APPLICATION_JSON)
+                     .post(Entity.entity(userDTO, MediaType.APPLICATION_JSON), UserDTO.class);
     }
 }
+
