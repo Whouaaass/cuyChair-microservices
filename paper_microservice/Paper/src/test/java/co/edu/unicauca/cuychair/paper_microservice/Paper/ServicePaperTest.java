@@ -8,6 +8,9 @@ import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.services.Paper
 import org.junit.Test;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -22,8 +25,10 @@ public class ServicePaperTest {
     private User user;
 
     public void setUp(){
-        conference = new Conference(123,"Critica a las empanadas","Las mejores cirticas hacia las empanadas conteporaneas","Tamalito");
-        user = new User(164,"Carlito Fuentes","carlitos@gmail.com");
+        user = new User(164,"Carlito Fuentes","carlitos@gmail.com","db","drg","reg",123);
+        ArrayList<User> users = new ArrayList<User>();
+        users.add(user);
+        conference = new Conference(123,"Critica a las empanadas","Las mejores cirticas hacia las empanadas conteporaneas","sdg",users ,user);
         repository=new RepositoryPaper();
         repositoryConference=new RepositoryConference();
         repositoryUser=new RepositoryUser();

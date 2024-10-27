@@ -4,6 +4,7 @@ import co.edu.unicauca.cuychair.paper_microservice.dataacces.repositorys.IReposi
 import co.edu.unicauca.cuychair.paper_microservice.dataacces.repositorys.IRepositoryPaper;
 import co.edu.unicauca.cuychair.paper_microservice.domain.Paper;
 import co.edu.unicauca.cuychair.paper_microservice.dataacces.repositorys.IRepositoryUser;
+import co.edu.unicauca.cuychair.paper_microservice.publisher.Publisher;
 import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.DTO.PaperDTO;
 import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.mapper.ConversorPaperDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,14 @@ public class PaperStoreService {
         this.repositoryUser = repositoryUser;
         this.repositoryConference = repositoryConference;
         map=new ConversorPaperDTO(repositoryUser,repositoryConference);
+    }
+
+    @Autowired
+    private Publisher publisher;
+
+    public PaperDTO sendPaperDTORabbit(PaperDTO paperDTO) {
+        publisher.sendPaperDTO(paperDTO);
+        return paperDTO;
     }
 
     /**

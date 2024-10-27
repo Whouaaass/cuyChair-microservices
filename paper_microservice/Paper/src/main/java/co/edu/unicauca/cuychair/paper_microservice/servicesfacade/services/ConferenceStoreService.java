@@ -12,6 +12,8 @@ public class ConferenceStoreService {
 
     IRepositoryConference repositoryConference;
 
+
+
     @Autowired
     public ConferenceStoreService(IRepositoryConference repositoryConference) {
         this.repositoryConference = repositoryConference;

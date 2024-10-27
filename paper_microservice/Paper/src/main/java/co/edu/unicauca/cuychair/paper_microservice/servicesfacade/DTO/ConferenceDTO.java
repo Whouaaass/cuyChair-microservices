@@ -4,13 +4,17 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+
 @Setter
 @Getter
 @AllArgsConstructor
 public class ConferenceDTO {
-    private Integer id;
-    private String name;
-    private String subject;
-    private String description;
+    private int id;
+    private String title;
+    private String city;
+    private String date;
+    private ArrayList<UserDTO> participantsList;
+    private UserDTO owner;
 
 }
