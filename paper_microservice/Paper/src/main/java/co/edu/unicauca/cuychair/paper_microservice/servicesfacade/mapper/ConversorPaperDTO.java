@@ -1,9 +1,9 @@
-package co.edu.unicauca.cuychair.paper_microservice.layerservices.mapper;
+package co.edu.unicauca.cuychair.paper_microservice.servicesfacade.mapper;
 
-import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.domain.Paper;
-import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.repositorys.IRepositoryConference;
-import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.repositorys.IRepositoryUser;
-import co.edu.unicauca.cuychair.paper_microservice.layerservices.DTO.PaperDTO;
+import co.edu.unicauca.cuychair.paper_microservice.domain.Paper;
+import co.edu.unicauca.cuychair.paper_microservice.dataacces.repositorys.IRepositoryConference;
+import co.edu.unicauca.cuychair.paper_microservice.dataacces.repositorys.IRepositoryUser;
+import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.DTO.PaperDTO;
 
 import java.util.ArrayList;
 import java.util.List;

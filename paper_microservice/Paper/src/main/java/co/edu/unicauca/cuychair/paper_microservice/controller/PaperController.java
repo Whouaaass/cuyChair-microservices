@@ -1,12 +1,12 @@
-package co.edu.unicauca.cuychair.paper_microservice.layercontroller;
+package co.edu.unicauca.cuychair.paper_microservice.controller;
 
-import co.edu.unicauca.cuychair.paper_microservice.layerdataacces.domain.Paper;
-import co.edu.unicauca.cuychair.paper_microservice.layerservices.DTO.ConferenceDTO;
-import co.edu.unicauca.cuychair.paper_microservice.layerservices.DTO.PaperDTO;
-import co.edu.unicauca.cuychair.paper_microservice.layerservices.DTO.UserDTO;
-import co.edu.unicauca.cuychair.paper_microservice.layerservices.services.ConferenceStoreService;
-import co.edu.unicauca.cuychair.paper_microservice.layerservices.services.PaperStoreService;
-import co.edu.unicauca.cuychair.paper_microservice.layerservices.services.UserStoreService;
+import co.edu.unicauca.cuychair.paper_microservice.domain.Paper;
+import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.DTO.ConferenceDTO;
+import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.DTO.PaperDTO;
+import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.DTO.UserDTO;
+import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.services.ConferenceStoreService;
+import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.services.PaperStoreService;
+import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.services.UserStoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

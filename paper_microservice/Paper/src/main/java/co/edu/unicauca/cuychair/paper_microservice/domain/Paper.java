@@ -1,4 +1,4 @@
-package co.edu.unicauca.cuychair.paper_microservice.layerdataacces.domain;
+package co.edu.unicauca.cuychair.paper_microservice.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
