@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
 import co.edu.unicauca.cuychair.user.user_microservice.dataAccess.repository.IUserRepository;
 import co.edu.unicauca.cuychair.user.user_microservice.domain.UserEntity;
-import co.edu.unicauca.cuychair.user.user_microservice.publisher.Publisher;
+import co.edu.unicauca.cuychair.user.user_microservice.rabbit.publisher.Publisher;
 import co.edu.unicauca.cuychair.user.user_microservice.servicesFacade.DTO.ConversorUserDTO;
 import co.edu.unicauca.cuychair.user.user_microservice.servicesFacade.DTO.UserDTO;
 
@@ -24,11 +24,12 @@ public class UserService implements IUserService{
 
 	//Envia un usuario especificado por la id a rabbit
 	public UserDTO sendUserToRabbit(int id) {	
-        UserDTO userDTO=getUser(userRepository.getIdx(id));
-		log.info("Message '{}'  Name of user: '{}' will be send ... ", userDTO,userDTO.getName());
-		this.publisher.sendUserDTO(userDTO);
+        UserDTO userDTO=getUser(1005);//Encuentra un usuario con id especificada
+		log.info("Message '{}'  Name of user: '{}' will be send with id '{}' ... ", userDTO,userDTO.getName(),userDTO.getId());
+		this.publisher.sendUserDTO(userDTO);//Envia usuario a rabbit
         return userDTO;
 	}
+
     public UserService(IUserRepository userRepository){
         this.userRepository = userRepository;
         this.conversorUserDTO = new ConversorUserDTO();
@@ -38,6 +39,7 @@ public class UserService implements IUserService{
     public UserDTO addUser(UserDTO userDTO) {
         UserEntity userEntity = conversorUserDTO.converseDTOInUser(userDTO);
         userDTO = conversorUserDTO.converseUserInDTO(userRepository.addUser(userEntity)); 
+        this.sendUserToRabbit(userDTO.getId());
         return userDTO;
     }
 
@@ -49,7 +51,7 @@ public class UserService implements IUserService{
 
     @Override
     public UserDTO getUser(int id) {
-        UserDTO userDTO = conversorUserDTO.converseUserInDTO(userRepository.getUser(id));
+        UserDTO userDTO = conversorUserDTO.converseUserInDTO(userRepository.getUser(userRepository.getIdx(id)));
         return userDTO;
     }
 

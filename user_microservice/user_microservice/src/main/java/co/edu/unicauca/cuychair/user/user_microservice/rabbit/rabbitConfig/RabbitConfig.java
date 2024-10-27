@@ -1,4 +1,4 @@
-package co.edu.unicauca.cuychair.user.user_microservice.rabbitConfig;
+package co.edu.unicauca.cuychair.user.user_microservice.rabbit.rabbitConfig;
 
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
