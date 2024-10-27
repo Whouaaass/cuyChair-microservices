@@ -157,9 +157,13 @@ public class ViewLogin extends javax.swing.JFrame {
         String password = new String(passwordChar);
         //Verificar si coinciden
         UserDTO userDTO = this.userServices.getUserByEmail(email);
+        if(userDTO==null){
+            setAlert("Error de inicio de sesión", "Usuario no encontrado");
+            return;
+        }
         System.out.println("Comparacion"+email+"-"+userDTO.getEmail()+" "+password+"-"+userDTO.getPassword());
         if(!(userDTO.getPassword().equals(password))){
-            setAlert("Error de inicio de sesión", "Usuario no encontrado o contraseña incorrecta");
+            setAlert("Error de inicio de sesión", "Contraseña incorrecta");
             return;
         }
         //Ir a menu principal
