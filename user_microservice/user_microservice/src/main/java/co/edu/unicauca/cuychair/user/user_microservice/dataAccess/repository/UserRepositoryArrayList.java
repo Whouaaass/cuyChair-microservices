@@ -30,16 +30,18 @@ public class UserRepositoryArrayList implements IUserRepository{
     @Override
     public int getIdx(int id) {
         for(int i=0;i<userList.size();i++){
+            System.out.println("#i="+i+"---"+userList.get(i).getId()+"-"+id);
             if(userList.get(i).getId()==id){
+                System.out.println("Retornando indice"+userList.get(i).getId()+"-"+id);
                 return i;
             }
         }
+        System.out.println("Retornando -1");
         return -1;
     }
 
     @Override
     public UserEntity addUser(UserEntity user) {
-        System.out.println("\n\n\n"+user.getName()+"\n\n\n");
         userList.add(user);
         return user;
     }

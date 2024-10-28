@@ -1,4 +1,4 @@
-package co.edu.unicauca.cuychair.user.user_microservice.consumer;
+package co.edu.unicauca.cuychair.user.user_microservice.rabbit.consumer;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
@@ -16,12 +16,11 @@ public class Consumer {
 	public void receiveUserDTO(@Payload UserDTO userDTO) {
 
 		log.info("Received message {} User name: {}", userDTO, userDTO.getName());
-
+		//registrar usuarioDTO
 		makeSlow();
 
 	}
 	
-
     @RabbitListener(queues = { "${co.edu.unicauca.cuychair.user.conferenceDTO.queue}" })
     public void receiveConferenceDTO(@Payload ConferenceDTO conferenceDTO) {
 

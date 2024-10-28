@@ -36,8 +36,7 @@ public class UserController {
 
     @PostMapping("/addUser")
     public UserDTO addUser(@RequestBody UserDTO userDTO) {
-        userService.addUser(userDTO);
-        return SendUser(userDTO.getId());
+        return userService.addUser(userDTO);//Añado al repo
     }
 
     

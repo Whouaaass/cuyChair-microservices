@@ -1,4 +1,4 @@
-package co.edu.unicauca.cuychair.user.user_microservice.publisher;
+package co.edu.unicauca.cuychair.user.user_microservice.rabbit.publisher;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

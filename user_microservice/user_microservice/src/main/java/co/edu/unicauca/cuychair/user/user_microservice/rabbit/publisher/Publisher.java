@@ -1,4 +1,4 @@
-package co.edu.unicauca.cuychair.user.user_microservice.publisher;
+package co.edu.unicauca.cuychair.user.user_microservice.rabbit.publisher;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
