@@ -48,8 +48,8 @@ public class ButtonEditor extends AbstractCellEditor implements TableCellEditor 
                 int row = table.getSelectedRow();
                 PaperDTO paper = papers.get(row);
                 // Lógica de eliminación
-                JOptionPane.showMessageDialog(null, "Eliminar producto: " + paper.getTitle());
                 servicesPaper.deletePaper(paper);
+                JOptionPane.showMessageDialog(null, "Paper Eliminado: " + paper.getTitle());
                 fireEditingStopped();
             }
         });

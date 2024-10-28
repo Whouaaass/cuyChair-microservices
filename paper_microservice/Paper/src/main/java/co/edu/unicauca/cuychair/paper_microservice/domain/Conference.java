@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Objects;
 
 @Setter
@@ -13,11 +14,14 @@ import java.util.Objects;
 @AllArgsConstructor
 public class Conference {
 
-    private int id;
+    private Integer id;
     private String title;
     private String city;
-    private String date;
-    private ArrayList<User> participantsList;
+    private Date date;
+
+    private ArrayList<User> reviewers;
+    private ArrayList<User> authors;
+
     private User owner;
 
     public Conference(){}

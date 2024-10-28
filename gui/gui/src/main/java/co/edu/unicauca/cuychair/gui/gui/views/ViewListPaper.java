@@ -11,6 +11,8 @@ import co.edu.unicauca.cuychair.gui.gui.services.PaperServices;
 import co.edu.unicauca.cuychair.gui.gui.views.utilities.ButtonEditor;
 import co.edu.unicauca.cuychair.gui.gui.views.utilities.ButtonRenderer;
 import co.edu.unicauca.cuychair.gui.gui.views.utilities.ListPaperModel;
+
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 /**
@@ -46,6 +48,7 @@ public class ViewListPaper extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         TablePapers = new javax.swing.JTable();
         buttonListPaper = new javax.swing.JButton();
+        jButtonCreatePaper = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,6 +94,16 @@ public class ViewListPaper extends javax.swing.JFrame {
             }
         });
 
+        jButtonCreatePaper.setBackground(new java.awt.Color(102, 192, 244));
+        jButtonCreatePaper.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        jButtonCreatePaper.setForeground(new java.awt.Color(0, 0, 0));
+        jButtonCreatePaper.setText("Crear Paper");
+        jButtonCreatePaper.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCreatePaperActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -102,8 +115,10 @@ public class ViewListPaper extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(144, 144, 144)
-                        .addComponent(buttonListPaper)))
+                        .addGap(64, 64, 64)
+                        .addComponent(buttonListPaper)
+                        .addGap(69, 69, 69)
+                        .addComponent(jButtonCreatePaper)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -112,9 +127,11 @@ public class ViewListPaper extends javax.swing.JFrame {
                 .addComponent(Head, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(buttonListPaper)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonListPaper)
+                    .addComponent(jButtonCreatePaper))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -128,43 +145,19 @@ public class ViewListPaper extends javax.swing.JFrame {
         TablePapers.getColumn("Acciones").setCellRenderer(new ButtonRenderer());
         TablePapers.getColumn("Acciones").setCellEditor(new ButtonEditor(TablePapers,papers));
     }//GEN-LAST:event_buttonListPaperActionPerformed
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewListPaper.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewListPaper.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewListPaper.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewListPaper.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ViewListPaper().setVisible(true);
-            }
-        });
-    }
+    private void jButtonCreatePaperActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCreatePaperActionPerformed
+        ViewAddPapers viewAddPapers=new ViewAddPapers();
+        viewAddPapers.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        viewAddPapers.setVisible(true);
+    }//GEN-LAST:event_jButtonCreatePaperActionPerformed
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Head;
     private javax.swing.JTable TablePapers;
     private javax.swing.JButton buttonListPaper;
+    private javax.swing.JButton jButtonCreatePaper;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

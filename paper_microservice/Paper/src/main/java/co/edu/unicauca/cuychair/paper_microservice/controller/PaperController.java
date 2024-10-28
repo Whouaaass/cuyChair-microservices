@@ -4,6 +4,7 @@ import co.edu.unicauca.cuychair.paper_microservice.domain.Paper;
 import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.DTO.ConferenceDTO;
 import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.DTO.PaperDTO;
 import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.DTO.UserDTO;
+import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.mapper.ConversorUserDTO;
 import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.services.ConferenceStoreService;
 import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.services.PaperStoreService;
 import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.services.UserStoreService;
@@ -75,5 +76,10 @@ public class PaperController {
     @GetMapping("/paperAuthor/{authorId}")
     public List<PaperDTO> getPapersByAuthor (@PathVariable int authorId){
         return servicePaper.getPaperByAuthor(authorId);
+    }
+
+    @GetMapping("/listconferences/{Userid}")
+    public List<Integer> listConferencesByUser (@PathVariable int Userid){
+        return serviceConference.conferencesParticipanUser(serviceUser.getUserById(Userid));
     }
 }

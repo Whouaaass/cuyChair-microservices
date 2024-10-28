@@ -42,7 +42,9 @@ public class PaperStoreService {
      */
     public boolean storePaper (PaperDTO objPaper){
         boolean status=repositoryPaper.storePaper(map.DTOinPaper(objPaper));
-        publisher.sendPaperDTO(objPaper);
+        if(status) {
+            publisher.sendPaperDTO(objPaper);
+        }
         return status;
     }
     /**

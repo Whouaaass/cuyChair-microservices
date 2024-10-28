@@ -5,16 +5,20 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 @Setter
 @Getter
 @AllArgsConstructor
 public class ConferenceDTO {
-    private int id;
+    private Integer id;
     private String title;
     private String city;
-    private String date;
-    private ArrayList<UserDTO> participantsList;
+    private Date date;
+
+    private ArrayList<UserDTO> reviewers;
+    private ArrayList<UserDTO> authors;
+
     private UserDTO owner;
 
 }

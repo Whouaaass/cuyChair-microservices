@@ -65,7 +65,12 @@ public class PaperServices {
     }
 
     public List<PaperDTO> getPapersByAuthor(int authorId) {
-        WebTarget target = client.target(endPoint + "/paperAuthor/{authorId}");
+        WebTarget target = client.target(endPoint + "/paperAuthor/"+authorId);
         return target.request(MediaType.APPLICATION_JSON).get(new GenericType<List<PaperDTO>>() {});
+    }
+
+    public List<Integer> conferencesByAuthor(UserDTO author) {
+        WebTarget target = client.target(endPoint + "/listconferences/"+author.getId());
+        return target.request(MediaType.APPLICATION_JSON).get(new GenericType<List<Integer>>() {});
     }
 }

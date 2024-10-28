@@ -86,6 +86,11 @@ public class ViewPrincipalMenu extends javax.swing.JFrame {
 
         jButtonPapers.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButtonPapers.setText("Papers");
+        jButtonPapers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPapersActionPerformed(evt);
+            }
+        });
 
         jButtonProfile.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButtonProfile.setText("Perfil");
@@ -243,6 +248,12 @@ public class ViewPrincipalMenu extends javax.swing.JFrame {
         viewLogin.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItemLogOutActionPerformed
+
+    private void jButtonPapersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPapersActionPerformed
+        ViewListConferences viewListConferences = new ViewListConferences();
+        viewListConferences.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        viewListConferences.setVisible(true);
+    }//GEN-LAST:event_jButtonPapersActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

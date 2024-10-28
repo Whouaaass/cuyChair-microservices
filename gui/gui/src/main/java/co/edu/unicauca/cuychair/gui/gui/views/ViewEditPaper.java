@@ -4,7 +4,13 @@
  */
 package co.edu.unicauca.cuychair.gui.gui.views;
 
+import co.edu.unicauca.cuychair.gui.gui.Context.AppContext;
 import co.edu.unicauca.cuychair.gui.gui.DTO.PaperDTO;
+import co.edu.unicauca.cuychair.gui.gui.services.PaperServices;
+
+import javax.swing.*;
+
+import static co.edu.unicauca.cuychair.gui.gui.views.utilities.Utilities.setAlert;
 
 /**
  *
@@ -13,6 +19,7 @@ import co.edu.unicauca.cuychair.gui.gui.DTO.PaperDTO;
 public class ViewEditPaper extends javax.swing.JFrame {
     
     private PaperDTO paper;
+    private PaperServices servicesPaper;
 
     /**
      * Creates new form ViewEditPaper
@@ -23,6 +30,8 @@ public class ViewEditPaper extends javax.swing.JFrame {
         textTitle.setText(paper.getTitle());
         textAbstract.setText(paper.getAbstract());
         textSubtitle.setText(paper.getSubTitle());
+        AppContext appContext = AppContext.getInstance();
+        servicesPaper = appContext.getPaperService();
     }
 
     /**
@@ -160,9 +169,18 @@ public class ViewEditPaper extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSubmitActionPerformed
-        paper.setTitle(textTitle.getText());
-        paper.setAbstract(textAbstract.getText());
-        paper.setSubTitle(textSubtitle.getText());
+        String title = textTitle.getText();
+        String Abstract = textAbstract.getText();
+        String subTitle = textSubtitle.getText();
+        if(title.isEmpty() || Abstract.isEmpty() || subTitle.isEmpty()) {
+            setAlert("Error al guardar cambios", "Espacios en blanco");
+            return;
+        }
+        paper.setTitle(title);
+        paper.setAbstract(Abstract);
+        paper.setSubTitle(subTitle);
+        servicesPaper.editPaper(paper);
+        JOptionPane.showMessageDialog(null, "Paper guardado exitosamente");
     }//GEN-LAST:event_buttonSubmitActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

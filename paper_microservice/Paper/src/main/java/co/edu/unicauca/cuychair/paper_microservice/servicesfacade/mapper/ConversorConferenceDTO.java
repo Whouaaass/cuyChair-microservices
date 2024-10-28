@@ -12,10 +12,10 @@ public class ConversorConferenceDTO {
     }
 
     public ConferenceDTO ConferenceinDTO(Conference conference){
-        return new ConferenceDTO(conference.getId(), conference.getTitle(), conference.getCity(), conference.getCity(),userDTO.UsersinDTO(conference.getParticipantsList()),userDTO.UserinDTO(conference.getOwner()));
+        return new ConferenceDTO(conference.getId(), conference.getTitle(), conference.getCity(), conference.getDate(),userDTO.UsersinDTO(conference.getReviewers()),userDTO.UsersinDTO(conference.getAuthors()),userDTO.UserinDTO(conference.getOwner()));
     }
 
     public Conference DTOinConference(ConferenceDTO conferenceDTO){
-        return new Conference(conferenceDTO.getId(), conferenceDTO.getTitle(), conferenceDTO.getCity(), conferenceDTO.getDate(),userDTO.DTOinUsers(conferenceDTO.getParticipantsList()),userDTO.DTOinUser(conferenceDTO.getOwner()));
+        return new Conference(conferenceDTO.getId(), conferenceDTO.getTitle(), conferenceDTO.getCity(), conferenceDTO.getDate(),userDTO.DTOinUsers(conferenceDTO.getReviewers()),userDTO.DTOinUsers(conferenceDTO.getAuthors()),userDTO.DTOinUser(conferenceDTO.getOwner()));
     }
 }

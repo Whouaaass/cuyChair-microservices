@@ -22,7 +22,8 @@ public class UserStoreService {
         return repositoryUser.addUser(map.DTOinUser(user));
     }
 
-    public User getUserById(int id) {
-        return repositoryUser.getUserById(id);
+    public UserDTO getUserById(int id) {
+        ConversorUserDTO map=new ConversorUserDTO();
+        return map.UserinDTO(repositoryUser.getUserById(id));
     }
 }
