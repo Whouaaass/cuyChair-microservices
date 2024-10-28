@@ -24,9 +24,9 @@ public class Conference {
     @NonNull private String description;
 
     // relationships
-    private Map<Integer, User> authors = new HashMap<>();
-    private Map<Integer, User> reviewers = new HashMap<>();
-    private Map<Integer, Paper> papers = new HashMap<>();    
+    private final Map<Integer, User> authors = new HashMap<>();
+    private final Map<Integer, User> reviewers = new HashMap<>();
+    private final Map<Integer, Paper> papers = new HashMap<>();    
     private User chair;
     
 

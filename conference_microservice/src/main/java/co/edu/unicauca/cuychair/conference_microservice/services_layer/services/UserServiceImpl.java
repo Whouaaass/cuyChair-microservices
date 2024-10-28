@@ -1,5 +1,6 @@
 package co.edu.unicauca.cuychair.conference_microservice.services_layer.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
@@ -53,6 +54,30 @@ public class UserServiceImpl implements IUserService {
         User userEntity = this.modelMapper.map(user, User.class);
         User userUpdated = this.userRepository.updateUser(id, userEntity);
         return this.modelMapper.map(userUpdated, UserDTO.class);
+    }
+
+    @Override
+    public List<UserDTO> findByRoleInConference(Integer id, String role) {
+        Conference conference = this.conferenceRepository.getConferenceById(id);
+        
+
+        switch (role) {
+            case "chair" -> {
+                User chair = conference.getChair();
+                return this.modelMapper.map(chair, new TypeToken<List<UserDTO>>() {}.getType());
+            }
+            case "author" -> {
+                List<User> authors = conference.getAuthors();
+                return this.modelMapper.map(authors, new TypeToken<List<UserDTO>>() {}.getType());
+            }
+            case "reviewer" -> {
+                List<User> reviewers = conference.getReviewers();
+                return this.modelMapper.map(reviewers, new TypeToken<List<UserDTO>>() {}.getType());
+            }
+            default -> {
+            }
+        }
+        return new ArrayList<>();
     }
 
     @Override

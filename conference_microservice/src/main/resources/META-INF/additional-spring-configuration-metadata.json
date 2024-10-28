@@ -1,0 +1,17 @@
+{"properties": [
+  {
+    "name": "co.edu.unicauca.cuychair.user.userDTO.queue",
+    "type": "java.lang.String",
+    "description": "Cola de usuarios de rabbitmq"
+  },
+  {
+    "name": "co.edu.unicauca.cuychair.user.conference.queue",
+    "type": "java.lang.String",
+    "description": "Cola de recepción de usuarios"
+  },
+  {
+    "name": "co.edu.unicauca.cuychair.conference.queue",
+    "type": "java.lang.String",
+    "description": "Cola de mensajeria de usuarios"
+  }
+]}
