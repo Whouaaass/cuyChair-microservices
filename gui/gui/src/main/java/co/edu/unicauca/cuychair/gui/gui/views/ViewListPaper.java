@@ -4,7 +4,10 @@
  */
 package co.edu.unicauca.cuychair.gui.gui.views;
 
+import co.edu.unicauca.cuychair.gui.gui.Context.AppContext;
 import co.edu.unicauca.cuychair.gui.gui.DTO.PaperDTO;
+import co.edu.unicauca.cuychair.gui.gui.DTO.UserDTO;
+import co.edu.unicauca.cuychair.gui.gui.services.PaperServices;
 import co.edu.unicauca.cuychair.gui.gui.views.utilities.ButtonEditor;
 import co.edu.unicauca.cuychair.gui.gui.views.utilities.ButtonRenderer;
 import co.edu.unicauca.cuychair.gui.gui.views.utilities.ListPaperModel;
@@ -16,10 +19,16 @@ import java.util.List;
  */
 public class ViewListPaper extends javax.swing.JFrame {
 
+    private PaperServices servicesPaper;
+    private UserDTO usersContext;
+
     /**
      * Creates new form ViewListPaper
      */
     public ViewListPaper() {
+        AppContext appContext = AppContext.getInstance();
+        servicesPaper = appContext.getPaperService();
+        usersContext = appContext.getLoggedUser();
         initComponents();
     }
 
@@ -112,22 +121,12 @@ public class ViewListPaper extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonListPaperActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonListPaperActionPerformed
-        List<PaperDTO> papers=new ArrayList<>();
-        PaperDTO paper=new PaperDTO();
-        paper.setId(1);
-        paper.setTitle("ff");
-        paper.setAbstract("fff");
-        paper.setSubTitle("aaaa");
-        papers.add(paper);
-        
+        List<PaperDTO> papers=servicesPaper.getPapersByAuthor(usersContext.getId());
         ListPaperModel model=new ListPaperModel(papers);
         TablePapers.setModel(model);
         
         TablePapers.getColumn("Acciones").setCellRenderer(new ButtonRenderer());
         TablePapers.getColumn("Acciones").setCellEditor(new ButtonEditor(TablePapers,papers));
-
-
-        
     }//GEN-LAST:event_buttonListPaperActionPerformed
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

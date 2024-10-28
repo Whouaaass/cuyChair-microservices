@@ -3,7 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package co.edu.unicauca.cuychair.gui.gui.views;
+import co.edu.unicauca.cuychair.gui.gui.Context.AppContext;
 import co.edu.unicauca.cuychair.gui.gui.DTO.PaperDTO;
+import co.edu.unicauca.cuychair.gui.gui.DTO.UserDTO;
+import co.edu.unicauca.cuychair.gui.gui.services.PaperServices;
+import co.edu.unicauca.cuychair.gui.gui.services.UserServices;
 
 /**
  *
@@ -11,10 +15,16 @@ import co.edu.unicauca.cuychair.gui.gui.DTO.PaperDTO;
  */
 public class ViewAddPaper extends javax.swing.JFrame {
 
+    private PaperServices servicesPaper;
+    private UserDTO usersContext;
+
     /**
      * Creates new form ViewAddPaper
      */
     public ViewAddPaper() {
+        AppContext appContext = AppContext.getInstance();
+        servicesPaper = appContext.getPaperService();
+        usersContext = appContext.getLoggedUser();
         initComponents();
     }
 
@@ -150,6 +160,8 @@ public class ViewAddPaper extends javax.swing.JFrame {
         paper.setTitle(textTitle.getText());
         paper.setAbstract(textAbstract.getText());
         paper.setSubTitle(textSubtitle.getText());
+        paper.setIdAuthor(usersContext.getId());
+        servicesPaper.addPaper(paper);
     }//GEN-LAST:event_buttonSubmitActionPerformed
 
     
