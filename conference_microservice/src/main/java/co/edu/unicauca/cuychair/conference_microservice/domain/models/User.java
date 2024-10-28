@@ -68,4 +68,5 @@ public class User {
     public void removeAuthorConference(Conference conference) {
         this.authorConferences.remove(conference.getId());
     }    
+
 }

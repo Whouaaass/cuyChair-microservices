@@ -16,6 +16,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class PublisherConfig {   
 
+    public static final String EXCHANGE_NAME = "CuyChairExchangeConference";
+    public static final String ROUTING_KEY = "routingKey";
+
     @Value("${co.edu.unicauca.cuychair.user.conference.queue}")
     private String messageConferenceDTO;
 
@@ -26,12 +29,12 @@ public class PublisherConfig {
 
     @Bean(name="conference")
     public DirectExchange conferenceExchange() {
-        return new DirectExchange("CuyChairExchangeConference");
+        return new DirectExchange(EXCHANGE_NAME);
     }
 
     @Bean(name="conference")
     public Binding binding(@Qualifier("conference") Queue conferenceQueue, @Qualifier("conference") DirectExchange exchange) {
-        return BindingBuilder.bind(conferenceQueue).to(exchange).with("routingKey");
+        return BindingBuilder.bind(conferenceQueue).to(exchange).with(ROUTING_KEY);
     }
 
 }

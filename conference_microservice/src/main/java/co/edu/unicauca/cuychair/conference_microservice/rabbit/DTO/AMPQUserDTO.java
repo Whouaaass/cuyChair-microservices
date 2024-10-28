@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class RabbitUserDTO {    
+public class AMPQUserDTO {    
     private int id;
     private String name;
     private String lastName;
@@ -16,5 +16,5 @@ public class RabbitUserDTO {
     private String description;
     private int phone;
 
-    public RabbitUserDTO(){}
+    public AMPQUserDTO(){}
 }

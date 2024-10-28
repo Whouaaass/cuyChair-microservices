@@ -20,4 +20,16 @@ public class UserDTO {
     private String description;    
 
     public UserDTO() {}   
+
+    @Override
+    public String toString() {
+        return "UserDTO{" +
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", lastname='" + lastname + '\'' +
+            ", email='" + email + '\'' +
+            ", phone='" + phone + '\'' +
+            ", description='" + description + '\'' +
+            '}';
+    }
 }

@@ -5,8 +5,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import co.edu.unicauca.cuychair.conference_microservice.domain.models.Conference;
+import co.edu.unicauca.cuychair.conference_microservice.rabbit.DTO.AMPQUserDTO;
 import co.edu.unicauca.cuychair.conference_microservice.services_layer.DTO.ConferenceDTO;
 import co.edu.unicauca.cuychair.conference_microservice.services_layer.DTO.SimpleConferenceDTO;
+import co.edu.unicauca.cuychair.conference_microservice.services_layer.DTO.UserDTO;
 
 @Configuration
 public class mapper {
@@ -23,8 +25,7 @@ public class mapper {
      * @param modelMapper mapper
      */
     public void conferenceConfig(ModelMapper modelMapper) {
-        // ConferenceDTO
-                
+        // ConferenceDTO                
         modelMapper.createTypeMap(ConferenceDTO.class, Conference.class)
                 .addMapping(ConferenceDTO::getTitle, Conference::setName);
         modelMapper.createTypeMap(Conference.class, ConferenceDTO.class)
@@ -39,4 +40,17 @@ public class mapper {
                 .addMapping(Conference::getName, SimpleConferenceDTO::setTitle)
                 .addMapping(Conference::getChairId, SimpleConferenceDTO::setOwnerId);
     }
+
+    /**
+     * Configura el mapper para los Usuarios
+     * @param modelMapper
+     */
+    public void userConfig(ModelMapper modelMapper) {
+        // UserDTO <-> AMPQUserDTO
+        modelMapper.createTypeMap(AMPQUserDTO.class, UserDTO.class)
+                .addMapping(AMPQUserDTO::getLastName, UserDTO::setLastname);
+    }
+        
+
+    
 }

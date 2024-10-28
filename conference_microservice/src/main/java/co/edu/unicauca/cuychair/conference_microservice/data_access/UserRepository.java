@@ -1,8 +1,8 @@
 package co.edu.unicauca.cuychair.conference_microservice.data_access;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
@@ -10,59 +10,46 @@ import co.edu.unicauca.cuychair.conference_microservice.domain.models.User;
 
 @Repository
 public class UserRepository {
-    private final List<User> userList;
-    private final AtomicInteger idCounter;
+    private final Map<Integer, User> users;
 
     public UserRepository() {
-        this.userList = new ArrayList<>();
-        this.idCounter = new AtomicInteger(1);
+        this.users = new HashMap<>();
         addTestRegisters();
     }
 
     public List<User> getAllUsers() {
-        return userList;
+        return List.copyOf(users.values());
     }
 
-    public User getUserById(Integer id) {        
-        for (User user : userList) {
-            if (user.getId().equals(id)) {
-                return user;
-            }
-        }
-        return null;
+    public User getUserById(Integer id) {
+        return users.get(id);
     }
 
     public User addUser(User user) {
-        user.setId(idCounter.getAndIncrement());
-        userList.add(user);
+        if (user == null)
+            return user;
+        users.put(user.getId(), user);
         return user;
     }
 
     public User updateUser(Integer userId, User user) {
-        for (User u : userList) {
-            if (u.getId().equals(userId)) {
-                u.setName(user.getName());
-                u.setEmail(user.getEmail());
-                u.setPhone(user.getPhone());
-                return u;
-            }
-        }
-        return null;
+        User u = users.get(userId);
+        if (u == null)
+            return null;
+
+        u.setName(u.getName());
+        u.setEmail(u.getEmail());
+        u.setPhone(u.getPhone());
+        return u;
     }
 
-    public User deleteUser(Integer userId) {
-        for (User u : userList) {
-            if (u.getId().equals(userId)) {
-                userList.remove(u);
-                return u;
-            }
-        }
-        return null;
+    public User deleteUser(Integer userId) {        
+        return users.remove(userId);
     }
 
     final public void addTestRegisters() {
-        addUser( new User(1, "Juan", "juandev@gmail.com", "12345234", "El amante del luna"));
-        addUser( new User(1, "Pedro", "pdto@dev.com", "13333334", "Piedra que te doy"));
-        addUser( new User(1, "Maria", "carmen.mario@gmail.com", "12345234", "La que se fue"));        
+        addUser(new User(1, "Juan", "juandev@gmail.com", "12345234", "El amante del luna"));
+        addUser(new User(1, "Pedro", "pdto@dev.com", "13333334", "Piedra que te doy"));
+        addUser(new User(1, "Maria", "carmen.mario@gmail.com", "12345234", "La que se fue"));
     }
 }
