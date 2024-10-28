@@ -17,6 +17,7 @@ public class SimpleConferenceDTO {
     private String title;
     private String city;
     private Date date;      
+    private String description;
     private Integer ownerId;
 
     public SimpleConferenceDTO() {

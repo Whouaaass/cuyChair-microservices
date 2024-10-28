@@ -18,6 +18,7 @@ public class ConferenceDTO {
     private String title;
     private String city;
     private Date date;    
+    private String description;
         
     private ArrayList<UserDTO> reviewers;
     private ArrayList<UserDTO> authors;    

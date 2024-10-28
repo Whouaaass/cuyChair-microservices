@@ -1,4 +1,4 @@
-package co.edu.unicauca.cuychair.gui.gui.DTO;
+package co.edu.unicauca.cuychair.gui.gui.DTO.conferenceAPI;
 
 import java.util.Date;
 
@@ -6,6 +6,7 @@ public class PostConferenceDTO {
     private Integer id;
     private String title;
     private String city;
+    private String description;
     private Date date;      
     private Integer ownerId;
 
@@ -48,5 +49,13 @@ public class PostConferenceDTO {
 
     public void setOwnerId(Integer ownerId) {
         this.ownerId = ownerId;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

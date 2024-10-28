@@ -4,8 +4,7 @@
  */
 package co.edu.unicauca.cuychair.gui.gui.services;
 
-import co.edu.unicauca.cuychair.gui.gui.DTO.ConferenceDTO;
-
+import java.util.Date;
 import java.util.List;
 
 import javax.ws.rs.client.Client;
@@ -17,8 +16,9 @@ import javax.ws.rs.core.MediaType;
 
 import org.glassfish.jersey.jackson.JacksonFeature;
 
-import co.edu.unicauca.cuychair.gui.gui.DTO.AddConferenceParticipationDTO;
-import co.edu.unicauca.cuychair.gui.gui.DTO.PostConferenceDTO;
+import co.edu.unicauca.cuychair.gui.gui.DTO.conferenceAPI.AddConferenceParticipationDTO;
+import co.edu.unicauca.cuychair.gui.gui.DTO.conferenceAPI.ConferenceDTO;
+import co.edu.unicauca.cuychair.gui.gui.DTO.conferenceAPI.PostConferenceDTO;
 
 /**
  *
@@ -26,7 +26,7 @@ import co.edu.unicauca.cuychair.gui.gui.DTO.PostConferenceDTO;
  * @author Frdy
  */
 public class ConferenceServices {
-    private static final String ENDPOINT = "http://localhost:8092/api/";
+    private static final String ENDPOINT = "http://localhost:8092/api";
     private final Client client;
     
     public ConferenceServices(){        
@@ -39,9 +39,15 @@ public class ConferenceServices {
     }
     
     // Revisar si el path es correcto
-    public ConferenceDTO addConference(ConferenceDTO conferenceDTO) {
+    public ConferenceDTO addConference(String city, String title, Date date, String description, Integer ownerId) {
+        PostConferenceDTO post = new PostConferenceDTO();
+        post.setCity(city);
+        post.setTitle(title);
+        post.setDate(date);
+        post.setOwnerId(ownerId);        
+        post.setDescription(description);
         WebTarget target = client.target(ENDPOINT + "/conference");
-        return target.request(MediaType.APPLICATION_JSON).post(Entity.entity(conferenceDTO, MediaType.APPLICATION_JSON), ConferenceDTO.class);
+        return target.request(MediaType.APPLICATION_JSON).post(Entity.entity(post, MediaType.APPLICATION_JSON), ConferenceDTO.class);
     }
 
     public ConferenceDTO getConference(Integer conferenceId) {

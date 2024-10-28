@@ -4,6 +4,11 @@
  */
 package co.edu.unicauca.cuychair.gui.gui.views;
 
+import java.awt.event.ActionEvent;
+import java.util.Date;
+
+import co.edu.unicauca.cuychair.gui.gui.Context.AppContext;
+
 /**
  *
  * @author julia
@@ -15,7 +20,7 @@ public class ViewAddConference extends javax.swing.JFrame {
      */
     public ViewAddConference() {
         initComponents();
-    }
+    }    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -78,6 +83,11 @@ public class ViewAddConference extends javax.swing.JFrame {
         jButtonAddConference.setBackground(new java.awt.Color(102, 192, 244));
         jButtonAddConference.setForeground(new java.awt.Color(0, 0, 0));
         jButtonAddConference.setText("Registrar");
+        jButtonAddConference.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddConferenceActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -130,6 +140,14 @@ public class ViewAddConference extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonAddConferenceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddConferenceActionPerformed
+        String city = "Confandi";
+        String title ="Mucha diversion";
+        String description ="aguas calientes";
+        Integer ownerId = 1;
+        Date date = new Date();
+        AppContext.getInstance().getConferenceService().addConference(city, title, date, description, ownerId);
+    }//GEN-LAST:event_jButtonAddConferenceActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAddConference;
