@@ -11,6 +11,7 @@ public class ConferenceDTO {
 
     private Integer id;
     private String title;
+    private String subject;
     private String city;
     private Date date;
     private String description;
@@ -92,6 +93,14 @@ public class ConferenceDTO {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 
     

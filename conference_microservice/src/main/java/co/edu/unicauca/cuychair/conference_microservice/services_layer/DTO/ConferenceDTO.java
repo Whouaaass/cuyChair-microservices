@@ -16,6 +16,7 @@ import lombok.Setter;
 public class ConferenceDTO {
     private Integer id;
     private String title;
+    private String subject;
     private String city;
     private Date date;    
     private String description;
