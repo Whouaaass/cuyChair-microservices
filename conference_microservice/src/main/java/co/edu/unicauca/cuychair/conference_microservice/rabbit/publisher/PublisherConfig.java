@@ -19,7 +19,7 @@ public class PublisherConfig {
     public static final String EXCHANGE_NAME = "CuyChairExchangeConference";
     public static final String ROUTING_KEY = "routingKey";
 
-    @Value("${co.edu.unicauca.cuychair.user.conference.queue}")
+    @Value("${co.edu.unicauca.cuychair.conference.queue}")
     private String messageConferenceDTO;
 
     @Bean(name="conference")

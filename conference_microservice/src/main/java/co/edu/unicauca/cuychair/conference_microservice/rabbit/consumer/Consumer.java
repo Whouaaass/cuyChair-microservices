@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
+import co.edu.unicauca.cuychair.conference_microservice.rabbit.DTO.AMPQConferenceDTO;
 import co.edu.unicauca.cuychair.conference_microservice.rabbit.DTO.AMPQUserDTO;
 import co.edu.unicauca.cuychair.conference_microservice.services_layer.DTO.UserDTO;
 import co.edu.unicauca.cuychair.conference_microservice.services_layer.services.IUserService;
@@ -37,5 +38,11 @@ public class Consumer {
 		try {
 			Thread.sleep(500);
 		} catch (InterruptedException e) { }
+	}
+
+	@RabbitListener(queues = { "${co.edu.unicauca.cuychair.conference.queue}" })
+	public void ReceiveConferenceDTO(@Payload AMPQConferenceDTO conferenceDTO) {
+		log.info("Received message {} Conference name: {}", conferenceDTO, conferenceDTO.getTitle());
+		makeSlow();
 	}
 }

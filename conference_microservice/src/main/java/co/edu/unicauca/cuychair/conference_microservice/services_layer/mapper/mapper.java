@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import co.edu.unicauca.cuychair.conference_microservice.domain.models.Conference;
+import co.edu.unicauca.cuychair.conference_microservice.rabbit.DTO.AMPQConferenceDTO;
 import co.edu.unicauca.cuychair.conference_microservice.rabbit.DTO.AMPQUserDTO;
 import co.edu.unicauca.cuychair.conference_microservice.services_layer.DTO.ConferenceDTO;
 import co.edu.unicauca.cuychair.conference_microservice.services_layer.DTO.SimpleConferenceDTO;
@@ -39,6 +40,10 @@ public class mapper {
         modelMapper.createTypeMap(Conference.class, SimpleConferenceDTO.class)
                 .addMapping(Conference::getName, SimpleConferenceDTO::setTitle)
                 .addMapping(Conference::getChairId, SimpleConferenceDTO::setOwnerId);
+
+        // Conference -> AMPQConferenceDTO
+        modelMapper.createTypeMap(Conference.class, AMPQConferenceDTO.class)
+                .addMapping(Conference::getName, AMPQConferenceDTO::setTitle);
     }
 
     /**

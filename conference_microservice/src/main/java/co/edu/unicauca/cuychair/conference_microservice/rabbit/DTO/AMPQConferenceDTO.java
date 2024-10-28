@@ -2,6 +2,7 @@ package co.edu.unicauca.cuychair.conference_microservice.rabbit.DTO;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,8 +16,8 @@ public class AMPQConferenceDTO {
     private String title;
     private String city;
     private String date;
-    private ArrayList<Integer> authorIds;
-    private ArrayList<Integer> reviewerIds;
+    private List<Integer> authorIds;
+    private List<Integer> reviewerIds;
     private Integer ownerId;
 
     public AMPQConferenceDTO(){};

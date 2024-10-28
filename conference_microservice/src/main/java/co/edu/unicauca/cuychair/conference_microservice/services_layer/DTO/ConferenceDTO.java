@@ -18,8 +18,10 @@ public class ConferenceDTO {
     private String title;
     private String city;
     private Date date;    
+        
+    private ArrayList<UserDTO> reviewers;
+    private ArrayList<UserDTO> authors;    
 
-    private ArrayList<UserDTO> participantsList;
     private UserDTO owner;
 
     public ConferenceDTO() {}
