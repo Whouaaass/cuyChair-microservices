@@ -2,7 +2,7 @@
 Aplicación de cuychair pero esta vez con microservicios  
 
 ---
-Existen 4 microservicios:
+Existen 3 microservicios:
 - Microservicio de Usuarios
 - Microservicio de Conferencias
 - Microservicio de Articulos
