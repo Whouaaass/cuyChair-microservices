@@ -39,6 +39,13 @@ public interface  IUserService {
     public UserDTO update(Integer id, UserDTO user);
 
     /**
+     * Listar usuarios por rol en una conferencia
+     * @param id
+     * @return
+     */
+    public List<UserDTO> findByRoleInConference(Integer id, String role);
+
+    /**
      * Eliminar un usuario
      * @param id
      * @return

@@ -38,6 +38,13 @@ public interface IPaperService {
     public PaperDTO update(Integer id, PaperDTO paper);
 
     /**
+     * Obtener todos los papers de una conferencia
+     * @param id
+     * @return
+     */
+    public List<PaperDTO> findByConferenceId(Integer id);
+
+    /**
      * Eliminar un paper
      * @param id
      * @return

@@ -14,6 +14,8 @@ public class Paper {
 
     private User author;
 
+    private Conference conference;
+
     public Paper() {
     }
 
@@ -33,5 +35,22 @@ public class Paper {
     public void setAbstract(String abstractIn) {
         this.Abstract = abstractIn;
     }
+
+    // user
+    public User getAuthor() {
+        return this.author;
+    }
+    public void setAuthor(User author) {
+        this.author = author;
+    }
+
+    // conference
+    public Conference getConference() {
+        return this.conference;
+    }
+    public void setConference(Conference conference) {
+        this.conference = conference;
+    }
+    
     
 }

@@ -1,28 +1,32 @@
 package co.edu.unicauca.cuychair.conference_microservice.data_access;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
+
 import org.springframework.stereotype.Repository;
 
 import co.edu.unicauca.cuychair.conference_microservice.domain.models.Conference;
-import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Repositorio de conferencias
  */
 @Repository
-public class ConferenceRepository {    
-    
+public class ConferenceRepository {
+
     private final ArrayList<Conference> conferenceList;
     private final AtomicInteger idCounter;
 
     public ConferenceRepository() {
-        this.conferenceList = new ArrayList<Conference>();
+        this.conferenceList = new ArrayList<>();
         this.idCounter = new AtomicInteger(1);
         addTestRegisters();
     }
 
     /**
      * Retorna todas las conferencias
+     * 
      * @return
      */
     public ArrayList<Conference> getAllConferences() {
@@ -31,12 +35,13 @@ public class ConferenceRepository {
 
     /**
      * Retorna una conferencia dado un id
+     * 
      * @param id
      * @return
      */
-    public Conference getConferenceById(int id) {
+    public Conference getConferenceById(Integer id) {
         for (Conference conference : conferenceList) {
-            if (conference.getId() == id) {
+            if (conference.getId().equals(id)) {
                 return conference;
             }
         }
@@ -45,6 +50,7 @@ public class ConferenceRepository {
 
     /**
      * Añade una conferencia
+     * 
      * @param conference
      * @return
      */
@@ -56,13 +62,14 @@ public class ConferenceRepository {
 
     /**
      * Actualiza una conferencia
-     * @param conferenceId 
+     * 
+     * @param conferenceId
      * @param conference
      * @return
      */
-    public Conference updateConference(Integer conferenceId, Conference conference) {                
+    public Conference updateConference(Integer conferenceId, Conference conference) {
         for (Conference c : conferenceList) {
-            if (c.getId() == conferenceId) {
+            if (c.getId().equals(conferenceId)) {
                 c.setName(conference.getName());
                 c.setSubject(conference.getSubject());
                 c.setDescription(conference.getDescription());
@@ -74,12 +81,13 @@ public class ConferenceRepository {
 
     /**
      * Elimina una conferencia
+     * 
      * @param conferenceId
      * @return
      */
     public Conference deleteConference(Integer conferenceId) {
         for (Conference c : conferenceList) {
-            if (c.getId() == conferenceId) {
+            if (c.getId().equals(conferenceId)) {
                 conferenceList.remove(c);
                 return c;
             }
@@ -90,9 +98,16 @@ public class ConferenceRepository {
     /**
      * Añade registros de prueba
      */
-    public void addTestRegisters() {
-        addConference(new Conference(1, "Conference 1", "Subject 1", "Description 1"));
-        addConference(new Conference(2, "Conference 2", "Subject 2", "Description 2"));
-        addConference(new Conference(3, "Conference 3", "Subject 3", "Description 3"));
-    }    
+    public final void addTestRegisters() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+        try {
+            addConference(
+                    new Conference(1, "Conference 1", "Cali", sdf.parse("10/10/2025"), "Subject 1", "Description 1"));
+            addConference(
+                    new Conference(2, "Conference 2", "Cali", sdf.parse("10/10/2025"), "Subject 2", "Description 2"));
+            addConference(
+                    new Conference(3, "Conference 3", "Cali", sdf.parse("10/10/2025"), "Subject 3", "Description 3"));
+        } catch (ParseException e) {}
+    }
 }

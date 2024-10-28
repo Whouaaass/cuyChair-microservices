@@ -1,6 +1,5 @@
 package co.edu.unicauca.cuychair.conference_microservice.services_layer.DTO;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 import lombok.AllArgsConstructor;
@@ -13,14 +12,14 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class ConferenceDTO {
+public class SimpleConferenceDTO {
     private Integer id;
     private String title;
     private String city;
-    private Date date;    
+    private Date date;      
+    private Integer ownerId;
 
-    private ArrayList<UserDTO> participantsList;
-    private UserDTO owner;
-
-    public ConferenceDTO() {}
+    public SimpleConferenceDTO() {
+        
+    }
 }

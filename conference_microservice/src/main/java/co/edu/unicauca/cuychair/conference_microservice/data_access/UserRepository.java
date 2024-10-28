@@ -1,12 +1,12 @@
 package co.edu.unicauca.cuychair.conference_microservice.data_access;
 
-import org.springframework.stereotype.Repository;
-
-import co.edu.unicauca.cuychair.conference_microservice.domain.models.User;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import org.springframework.stereotype.Repository;
+
+import co.edu.unicauca.cuychair.conference_microservice.domain.models.User;
 
 @Repository
 public class UserRepository {
@@ -14,7 +14,7 @@ public class UserRepository {
     private final AtomicInteger idCounter;
 
     public UserRepository() {
-        this.userList = new ArrayList<User>();
+        this.userList = new ArrayList<>();
         this.idCounter = new AtomicInteger(1);
         addTestRegisters();
     }
@@ -23,9 +23,9 @@ public class UserRepository {
         return userList;
     }
 
-    public User getUserById(int id) {
+    public User getUserById(Integer id) {        
         for (User user : userList) {
-            if (user.getId() == id) {
+            if (user.getId().equals(id)) {
                 return user;
             }
         }
@@ -40,7 +40,7 @@ public class UserRepository {
 
     public User updateUser(Integer userId, User user) {
         for (User u : userList) {
-            if (u.getId() == userId) {
+            if (u.getId().equals(userId)) {
                 u.setName(user.getName());
                 u.setEmail(user.getEmail());
                 u.setPhone(user.getPhone());
@@ -52,7 +52,7 @@ public class UserRepository {
 
     public User deleteUser(Integer userId) {
         for (User u : userList) {
-            if (u.getId() == userId) {
+            if (u.getId().equals(userId)) {
                 userList.remove(u);
                 return u;
             }
@@ -60,9 +60,9 @@ public class UserRepository {
         return null;
     }
 
-    public void addTestRegisters() {
-        addUser( new User(null, "Juan", "juandev@gmail.com", "12345234", "El amante del luna"));
-        addUser( new User(null, "Pedro", "pdto@dev.com", "13333334", "Piedra que te doy"));
-        addUser( new User(null, "Maria", "carmen.mario@gmail.com", "12345234", "La que se fue"));        
+    final public void addTestRegisters() {
+        addUser( new User(1, "Juan", "juandev@gmail.com", "12345234", "El amante del luna"));
+        addUser( new User(1, "Pedro", "pdto@dev.com", "13333334", "Piedra que te doy"));
+        addUser( new User(1, "Maria", "carmen.mario@gmail.com", "12345234", "La que se fue"));        
     }
 }
