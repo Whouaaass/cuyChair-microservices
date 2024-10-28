@@ -5,7 +5,6 @@
 package co.edu.unicauca.cuychair.gui.gui.services;
 
 
-import co.edu.unicauca.cuychair.gui.gui.DTO.ConferenceDTO;
 import co.edu.unicauca.cuychair.gui.gui.DTO.PaperDTO;
 import co.edu.unicauca.cuychair.gui.gui.DTO.UserDTO;
 import org.glassfish.jersey.jackson.JacksonFeature;
