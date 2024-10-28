@@ -15,16 +15,16 @@ public class ConsumerConfig {
     @Value("${co.edu.unicauca.cuychair.user.conference.queue}")
     private String messageUserDTO;
 
-    @Bean(name="user")
+    @Bean(name="userQueue")
     public Queue userQueue() {
         return new Queue(messageUserDTO, true);
     }
-    @Bean(name="user")
+    @Bean(name="userExchange")
     public DirectExchange exchange() {
         return new DirectExchange("exchangeUser");
     }
-    @Bean(name="user")
-    public Binding binding(@Qualifier("user") Queue myQueue, @Qualifier("user") DirectExchange exchange) {
+    @Bean(name="userBind")
+    public Binding binding(@Qualifier("userQueue") Queue myQueue, @Qualifier("userExchange") DirectExchange exchange) {
         return BindingBuilder.bind(myQueue).to(exchange).with("routingKey");
     }
     
