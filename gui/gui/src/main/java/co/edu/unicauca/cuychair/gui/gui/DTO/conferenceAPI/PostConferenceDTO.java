@@ -2,6 +2,9 @@ package co.edu.unicauca.cuychair.gui.gui.DTO.conferenceAPI;
 
 import java.util.Date;
 
+/**
+ * DTO usado para "publicar" una conferencia
+ */
 public class PostConferenceDTO {
     private Integer id;
     private String title;

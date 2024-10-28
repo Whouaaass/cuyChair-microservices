@@ -8,6 +8,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import org.springframework.stereotype.Repository;
 
 import co.edu.unicauca.cuychair.conference_microservice.domain.models.Conference;
+import co.edu.unicauca.cuychair.conference_microservice.domain.models.User;
 
 /**
  * Repositorio de conferencias
@@ -95,6 +96,16 @@ public class ConferenceRepository {
         return null;
     }
 
+    public Conference getByChair(Integer userId) {
+        for (Conference c : conferenceList) {
+            User chair = c.getChair();
+            if (chair != null && chair.getId().equals(userId)) {
+                return c;
+            }
+        }
+        return null;
+    }
+
     /**
      * Añade registros de prueba
      */
@@ -103,11 +114,15 @@ public class ConferenceRepository {
 
         try {
             addConference(
-                    new Conference(1, "Conference 1", "Cali", sdf.parse("10/10/2025"), "Subject 1", "Description 1"));
+                    new Conference(1, "International Science Conference", "New York", sdf.parse("10/10/2025"),
+                            "Science", "Exploring the latest in scientific research."));
             addConference(
-                    new Conference(2, "Conference 2", "Cali", sdf.parse("10/10/2025"), "Subject 2", "Description 2"));
+                    new Conference(2, "Global Tech Summit", "San Francisco", sdf.parse("15/11/2025"), "Technology",
+                            "Innovations in the tech industry and future trends."));
             addConference(
-                    new Conference(3, "Conference 3", "Cali", sdf.parse("10/10/2025"), "Subject 3", "Description 3"));
-        } catch (ParseException e) {}
+                    new Conference(3, "Healthcare Advances Forum", "Chicago", sdf.parse("20/12/2025"), "Healthcare",
+                            "Discussing advancements in healthcare and medicine."));
+        } catch (ParseException e) {
+        }
     }
 }

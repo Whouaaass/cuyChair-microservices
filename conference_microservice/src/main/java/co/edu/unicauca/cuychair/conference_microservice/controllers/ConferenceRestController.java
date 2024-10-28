@@ -20,10 +20,6 @@ import co.edu.unicauca.cuychair.conference_microservice.services_layer.services.
 import co.edu.unicauca.cuychair.conference_microservice.services_layer.services.IPaperService;
 import co.edu.unicauca.cuychair.conference_microservice.services_layer.services.IUserService;
 
-
-
-
-
 @RestController
 @RequestMapping("/api/conference")
 public class ConferenceRestController {
@@ -60,6 +56,17 @@ public class ConferenceRestController {
     public ResponseEntity<?> deleteConference(@PathVariable Integer id) {
         return new ResponseEntity<>(conferenceService.delete(id), HttpStatus.OK);
     }
+
+    /**
+     * Get all conference in witch a user is participant
+     * @param userId
+     * @return
+     */
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<?> getConferencesByParticipant(@PathVariable Integer userId) {
+        return ResponseEntity.ok(conferenceService.findByUserParticipant(userId));
+    }
+    
         
     @PutMapping("/addAuthor")
     public ResponseEntity<?> addAuthor(@RequestBody AddConferenceParticipationDTO conferenceParticipation) {

@@ -4,7 +4,13 @@
  */
 package co.edu.unicauca.cuychair.gui.gui.views;
 
+import co.edu.unicauca.cuychair.gui.gui.Context.AppContext;
+import co.edu.unicauca.cuychair.gui.gui.DTO.UserDTO;
+import co.edu.unicauca.cuychair.gui.gui.DTO.conferenceAPI.ConferenceDTO;
+import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 /**
  *
@@ -16,7 +22,13 @@ public class ViewListConferences extends javax.swing.JFrame {
      * Creates new form ViewListConferences
      */
     public ViewListConferences() {
+        this.tableModel = new DefaultTableModel(
+                new Object [][] {},
+            new String [] { "Titulo", "Tema", "Descripcion" }
+        );
         initComponents();
+        
+        refreshTable();
     }
 
     /**
@@ -34,6 +46,7 @@ public class ViewListConferences extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableConferences = new javax.swing.JTable();
         jButtonAddConference = new javax.swing.JButton();
+        jButtonAddConference1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,7 +59,7 @@ public class ViewListConferences extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelMainTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE)
+            .addComponent(jLabelMainTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -58,17 +71,7 @@ public class ViewListConferences extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
-        jTableConferences.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Titulo", "Tema", "Descripcion"
-            }
-        ));
+        jTableConferences.setModel(this.tableModel);
         jScrollPane1.setViewportView(jTableConferences);
         if (jTableConferences.getColumnModel().getColumnCount() > 0) {
             jTableConferences.getColumnModel().getColumn(0).setPreferredWidth(6);
@@ -84,18 +87,28 @@ public class ViewListConferences extends javax.swing.JFrame {
             }
         });
 
+        jButtonAddConference1.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.GreyInline"));
+        jButtonAddConference1.setForeground(new java.awt.Color(0, 0, 0));
+        jButtonAddConference1.setText("Refrescar");
+        jButtonAddConference1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddConference1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(38, 38, 38)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonAddConference)
-                .addGap(148, 148, 148))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jButtonAddConference)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonAddConference1))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,8 +116,10 @@ public class ViewListConferences extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonAddConference)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonAddConference)
+                    .addComponent(jButtonAddConference1))
+                .addGap(53, 53, 53))
         );
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
@@ -118,9 +133,27 @@ public class ViewListConferences extends javax.swing.JFrame {
         viewAddConferences.setVisible(true);
     }//GEN-LAST:event_jButtonAddConferenceActionPerformed
 
+    private void jButtonAddConference1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddConference1ActionPerformed
+        refreshTable();
+        
+    }//GEN-LAST:event_jButtonAddConference1ActionPerformed
 
+    void refreshTable() {
+        AppContext ctx = AppContext.getInstance();
+        UserDTO loggedOne = ctx.getLoggedUser();
+        List<ConferenceDTO> conferences = ctx.getConferenceService().getAllConferences();
+        tableModel.setRowCount(0);
+        for (ConferenceDTO c : conferences) {
+            Object[] rowData = {c.getTitle(), c.getSubject(), c.getDescription()};
+            this.tableModel.addRow(rowData);
+            System.out.println("id: " + c.getId());
+        }
+    }
+    
+    private DefaultTableModel tableModel;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAddConference;
+    private javax.swing.JButton jButtonAddConference1;
     private javax.swing.JLabel jLabelMainTitle;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

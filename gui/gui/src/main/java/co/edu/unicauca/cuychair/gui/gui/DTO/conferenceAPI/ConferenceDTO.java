@@ -7,6 +7,9 @@ package co.edu.unicauca.cuychair.gui.gui.DTO.conferenceAPI;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * DTO Usado para obtener datos de una conferencia
+ */
 public class ConferenceDTO {
 
     private Integer id;

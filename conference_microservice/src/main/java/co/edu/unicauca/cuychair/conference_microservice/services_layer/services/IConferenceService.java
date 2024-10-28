@@ -72,5 +72,11 @@ public interface IConferenceService {
      */
     public ConferenceDTO AddPaper(Integer conferenceId, Integer paperId);   
 
+    /**
+     * Obtiene todas las conferencias en las que participa un usuario
+     * @param userId id del usuario
+     * @return lista de conferencias en las que el usuario participa
+     */
+    public List<ConferenceDTO> findByUserParticipant(Integer userId);
 
 }

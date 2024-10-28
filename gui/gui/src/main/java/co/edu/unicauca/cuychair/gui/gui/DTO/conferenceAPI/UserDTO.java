@@ -1,5 +1,8 @@
 package co.edu.unicauca.cuychair.gui.gui.DTO.conferenceAPI;
 
+/**
+ * DTO usado en ConferenceDTO, para traer datos de un usuario
+ */
 public class UserDTO {
     private Integer id;
     private String name;

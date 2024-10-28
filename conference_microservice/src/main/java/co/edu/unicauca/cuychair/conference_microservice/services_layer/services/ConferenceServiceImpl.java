@@ -1,6 +1,8 @@
 package co.edu.unicauca.cuychair.conference_microservice.services_layer.services;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -123,6 +125,18 @@ public class ConferenceServiceImpl implements IConferenceService {
     }    
 
     @Override
+    public List<ConferenceDTO> findByUserParticipant(Integer userId) {
+        User user = userRepository.getUserById(userId);
+        if (user == null) return null;
+        Set<Conference> confeset = new HashSet<>();
+        confeset.addAll(user.getAuthorConferences());
+        confeset.addAll(user.getReviewedConferences());  
+        confeset.add(conferenceRepository.getByChair(userId));
+        List<Conference> confeList = List.copyOf(confeset);
+        return modelMapper.map(confeList, new TypeToken<List<ConferenceDTO>>() {}.getType());
+    }
+
+    @Override
     public boolean delete(Integer id) {
         return this.conferenceRepository.deleteConference(id) != null;
     }
@@ -140,6 +154,8 @@ public class ConferenceServiceImpl implements IConferenceService {
         conferenceDTO.setReviewerIds(List.of(conference.getReviewers().stream().map(User::getId).toArray(Integer[]::new)));
         this.AMPQPublisher.publishConference(conferenceDTO);        
     }
+
+    
 
     
 }

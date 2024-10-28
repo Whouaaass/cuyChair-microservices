@@ -60,7 +60,7 @@ public class ConferenceServices {
         AddConferenceParticipationDTO conferenceParticipation = new AddConferenceParticipationDTO();
         conferenceParticipation.setConferenceId(conferenceId);
         conferenceParticipation.setUserId(authorId);
-        WebTarget target = client.target(ENDPOINT + "/addAuthor");
+        WebTarget target = client.target(ENDPOINT + "/conference/addAuthor");
         return target.request(MediaType.APPLICATION_JSON).put(Entity.entity(conferenceParticipation, MediaType.APPLICATION_JSON), ConferenceDTO.class);
     }
 
@@ -68,8 +68,15 @@ public class ConferenceServices {
         AddConferenceParticipationDTO conferenceParticipation = new AddConferenceParticipationDTO();
         conferenceParticipation.setConferenceId(conferenceId);
         conferenceParticipation.setUserId(reviewerId);
-        WebTarget target = client.target(ENDPOINT + "/addReviewer");
+        WebTarget target = client.target(ENDPOINT + "/conference/addReviewer");
         return target.request(MediaType.APPLICATION_JSON).put(Entity.entity(conferenceParticipation, MediaType.APPLICATION_JSON), ConferenceDTO.class);
+    }
+
+    public List<ConferenceDTO> findAllByParticipant(Integer userId) {
+
+        WebTarget target = client.target(ENDPOINT + "/conference/user/" + userId);
+
+        return target.request(MediaType.APPLICATION_JSON).get(new GenericType<List<ConferenceDTO>>() {});
     }
 
 }

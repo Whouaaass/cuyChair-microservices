@@ -1,7 +1,9 @@
 package co.edu.unicauca.cuychair.gui.gui.DTO.conferenceAPI;
 
 
-
+/**
+ * Dto usado para añadir una participacion de un usuario en una conferencia (El rol se deduce por el método usado)
+ */
 public class AddConferenceParticipationDTO {
     private Integer conferenceId;
     private Integer userId;

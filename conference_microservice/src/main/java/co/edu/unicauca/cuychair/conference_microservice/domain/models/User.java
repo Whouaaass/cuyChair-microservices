@@ -2,6 +2,7 @@ package co.edu.unicauca.cuychair.conference_microservice.domain.models;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import lombok.Getter;
@@ -48,6 +49,9 @@ public class User {
     }
 
     // reviewerConferences
+    public List<Conference> getReviewedConferences() {
+        return List.copyOf(this.reviewedConferences.values());
+    }
     public void addReviewerConference(Conference conference) {
         if (conference == null) return;
         this.reviewedConferences.put(conference.getId(), conference);
