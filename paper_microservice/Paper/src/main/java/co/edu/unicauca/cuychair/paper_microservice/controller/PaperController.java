@@ -16,16 +16,13 @@ import java.util.List;
 @RestController
 @RequestMapping("/Paper")
 public class PaperController {
-    private final PaperStoreService servicePaper;
-    private final ConferenceStoreService serviceConference;
-    private final UserStoreService serviceUser;
-
     @Autowired
-    public PaperController(PaperStoreService service, ConferenceStoreService serviceConference, UserStoreService serviceUser){
-        this.servicePaper =service;
-        this.serviceConference = serviceConference;
-        this.serviceUser = serviceUser;
-    }
+    private  PaperStoreService servicePaper;
+    @Autowired
+    private  ConferenceStoreService serviceConference;
+    @Autowired
+    private  UserStoreService serviceUser;
+
 
     /**
      * @brief Guardar un Paper

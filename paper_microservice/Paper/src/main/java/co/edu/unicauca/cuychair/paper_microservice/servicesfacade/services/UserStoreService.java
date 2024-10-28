@@ -10,9 +10,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserStoreService {
 
-    IRepositoryUser repositoryUser;
+    private final IRepositoryUser repositoryUser;
 
-    @Autowired
+
     public UserStoreService(IRepositoryUser repositoryUser) {
         this.repositoryUser = repositoryUser;
     }

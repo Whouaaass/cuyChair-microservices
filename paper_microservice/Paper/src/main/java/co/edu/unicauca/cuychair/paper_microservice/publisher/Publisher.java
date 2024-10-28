@@ -2,10 +2,8 @@ package co.edu.unicauca.cuychair.paper_microservice.publisher;
 
 import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.DTO.PaperDTO;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
-import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -15,11 +13,7 @@ public class Publisher {
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
-    @Autowired
-    private Queue queuePaper;
-
-
     public void sendPaperDTO(PaperDTO paperDTO) {
-        rabbitTemplate.convertAndSend(queuePaper.getName(), paperDTO);
+        rabbitTemplate.convertAndSend(PublisherConfig.EXCHANGE_NAME, PublisherConfig.ROUTING_KEY, paperDTO);
     }
 }

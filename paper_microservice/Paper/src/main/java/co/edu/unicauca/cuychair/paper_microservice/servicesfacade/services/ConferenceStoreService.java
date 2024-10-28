@@ -15,11 +15,9 @@ import java.util.List;
 @Service
 public class ConferenceStoreService {
 
-    IRepositoryConference repositoryConference;
+    private final IRepositoryConference repositoryConference;
 
 
-
-    @Autowired
     public ConferenceStoreService(IRepositoryConference repositoryConference) {
         this.repositoryConference = repositoryConference;
     }

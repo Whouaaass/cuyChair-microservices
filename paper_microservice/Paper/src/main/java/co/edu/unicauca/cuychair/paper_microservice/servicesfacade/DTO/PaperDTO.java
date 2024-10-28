@@ -15,4 +15,8 @@ public class PaperDTO {
     private int idAuthor;
     private int idConference;
 
+    @Override
+    public String toString() {
+        return "PaperDTO [id=" + id + ", title=" + title + ", Abstract=" + Abstract + ", subTitle=" + subTitle+"]";
+    }
 }

@@ -15,21 +15,22 @@ import java.util.List;
 
 @Service
 public class PaperStoreService {
-    IRepositoryPaper repositoryPaper;
-    IRepositoryUser repositoryUser;
-    IRepositoryConference repositoryConference;
-    ConversorPaperDTO map;
+    private final IRepositoryPaper repositoryPaper;
+    private final IRepositoryUser repositoryUser;
+    private final IRepositoryConference repositoryConference;
+    private final ConversorPaperDTO map;
+    private final Publisher publisher;
 
-    @Autowired
-    public PaperStoreService(IRepositoryPaper repositoryPaper, IRepositoryUser repositoryUser, IRepositoryConference repositoryConference) {
+
+    public PaperStoreService(IRepositoryPaper repositoryPaper, IRepositoryUser repositoryUser, IRepositoryConference repositoryConference,Publisher publisher) {
         this.repositoryPaper = repositoryPaper;
         this.repositoryUser = repositoryUser;
         this.repositoryConference = repositoryConference;
         map=new ConversorPaperDTO(repositoryUser,repositoryConference);
+        this.publisher = publisher;
     }
 
-    @Autowired
-    private Publisher publisher;
+
 
     public void sendPaperDTORabbit(PaperDTO paperDTO) {
         publisher.sendPaperDTO(paperDTO);
