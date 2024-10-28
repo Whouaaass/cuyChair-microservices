@@ -61,19 +61,19 @@ public class ConferenceRestController {
         return new ResponseEntity<>(conferenceService.delete(id), HttpStatus.OK);
     }
         
-    @PostMapping("/addAuthor")
+    @PutMapping("/addAuthor")
     public ResponseEntity<?> addAuthor(@RequestBody AddConferenceParticipationDTO conferenceParticipation) {
         ConferenceDTO conference = this.conferenceService.AddAuthor(conferenceParticipation.getConferenceId(), conferenceParticipation.getUserId());
         return new ResponseEntity<>(conference, HttpStatus.OK);
     }
 
-    @PostMapping("/addReviewer") 
+    @PutMapping("/addReviewer") 
     public ResponseEntity<?> addReviewer(@RequestBody AddConferenceParticipationDTO conferenceParticipation) {
         ConferenceDTO conference = this.conferenceService.AddReviewer(conferenceParticipation.getConferenceId(), conferenceParticipation.getUserId());
         return new ResponseEntity<>(conference, HttpStatus.OK);
     }
 
-    @PostMapping("/addPaper")
+    @PutMapping("/addPaper")
     public ResponseEntity<?> addPaper(@RequestBody AddConferencePaperDTO addConferencePaperDTO) {
         ConferenceDTO conference = this.conferenceService.AddPaper(addConferencePaperDTO.getConferenceId(), addConferencePaperDTO.getPaperId());
         return new ResponseEntity<>(conference, HttpStatus.OK);

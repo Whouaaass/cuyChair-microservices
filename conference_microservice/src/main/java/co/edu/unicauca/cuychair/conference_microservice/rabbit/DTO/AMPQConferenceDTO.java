@@ -1,7 +1,5 @@
 package co.edu.unicauca.cuychair.conference_microservice.rabbit.DTO;
 
-
-import java.util.ArrayList;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -21,4 +19,11 @@ public class AMPQConferenceDTO {
     private Integer ownerId;
 
     public AMPQConferenceDTO(){};
+
+
+    @Override
+    public String toString() {
+        return "ConferenceDTO [authorIds=" + authorIds + ", city=" + city + ", date=" + date + ", id=" + id + ", ownerId="
+                + ownerId + ", reviewerIds=" + reviewerIds + ", title=" + title + "]";
+    }
 }
