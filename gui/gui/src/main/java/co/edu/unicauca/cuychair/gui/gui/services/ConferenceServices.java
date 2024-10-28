@@ -39,13 +39,14 @@ public class ConferenceServices {
     }
     
     // Revisar si el path es correcto
-    public ConferenceDTO addConference(String city, String title, Date date, String description, Integer ownerId) {
+    public ConferenceDTO addConference(String city, String title, String subject, Date date, String description, Integer ownerId) {
         PostConferenceDTO post = new PostConferenceDTO();
         post.setCity(city);
         post.setTitle(title);
         post.setDate(date);
         post.setOwnerId(ownerId);        
         post.setDescription(description);
+        post.setSubject(subject);
         WebTarget target = client.target(ENDPOINT + "/conference");
         return target.request(MediaType.APPLICATION_JSON).post(Entity.entity(post, MediaType.APPLICATION_JSON), ConferenceDTO.class);
     }

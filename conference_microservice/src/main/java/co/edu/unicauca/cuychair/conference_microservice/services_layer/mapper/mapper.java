@@ -8,7 +8,7 @@ import co.edu.unicauca.cuychair.conference_microservice.domain.models.Conference
 import co.edu.unicauca.cuychair.conference_microservice.rabbit.DTO.AMPQConferenceDTO;
 import co.edu.unicauca.cuychair.conference_microservice.rabbit.DTO.AMPQUserDTO;
 import co.edu.unicauca.cuychair.conference_microservice.services_layer.DTO.ConferenceDTO;
-import co.edu.unicauca.cuychair.conference_microservice.services_layer.DTO.SimpleConferenceDTO;
+import co.edu.unicauca.cuychair.conference_microservice.services_layer.DTO.PostConferenceDTO;
 import co.edu.unicauca.cuychair.conference_microservice.services_layer.DTO.UserDTO;
 
 @Configuration
@@ -35,15 +35,17 @@ public class mapper {
                 
 
         // SimpleConferenceDTO
-        modelMapper.createTypeMap(SimpleConferenceDTO.class, Conference.class)
-                .addMapping(SimpleConferenceDTO::getTitle, Conference::setName);
-        modelMapper.createTypeMap(Conference.class, SimpleConferenceDTO.class)
-                .addMapping(Conference::getName, SimpleConferenceDTO::setTitle)
-                .addMapping(Conference::getChairId, SimpleConferenceDTO::setOwnerId);
+        modelMapper.createTypeMap(PostConferenceDTO.class, Conference.class)
+                .addMapping(PostConferenceDTO::getTitle, Conference::setName);
+        modelMapper.createTypeMap(Conference.class, PostConferenceDTO.class)
+                .addMapping(Conference::getName, PostConferenceDTO::setTitle)
+                .addMapping(Conference::getChairId, PostConferenceDTO::setOwnerId);
 
         // Conference -> AMPQConferenceDTO
         modelMapper.createTypeMap(Conference.class, AMPQConferenceDTO.class)
-                .addMapping(Conference::getName, AMPQConferenceDTO::setTitle);
+                .addMapping(Conference::getName, AMPQConferenceDTO::setTitle)
+                .addMapping(Conference::getChairId, AMPQConferenceDTO::setOwnerId);
+        
     }
 
     /**

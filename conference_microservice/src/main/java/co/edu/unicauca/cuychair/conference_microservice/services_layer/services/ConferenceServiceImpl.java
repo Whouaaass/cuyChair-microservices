@@ -16,7 +16,7 @@ import co.edu.unicauca.cuychair.conference_microservice.domain.services.Conferen
 import co.edu.unicauca.cuychair.conference_microservice.rabbit.DTO.AMPQConferenceDTO;
 import co.edu.unicauca.cuychair.conference_microservice.rabbit.publisher.Publisher;
 import co.edu.unicauca.cuychair.conference_microservice.services_layer.DTO.ConferenceDTO;
-import co.edu.unicauca.cuychair.conference_microservice.services_layer.DTO.SimpleConferenceDTO;
+import co.edu.unicauca.cuychair.conference_microservice.services_layer.DTO.PostConferenceDTO;
 import co.edu.unicauca.cuychair.conference_microservice.services_layer.DTO.UserDTO;
 
 /**
@@ -55,7 +55,7 @@ public class ConferenceServiceImpl implements IConferenceService {
     }
 
     @Override
-    public ConferenceDTO save(SimpleConferenceDTO conference) {        
+    public ConferenceDTO save(PostConferenceDTO conference) {        
         Conference conferenceEntity = this.modelMapper.map(conference, Conference.class);        
         User owner = this.userRepository.getUserById(conference.getOwnerId());
         System.out.println(conference.getOwnerId());        

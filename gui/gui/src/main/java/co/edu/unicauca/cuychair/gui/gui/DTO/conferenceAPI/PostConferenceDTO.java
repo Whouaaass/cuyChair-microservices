@@ -7,6 +7,7 @@ public class PostConferenceDTO {
     private String title;
     private String city;
     private String description;
+    private String subject;
     private Date date;      
     private Integer ownerId;
 
@@ -57,5 +58,13 @@ public class PostConferenceDTO {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 }

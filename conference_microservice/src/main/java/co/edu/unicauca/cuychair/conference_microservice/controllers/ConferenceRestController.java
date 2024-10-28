@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import co.edu.unicauca.cuychair.conference_microservice.services_layer.DTO.AddConferencePaperDTO;
 import co.edu.unicauca.cuychair.conference_microservice.services_layer.DTO.AddConferenceParticipationDTO;
 import co.edu.unicauca.cuychair.conference_microservice.services_layer.DTO.ConferenceDTO;
-import co.edu.unicauca.cuychair.conference_microservice.services_layer.DTO.SimpleConferenceDTO;
+import co.edu.unicauca.cuychair.conference_microservice.services_layer.DTO.PostConferenceDTO;
 import co.edu.unicauca.cuychair.conference_microservice.services_layer.services.IConferenceService;
 import co.edu.unicauca.cuychair.conference_microservice.services_layer.services.IPaperService;
 import co.edu.unicauca.cuychair.conference_microservice.services_layer.services.IUserService;
@@ -41,7 +41,7 @@ public class ConferenceRestController {
     }
 
     @PostMapping("")
-    public ResponseEntity<?> createConference(@RequestBody SimpleConferenceDTO conferenceDTO) {
+    public ResponseEntity<?> createConference(@RequestBody PostConferenceDTO conferenceDTO) {
         ConferenceDTO conference = conferenceService.save(conferenceDTO);
         return new ResponseEntity<>(conference, HttpStatus.CREATED);
     }

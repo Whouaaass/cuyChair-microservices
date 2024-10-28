@@ -4,7 +4,7 @@ package co.edu.unicauca.cuychair.conference_microservice.services_layer.services
 import java.util.List;
 
 import co.edu.unicauca.cuychair.conference_microservice.services_layer.DTO.ConferenceDTO;
-import co.edu.unicauca.cuychair.conference_microservice.services_layer.DTO.SimpleConferenceDTO;
+import co.edu.unicauca.cuychair.conference_microservice.services_layer.DTO.PostConferenceDTO;
 
 /**
  * Interfaz de los servicios de la conferencia
@@ -30,7 +30,7 @@ public interface IConferenceService {
      * @param conference
      * @return
      */
-    public ConferenceDTO save(SimpleConferenceDTO conference);
+    public ConferenceDTO save(PostConferenceDTO conference);
 
     /**
      * Actualizar una conferencia
