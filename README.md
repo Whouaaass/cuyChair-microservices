@@ -18,3 +18,4 @@ Link diagrama de bounded context de microservicios
 https://app.diagrams.net/#G1FY6b9xRI23bshFKl-4m459JFAv-3c7Pa#%7B%22pageId%22%3A%22ApDRb7ci62jY-3dptMDl%22%7D
 
 Link del video  
+https://youtu.be/YlOqKupIUjE
