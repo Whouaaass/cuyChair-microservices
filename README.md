@@ -2,11 +2,10 @@
 Aplicación de cuychair pero esta vez con microservicios  
 
 ---
-Existen 4 microservicios:
 - Microservicio de Usuarios
 - Microservicio de Conferencias
 - Microservicio de Articulos
-
+-microservicio de revision de paper
 Link backlog en taiga
 https://tree.taiga.io/project/julianmunoz-ingenieria-de-software-proyecto/
 
