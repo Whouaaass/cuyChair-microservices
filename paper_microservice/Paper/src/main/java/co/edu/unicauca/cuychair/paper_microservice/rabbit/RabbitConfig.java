@@ -1,4 +1,4 @@
-package co.edu.unicauca.cuychair.paper_microservice.publisher;
+package co.edu.unicauca.cuychair.paper_microservice.rabbit;
 
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;

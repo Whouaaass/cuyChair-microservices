@@ -1,4 +1,4 @@
-package co.edu.unicauca.cuychair.paper_microservice.publisher;
+package co.edu.unicauca.cuychair.paper_microservice.rabbit.publisher;
 
 
 import org.springframework.amqp.core.Binding;
