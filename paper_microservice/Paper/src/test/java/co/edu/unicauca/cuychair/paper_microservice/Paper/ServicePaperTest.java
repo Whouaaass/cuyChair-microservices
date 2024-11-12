@@ -3,7 +3,7 @@ package co.edu.unicauca.cuychair.paper_microservice.Paper;
 import co.edu.unicauca.cuychair.paper_microservice.dataacces.repositorys.*;
 import co.edu.unicauca.cuychair.paper_microservice.domain.User;
 import co.edu.unicauca.cuychair.paper_microservice.domain.Conference;
-import co.edu.unicauca.cuychair.paper_microservice.publisher.Publisher;
+import co.edu.unicauca.cuychair.paper_microservice.rabbit.publisher.Publisher;
 import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.DTO.PaperDTO;
 import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.services.PaperStoreService;
 import org.junit.Test;
@@ -11,7 +11,6 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;

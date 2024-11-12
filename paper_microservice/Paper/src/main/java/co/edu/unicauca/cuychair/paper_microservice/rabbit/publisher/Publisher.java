@@ -1,4 +1,4 @@
-package co.edu.unicauca.cuychair.paper_microservice.publisher;
+package co.edu.unicauca.cuychair.paper_microservice.rabbit.publisher;
 
 import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.DTO.PaperDTO;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;

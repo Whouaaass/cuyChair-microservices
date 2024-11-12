@@ -1,4 +1,4 @@
-package co.edu.unicauca.cuychair.paper_microservice.consumer;
+package co.edu.unicauca.cuychair.paper_microservice.rabbit.consumer;
 
 import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.DTO.ConferenceDTO;
 import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.DTO.UserDTO;

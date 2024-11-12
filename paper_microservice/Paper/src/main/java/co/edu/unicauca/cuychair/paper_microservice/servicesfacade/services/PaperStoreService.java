@@ -4,10 +4,11 @@ import co.edu.unicauca.cuychair.paper_microservice.dataacces.repositorys.IReposi
 import co.edu.unicauca.cuychair.paper_microservice.dataacces.repositorys.IRepositoryPaper;
 import co.edu.unicauca.cuychair.paper_microservice.domain.Paper;
 import co.edu.unicauca.cuychair.paper_microservice.dataacces.repositorys.IRepositoryUser;
-import co.edu.unicauca.cuychair.paper_microservice.publisher.Publisher;
+import co.edu.unicauca.cuychair.paper_microservice.email.ConfirmSendBuilder;
+import co.edu.unicauca.cuychair.paper_microservice.email.DirectorSendEmail;
+import co.edu.unicauca.cuychair.paper_microservice.rabbit.publisher.Publisher;
 import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.DTO.PaperDTO;
 import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.mapper.ConversorPaperDTO;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,6 +21,7 @@ public class PaperStoreService {
     private final IRepositoryConference repositoryConference;
     private final ConversorPaperDTO map;
     private final Publisher publisher;
+    private DirectorSendEmail directorSendEmail;
 
 
     public PaperStoreService(IRepositoryPaper repositoryPaper, IRepositoryUser repositoryUser, IRepositoryConference repositoryConference,Publisher publisher) {
@@ -43,8 +45,10 @@ public class PaperStoreService {
      */
     public boolean storePaper (PaperDTO objPaper){
         boolean status=repositoryPaper.storePaper(map.DTOinPaper(objPaper));
+        this.directorSendEmail=new DirectorSendEmail(new ConfirmSendBuilder(),map.DTOinPaper(objPaper));
         if(status) {
             publisher.sendPaperDTO(objPaper);
+            directorSendEmail.buildAndSend();
         }
         return status;
     }
