@@ -1,6 +1,6 @@
 package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.state;
 
-public class Moderation implements PaperReviewState{
+public class Moderation extends PaperReviewState {
 
     @Override
     public void review() {

@@ -1,6 +1,6 @@
 package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.state;
 
-public class Draft implements PaperReviewState{
+public class Draft extends PaperReviewState {
 
     @Override
     public void review() {
