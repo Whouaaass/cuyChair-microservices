@@ -1,11 +1,10 @@
-package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.dataAccess.repository;
+package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.adapters.output.repositoris;
 
-import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.dataAccess.repository.entitis.PaperEntity;
+import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.adapters.output.entitis.PaperEntity;
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.Paper;
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.ports.output.PaperRepositoryPort;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Repository

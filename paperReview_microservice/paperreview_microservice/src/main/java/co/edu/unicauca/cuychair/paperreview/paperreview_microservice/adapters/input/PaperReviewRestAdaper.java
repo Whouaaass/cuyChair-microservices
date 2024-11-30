@@ -1,4 +1,4 @@
-package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.adapters;
+package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.adapters.input;
 
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.ports.input.ServicePaperReviewPort;
 import org.springframework.web.bind.annotation.RequestMapping;

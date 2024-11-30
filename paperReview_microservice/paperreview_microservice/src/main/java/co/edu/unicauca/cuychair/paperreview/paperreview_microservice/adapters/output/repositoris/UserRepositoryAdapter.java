@@ -1,6 +1,6 @@
-package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.dataAccess.repository;
+package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.adapters.output.repositoris;
 
-import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.dataAccess.repository.entitis.UserEntity;
+import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.adapters.output.entitis.UserEntity;
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.User;
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.ports.output.UserRepositoryPort;
 import org.springframework.stereotype.Repository;

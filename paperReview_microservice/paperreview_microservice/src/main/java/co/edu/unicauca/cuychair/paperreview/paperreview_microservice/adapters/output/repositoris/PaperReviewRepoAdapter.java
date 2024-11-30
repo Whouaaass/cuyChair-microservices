@@ -1,6 +1,6 @@
-package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.dataAccess.repository;
+package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.adapters.output.repositoris;
 
-import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.dataAccess.repository.entitis.PaperReviewEntity;
+import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.adapters.output.entitis.PaperReviewEntity;
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.paperReview;
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.ports.output.PaperReviewRepositoryPort;
 import org.springframework.stereotype.Repository;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class PaperReviewRepositoryAdapter implements PaperReviewRepositoryPort {
+public class PaperReviewRepoAdapter implements PaperReviewRepositoryPort {
     private List<PaperReviewEntity> paperReviews;
 
     @Override
