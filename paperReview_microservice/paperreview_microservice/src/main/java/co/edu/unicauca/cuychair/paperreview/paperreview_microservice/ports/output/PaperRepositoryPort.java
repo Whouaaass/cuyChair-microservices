@@ -6,4 +6,5 @@ public interface PaperRepositoryPort {
     Paper addPaper(Paper paper);
     Paper updatePaper(Paper paper);
     Paper removePaper(Paper paper);
+    Paper findById(int id);
 }

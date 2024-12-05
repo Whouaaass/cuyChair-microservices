@@ -24,4 +24,9 @@ public class ConferenceServices implements ServiceConferencePort {
     public Conference updateConference(Conference conference) {
         return repository.updateConference(conference);
     }
+
+    @Override
+    public Conference findById(int id) {
+        return repository.findById(id);
+    }
 }

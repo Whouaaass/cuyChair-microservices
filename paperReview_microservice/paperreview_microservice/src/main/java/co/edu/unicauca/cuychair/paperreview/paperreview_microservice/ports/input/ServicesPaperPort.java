@@ -6,4 +6,5 @@ public interface ServicesPaperPort {
     Paper addPaper(Paper paper);
     Paper removePaper(Paper paper);
     Paper updatePaper(Paper paper);
+    Paper findById(int id);
 }

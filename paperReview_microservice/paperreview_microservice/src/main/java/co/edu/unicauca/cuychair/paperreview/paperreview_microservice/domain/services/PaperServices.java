@@ -24,4 +24,9 @@ public class PaperServices implements ServicesPaperPort {
     public Paper updatePaper(Paper paper) {
         return repository.updatePaper(paper);
     }
+
+    @Override
+    public Paper findById(int id) {
+        return repository.findById(id);
+    }
 }

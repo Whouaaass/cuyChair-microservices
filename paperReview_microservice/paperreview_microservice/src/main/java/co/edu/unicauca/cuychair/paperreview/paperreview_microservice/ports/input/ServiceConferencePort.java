@@ -6,4 +6,5 @@ public interface ServiceConferencePort {
     Conference addConference(Conference conference);
     Conference removeConference(Conference conference);
     Conference updateConference(Conference conference);
+    Conference findById(int id);
 }

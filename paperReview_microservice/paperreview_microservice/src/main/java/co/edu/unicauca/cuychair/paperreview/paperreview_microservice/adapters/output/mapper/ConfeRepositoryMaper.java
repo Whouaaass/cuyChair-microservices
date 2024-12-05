@@ -5,10 +5,11 @@ import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.Conf
 
 public class ConfeRepositoryMaper {
     public Conference toConference(ConferenceEntity conference) {
-        return null;
+        return new Conference(conference.getId(), conference.getTitle(), conference.getCity(), conference.getDate(),conference.getReviewers(),conference.getAuthors(),conference.getOwner());
     }
 
     public ConferenceEntity toConferenceEntity(Conference conference) {
-        return null;
+
+        return new ConferenceEntity(conference.getId(), conference.getTitle(), conference.getCity(), conference.getDate(),conference.getReviewers(),conference.getAuthors(),conference.getOwner());
     }
 }

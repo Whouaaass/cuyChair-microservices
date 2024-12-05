@@ -6,10 +6,10 @@ import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.Pape
 public class PaperDTOMaper {
 
     public Paper toPaper(PaperDTO paperDTO) {
-        return null;
+        return new Paper(paperDTO.getId(), paperDTO.getTitle(), paperDTO.getAbstract(), paperDTO.getSubTitle(), paperDTO.getIdAuthor(), paperDTO.getIdConference());
     }
 
     public PaperDTO toPaperDTO(Paper paper) {
-        return null;
+        return new PaperDTO(paper.getId(), paper.getTitle(), paper.getAbstract(), paper.getSubtitle(), paper.getAuthor(), paper.getConference());
     }
 }

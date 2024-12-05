@@ -4,12 +4,17 @@ import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.adapters.in
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.Conference;
 
 public class ConferenceDTOMaper {
+    private UserDTOMaper userDTO;
 
-    public Conference toConference(ConferenceDTO conferenceDTO) {
-        return null;
+
+    public ConferenceDTOMaper() {
     }
 
-    public ConferenceDTO toConferenceDTO(Conference conference) {
-        return null;
+    public ConferenceDTO ConferenceinDTO(Conference conference){
+        return new ConferenceDTO(conference.getId(), conference.getTitle(), conference.getCity(), conference.getDate(),userDTO.toUserDTOList(conference.getReviewers()),userDTO.toUserDTOList(conference.getAuthors()),userDTO.toUserDTO(conference.getOwner()));
+    }
+
+    public Conference DTOinConference(ConferenceDTO conferenceDTO){
+        return new Conference(conferenceDTO.getId(), conferenceDTO.getTitle(), conferenceDTO.getCity(), conferenceDTO.getDate(),userDTO.toUserList(conferenceDTO.getReviewers()),userDTO.toUserList(conferenceDTO.getAuthors()),userDTO.toUser(conferenceDTO.getOwner()));
     }
 }

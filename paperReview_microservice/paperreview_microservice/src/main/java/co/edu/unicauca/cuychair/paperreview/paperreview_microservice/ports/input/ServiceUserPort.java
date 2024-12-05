@@ -6,4 +6,5 @@ public interface ServiceUserPort {
     User addUser(User user);
     User removeUser(User user);
     User updateUser(User user);
+    User findById(int id);
 }

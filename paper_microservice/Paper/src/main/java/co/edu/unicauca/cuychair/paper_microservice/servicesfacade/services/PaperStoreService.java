@@ -4,6 +4,7 @@ import co.edu.unicauca.cuychair.paper_microservice.dataacces.repositorys.IReposi
 import co.edu.unicauca.cuychair.paper_microservice.dataacces.repositorys.IRepositoryPaper;
 import co.edu.unicauca.cuychair.paper_microservice.domain.Paper;
 import co.edu.unicauca.cuychair.paper_microservice.dataacces.repositorys.IRepositoryUser;
+import co.edu.unicauca.cuychair.paper_microservice.email.ConfirmDeleateBuilder;
 import co.edu.unicauca.cuychair.paper_microservice.email.ConfirmSendBuilder;
 import co.edu.unicauca.cuychair.paper_microservice.email.DirectorSendEmail;
 import co.edu.unicauca.cuychair.paper_microservice.rabbit.publisher.Publisher;
@@ -59,6 +60,8 @@ public class PaperStoreService {
      */
 
     public boolean delatePaper (PaperDTO objPaper){
+        this.directorSendEmail=new DirectorSendEmail(new ConfirmDeleateBuilder(),map.DTOinPaper(objPaper));
+        directorSendEmail.buildAndSend();
         return repositoryPaper.delatePaper(map.DTOinPaper(objPaper));
     }
 
@@ -71,7 +74,10 @@ public class PaperStoreService {
     }
 
     public PaperDTO editPaper(PaperDTO objPaper){
-        return map.PaperinDTO(repositoryPaper.editPaper(map.DTOinPaper(objPaper)));
+        repositoryPaper.editPaper(map.DTOinPaper(objPaper));
+        this.directorSendEmail=new DirectorSendEmail(new ConfirmDeleateBuilder(),map.DTOinPaper(objPaper));
+        directorSendEmail.buildAndSend();
+        return objPaper;
     }
 
     public List<PaperDTO> getPaperByAuthor(int authorId){

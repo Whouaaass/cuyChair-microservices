@@ -24,4 +24,10 @@ public class UserServices implements ServiceUserPort {
     public User updateUser(User user) {
         return repository.updateUser(user);
     }
+
+    @Override
+    public User findById(int id) {
+        return repository.findById(id);
+    }
+
 }
