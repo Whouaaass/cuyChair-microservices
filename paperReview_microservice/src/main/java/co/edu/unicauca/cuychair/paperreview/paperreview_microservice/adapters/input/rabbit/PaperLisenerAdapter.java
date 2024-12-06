@@ -20,6 +20,14 @@ public class PaperLisenerAdapter {
     @RabbitListener(queues = "${co.edu.unicauca.cuychair.paper.paperDTO.queue}")
     public void listenPaper(@Payload PaperDTO paper) {
         PaperDTOMaper maper = new PaperDTOMaper();
+        PaperDTO pa=maper.toPaperDTO(services.findById(paper.getId()));
+        if(pa!=null) {
+            if(pa.getTitle().equals(paper.getTitle()) && pa.getSubTitle().equals(paper.getSubTitle()) && pa.getAbstract().equals(paper.getAbstract())) {
+                services.removePaper(maper.toPaper(paper));
+            }else{
+                services.updatePaper(maper.toPaper(paper));
+            }
+        }
         services.addPaper(maper.toPaper(paper));
         makeSlow();
     }

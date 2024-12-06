@@ -21,6 +21,14 @@ public class UserLisenerAdapter {
     @RabbitListener(queues = { "${co.edu.unicauca.cuychair.user.userDTO.queue}" })
     public void listenUser(@Payload UserDTO userDTO) {
         UserDTOMaper maper = new UserDTOMaper();
+        UserDTO us=maper.toUserDTO(services.findById(userDTO.getId()));
+        if(us!=null) {
+            if(us.getName().equals(userDTO.getName()) && us.getPhone()==userDTO.getPhone() && us.getLastName().equals(userDTO.getLastName()) && us.getDescription().equals(userDTO.getDescription())) {
+                services.removeUser(maper.toUser(userDTO));
+            }else{
+                services.updateUser(maper.toUser(userDTO));
+            }
+        }
         services.addUser(maper.toUser(userDTO));
         makeSlow();
     }

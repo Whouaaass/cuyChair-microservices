@@ -21,4 +21,13 @@ public class ConferenceEntity {
     private ArrayList<User> authors;
 
     private User owner;
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof ConferenceEntity) {
+            ConferenceEntity other = (ConferenceEntity) obj;
+            return this.id ==other.getId();
+        }
+        return super.equals(obj);
+    }
 }

@@ -14,4 +14,13 @@ public class PaperEntity {
     private String subtitle;
     private int author;
     private int conference;
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof PaperEntity) {
+            PaperEntity other = (PaperEntity) obj;
+            return id == other.getId() ;
+        }
+        return super.equals(obj);
+    }
 }

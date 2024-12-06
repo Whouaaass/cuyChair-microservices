@@ -23,6 +23,7 @@ public class ConferenceLisenerAdapter {
         services.addConference(maper.DTOinConference(conferenceDTO));
         makeSlow();
     }
+
     private void makeSlow() {
         try {
             Thread.sleep(5000);

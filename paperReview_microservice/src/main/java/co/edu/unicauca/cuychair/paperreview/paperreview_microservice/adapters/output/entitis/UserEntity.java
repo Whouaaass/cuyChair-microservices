@@ -15,4 +15,13 @@ public class UserEntity {
     private String password;
     private String description;
     private int phone;
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof UserEntity) {
+            UserEntity other = (UserEntity) obj;
+            return other.getId() == this.getId();
+        }
+        return super.equals(obj);
+    }
 }

@@ -6,11 +6,10 @@ import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.User
 public class UserRepositoryMaper {
 
     public User toUser(UserEntity userEntity) {
-        return null;
+        return new User(userEntity.getId(), userEntity.getName(), userEntity.getLastName(), userEntity.getEmail(), userEntity.getPassword(), userEntity.getDescription(), userEntity.getPhone());
     }
 
     public UserEntity toUserEntity(User user) {
-        return null;
+        return new UserEntity(user.getId(), user.getName(), user.getLastName(), user.getEmail(), user.getPassword(), user.getDescription(), user.getPhone());
     }
-
 }
