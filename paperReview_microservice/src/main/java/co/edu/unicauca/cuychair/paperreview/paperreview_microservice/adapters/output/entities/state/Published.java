@@ -1,15 +1,25 @@
 package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.adapters.output.entities.state;
 
 public class Published implements PaperReviewState{
-    String state = "PUBLISHED";
 
-    public String getState(){
-        return state;
+    @Override
+    public Result toModeration() {
+        return new Result(false,"No puedes cambiar un articulo publicado");
     }
 
     @Override
-    public void review() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'review'");
+    public Result toDraft() {
+        return new Result(false,"No puedes cambiar un articulo publicado");
     }
+
+    @Override
+    public Result toPublished() {
+        return new Result(false, "El articulo ya esta publicado");
+    }
+
+    @Override
+    public Result toRejected() {
+        return new Result(false,"No puedes rechazar un articulo publicado");
+    }
+
 }

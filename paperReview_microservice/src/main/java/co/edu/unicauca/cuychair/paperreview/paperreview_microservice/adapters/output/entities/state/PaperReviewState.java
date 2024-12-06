@@ -2,15 +2,27 @@ package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.adapters.o
 
 public interface PaperReviewState{
     /**
-     * @brief review califica un paper
-     * 
+     * @brief toModeration pasa el estado a moderacion 
+     * @return el resultado del paso a nuevo estado
      */
-    void review();
+    Result toModeration();
 
     /**
-     * @brief getState devuelve un estado
-     * @return String del estado encontrado en mayusculas
+     * @brief toDraft pasa el estado a Draft 
+     * @return el resultado del paso a nuevo estado
      */
-    String getState();
+    Result toDraft();
+
+    /**
+     * @brief toPublished pasa el estado a Published
+     * @return el resultado del paso a nuevo estado
+     */
+    Result toPublished();
+
+    /**
+     * @brief toRejected pasa el estado a Rejected 
+     * @return el resultado del paso a nuevo estado
+     */
+    Result toRejected();
 }
 

@@ -1,15 +1,23 @@
 package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.adapters.output.entities.state;
 
 public class Moderation implements PaperReviewState{
-    String state = "MODERATION";
     @Override
-    public void review() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getState'");
+    public Result toModeration() {
+        return new Result(false,"El articulo ya esta en moderación");
     }
 
     @Override
-    public String getState() {
-        return state;
+    public Result toDraft() {
+        return new Result(true,"Articulo enviado a borrador");
+    }
+
+    @Override
+    public Result toPublished() {
+        return new Result(true,"Articulo publicado");
+    }
+
+    @Override
+    public Result toRejected() {
+        return new Result(true,"Articulo rechazado");
     }
 }
