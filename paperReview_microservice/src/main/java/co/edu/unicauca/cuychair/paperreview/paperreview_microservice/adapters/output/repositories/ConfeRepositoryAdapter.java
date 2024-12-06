@@ -1,6 +1,6 @@
-package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.adapters.output.repositoris;
+package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.adapters.output.repositories;
 
-import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.adapters.output.entitis.ConferenceEntity;
+import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.adapters.output.entities.ConferenceEntity;
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.Conference;
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.ports.output.ConferenceRepositoryPort;
 import org.springframework.stereotype.Repository;
@@ -24,5 +24,11 @@ public class ConfeRepositoryAdapter implements ConferenceRepositoryPort {
     @Override
     public Conference updateConference(Conference conference) {
         return null;
+    }
+
+    @Override
+    public Conference findById(int id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findById'");
     }
 }

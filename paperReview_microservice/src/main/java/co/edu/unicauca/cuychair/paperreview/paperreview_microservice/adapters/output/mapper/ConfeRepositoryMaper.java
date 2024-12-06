@@ -1,6 +1,6 @@
 package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.adapters.output.mapper;
 
-import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.adapters.output.entitis.ConferenceEntity;
+import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.adapters.output.entities.ConferenceEntity;
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.Conference;
 
 public class ConfeRepositoryMaper {

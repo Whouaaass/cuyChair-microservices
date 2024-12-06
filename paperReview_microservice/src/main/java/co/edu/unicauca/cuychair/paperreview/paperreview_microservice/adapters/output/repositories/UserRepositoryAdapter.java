@@ -1,6 +1,6 @@
-package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.adapters.output.repositoris;
+package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.adapters.output.repositories;
 
-import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.adapters.output.entitis.UserEntity;
+import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.adapters.output.entities.UserEntity;
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.User;
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.ports.output.UserRepositoryPort;
 import org.springframework.stereotype.Repository;
@@ -25,5 +25,11 @@ public class UserRepositoryAdapter implements UserRepositoryPort {
     @Override
     public User updateUser(User user) {
         return null;
+    }
+
+    @Override
+    public User findById(int id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findById'");
     }
 }

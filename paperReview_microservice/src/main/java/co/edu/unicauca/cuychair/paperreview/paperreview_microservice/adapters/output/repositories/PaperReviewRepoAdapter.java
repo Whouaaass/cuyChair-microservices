@@ -1,6 +1,6 @@
-package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.adapters.output.repositoris;
+package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.adapters.output.repositories;
 
-import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.adapters.output.entitis.PaperReviewEntity;
+import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.adapters.output.entities.PaperReviewEntity;
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.paperReview;
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.ports.output.PaperReviewRepositoryPort;
 import org.springframework.stereotype.Repository;
