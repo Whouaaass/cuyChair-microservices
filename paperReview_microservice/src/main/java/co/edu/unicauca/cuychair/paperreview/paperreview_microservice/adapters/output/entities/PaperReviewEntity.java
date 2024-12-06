@@ -16,6 +16,11 @@ public class PaperReviewEntity {
     PaperReviewState state;
     String comment;
 
+    public PaperReviewEntity(){
+        Moderation moderationState = new Moderation();
+        state = moderationState;
+    }
+
     boolean changeState(String newState){
         String varState = newState.toUpperCase();
         switch(varState){
