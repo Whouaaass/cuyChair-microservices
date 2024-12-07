@@ -1,2 +1,5 @@
 .vscode
 /gui/gui/target/
+
+# My Code Workspace
+microservices.code-workspace
