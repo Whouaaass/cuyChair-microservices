@@ -1,6 +1,5 @@
 package co.edu.unicauca.cuychair.paper_microservice.domain;
 
-import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.DTO.UserDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;

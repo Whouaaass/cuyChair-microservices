@@ -10,14 +10,14 @@ public interface IRepositoryPaper {
     * @param objPaper Paper a guardar
     * @return confirmación
     * */
-    boolean storePaper (Paper objPaper);
+    Paper storePaper (Paper objPaper);
 
     /*
      * @brief Eliminar un Paper
      * @param objPaper Paper a eliminar
      * @return confirmación
      * */
-    boolean delatePaper (Paper objPaper);
+    Paper delatePaper (Paper objPaper);
 
     /*
      * @brief Listar los paper
@@ -29,5 +29,6 @@ public interface IRepositoryPaper {
 
     List<Paper> getPapersByAuthor (int authorId);
 
+    Paper existPaper (int id);
 
 }

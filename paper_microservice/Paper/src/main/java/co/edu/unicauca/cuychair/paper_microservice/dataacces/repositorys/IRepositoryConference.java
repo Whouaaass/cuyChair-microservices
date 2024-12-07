@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface IRepositoryConference {
 
-    public boolean addConference(Conference objConference);
+    public Conference addConference(Conference objConference);
 
     public Conference getConferenceById(int id);
 

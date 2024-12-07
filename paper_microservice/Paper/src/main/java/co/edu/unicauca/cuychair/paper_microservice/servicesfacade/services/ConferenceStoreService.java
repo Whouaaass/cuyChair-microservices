@@ -2,14 +2,13 @@ package co.edu.unicauca.cuychair.paper_microservice.servicesfacade.services;
 
 import co.edu.unicauca.cuychair.paper_microservice.domain.Conference;
 import co.edu.unicauca.cuychair.paper_microservice.dataacces.repositorys.IRepositoryConference;
-import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.DTO.ConferenceDTO;
-import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.DTO.UserDTO;
-import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.mapper.ConversorConferenceDTO;
-import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.mapper.ConversorUserDTO;
-import org.springframework.beans.factory.annotation.Autowired;
+import co.edu.unicauca.cuychair.paper_microservice.controller.DTO.ConferenceDTO;
+import co.edu.unicauca.cuychair.paper_microservice.controller.DTO.UserDTO;
+import co.edu.unicauca.cuychair.paper_microservice.controller.mapper.ConversorConferenceDTO;
+import co.edu.unicauca.cuychair.paper_microservice.controller.mapper.ConversorUserDTO;
+import co.edu.unicauca.cuychair.paper_microservice.domain.User;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -22,17 +21,15 @@ public class ConferenceStoreService {
         this.repositoryConference = repositoryConference;
     }
 
-    public boolean addConference(ConferenceDTO conference) {
-        ConversorConferenceDTO map=new ConversorConferenceDTO();
-        return repositoryConference.addConference(map.DTOinConference(conference));
+    public Conference addConference(Conference conference) {
+        return repositoryConference.addConference(conference);
     }
 
     public Conference getConferenceById(int id) {
         return repositoryConference.getConferenceById(id);
     }
 
-    public List<Integer> conferencesParticipanUser(UserDTO author) {
-        ConversorUserDTO map=new ConversorUserDTO();
-        return repositoryConference.conferenceParticipanByAuthor(map.DTOinUser(author));
+    public List<Integer> conferencesParticipanUser(User author) {
+        return repositoryConference.conferenceParticipanByAuthor(author);
     }
 }

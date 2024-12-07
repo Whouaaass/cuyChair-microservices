@@ -18,17 +18,19 @@ public class RepositoryPaper implements IRepositoryPaper{
     }
 
     @Override
-    public boolean storePaper(Paper objPaper) {
+    public Paper storePaper(Paper objPaper) {
         objPaper.setId(indexCounter.getAndIncrement());
         if(objPaper.getAuthor()==null || objPaper.getConference()==null){
-            return false;
+            return null;
         }
-        return paperList.add(objPaper);
+        paperList.add(objPaper);
+        return objPaper;
     }
 
     @Override
-    public boolean delatePaper(Paper objPaper) {
-        return paperList.remove(objPaper);
+    public Paper delatePaper(Paper objPaper) {
+        paperList.remove(objPaper);
+        return objPaper;
     }
 
     @Override
@@ -53,5 +55,16 @@ public class RepositoryPaper implements IRepositoryPaper{
         }
         return papers;
     }
+
+    @Override
+    public Paper existPaper(int id) {
+        for(Paper o:paperList){
+            if(o.getId()==id){
+                return o;
+            }
+        }
+        return null;
+    }
+
 
 }

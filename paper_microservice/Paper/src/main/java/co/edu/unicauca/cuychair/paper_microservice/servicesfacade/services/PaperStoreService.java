@@ -5,11 +5,12 @@ import co.edu.unicauca.cuychair.paper_microservice.dataacces.repositorys.IReposi
 import co.edu.unicauca.cuychair.paper_microservice.domain.Paper;
 import co.edu.unicauca.cuychair.paper_microservice.dataacces.repositorys.IRepositoryUser;
 import co.edu.unicauca.cuychair.paper_microservice.email.ConfirmDeleateBuilder;
+import co.edu.unicauca.cuychair.paper_microservice.email.ConfirmEditBuilder;
 import co.edu.unicauca.cuychair.paper_microservice.email.ConfirmSendBuilder;
 import co.edu.unicauca.cuychair.paper_microservice.email.DirectorSendEmail;
 import co.edu.unicauca.cuychair.paper_microservice.rabbit.publisher.Publisher;
-import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.DTO.PaperDTO;
-import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.mapper.ConversorPaperDTO;
+import co.edu.unicauca.cuychair.paper_microservice.controller.DTO.PaperDTO;
+import co.edu.unicauca.cuychair.paper_microservice.controller.mapper.ConversorPaperDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,25 +19,19 @@ import java.util.List;
 @Service
 public class PaperStoreService {
     private final IRepositoryPaper repositoryPaper;
-    private final IRepositoryUser repositoryUser;
-    private final IRepositoryConference repositoryConference;
-    private final ConversorPaperDTO map;
     private final Publisher publisher;
     private DirectorSendEmail directorSendEmail;
 
 
-    public PaperStoreService(IRepositoryPaper repositoryPaper, IRepositoryUser repositoryUser, IRepositoryConference repositoryConference,Publisher publisher) {
+    public PaperStoreService(IRepositoryPaper repositoryPaper, Publisher publisher) {
         this.repositoryPaper = repositoryPaper;
-        this.repositoryUser = repositoryUser;
-        this.repositoryConference = repositoryConference;
-        map=new ConversorPaperDTO(repositoryUser,repositoryConference);
         this.publisher = publisher;
     }
 
 
 
-    public void sendPaperDTORabbit(PaperDTO paperDTO) {
-        publisher.sendPaperDTO(paperDTO);
+    public void sendPaperDTORabbit(Paper paper) {
+        publisher.sendPaperDTO(paper);
     }
 
     /**
@@ -44,14 +39,14 @@ public class PaperStoreService {
      * @param objPaper Paper a guardar
      * @return Confirmación
      */
-    public boolean storePaper (PaperDTO objPaper){
-        boolean status=repositoryPaper.storePaper(map.DTOinPaper(objPaper));
-        this.directorSendEmail=new DirectorSendEmail(new ConfirmSendBuilder(),map.DTOinPaper(objPaper));
-        if(status) {
-            publisher.sendPaperDTO(objPaper);
-            directorSendEmail.buildAndSend();
+    public Paper storePaper (Paper objPaper){
+        this.directorSendEmail=new DirectorSendEmail(new ConfirmSendBuilder(),objPaper);
+        if(repositoryPaper.storePaper(objPaper)==null) {
+            return null;
         }
-        return status;
+        sendPaperDTORabbit(objPaper);
+        directorSendEmail.buildAndSend();
+        return objPaper;
     }
     /**
      * @brief Eliminar un Paper
@@ -59,10 +54,14 @@ public class PaperStoreService {
      * @return Paper eliminado
      */
 
-    public boolean delatePaper (PaperDTO objPaper){
-        this.directorSendEmail=new DirectorSendEmail(new ConfirmDeleateBuilder(),map.DTOinPaper(objPaper));
+    public Paper delatePaper (Paper objPaper){
+        this.directorSendEmail=new DirectorSendEmail(new ConfirmDeleateBuilder(),objPaper);
+        if(repositoryPaper.delatePaper(objPaper)==null) {
+            return null;
+        }
+        sendPaperDTORabbit(objPaper);
         directorSendEmail.buildAndSend();
-        return repositoryPaper.delatePaper(map.DTOinPaper(objPaper));
+        return objPaper;
     }
 
     /**
@@ -73,14 +72,29 @@ public class PaperStoreService {
         return repositoryPaper.listPapers();
     }
 
-    public PaperDTO editPaper(PaperDTO objPaper){
-        repositoryPaper.editPaper(map.DTOinPaper(objPaper));
-        this.directorSendEmail=new DirectorSendEmail(new ConfirmDeleateBuilder(),map.DTOinPaper(objPaper));
+    public Paper editPaper(Paper objPaper){
+        this.directorSendEmail=new DirectorSendEmail(new ConfirmEditBuilder(),objPaper);
+        if(repositoryPaper.editPaper(objPaper)==null) {
+            return null;
+        }
+        sendPaperDTORabbit(objPaper);
         directorSendEmail.buildAndSend();
         return objPaper;
     }
 
-    public List<PaperDTO> getPaperByAuthor(int authorId){
-        return map.listPaperinDTO(repositoryPaper.getPapersByAuthor(authorId));
+    public List<Paper> getPaperByAuthor(int authorId){
+        return repositoryPaper.getPapersByAuthor(authorId);
+    }
+
+    public Paper clonePaper(int paperId)  {
+        try{
+            Paper paperPrototype=repositoryPaper.existPaper(paperId);
+            if(paperPrototype!=null) {
+                return paperPrototype.clone();
+            }
+        }catch (CloneNotSupportedException e){
+            return null;
+        }
+        return null;
     }
 }

@@ -18,13 +18,11 @@ public class RepositoryConference implements IRepositoryConference{
     }
 
     @Override
-    public boolean addConference(Conference objConference) {
-        int index=listConference.indexOf(objConference);
-        if(index<0){
-            return listConference.add(objConference);
+    public Conference addConference(Conference objConference) {
+        if(listConference.add(objConference)){
+            return objConference;
         }
-        listConference.set(index, objConference);
-        return true;
+        return null;
     }
 
     @Override

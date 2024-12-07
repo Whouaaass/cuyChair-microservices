@@ -1,10 +1,14 @@
 package co.edu.unicauca.cuychair.paper_microservice.controller;
 
+import co.edu.unicauca.cuychair.paper_microservice.controller.mapper.ConversorConferenceDTO;
+import co.edu.unicauca.cuychair.paper_microservice.controller.mapper.ConversorPaperDTO;
+import co.edu.unicauca.cuychair.paper_microservice.controller.mapper.ConversorUserDTO;
+import co.edu.unicauca.cuychair.paper_microservice.domain.Conference;
 import co.edu.unicauca.cuychair.paper_microservice.domain.Paper;
-import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.DTO.ConferenceDTO;
-import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.DTO.PaperDTO;
-import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.DTO.UserDTO;
-import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.mapper.ConversorUserDTO;
+import co.edu.unicauca.cuychair.paper_microservice.controller.DTO.ConferenceDTO;
+import co.edu.unicauca.cuychair.paper_microservice.controller.DTO.PaperDTO;
+import co.edu.unicauca.cuychair.paper_microservice.controller.DTO.UserDTO;
+import co.edu.unicauca.cuychair.paper_microservice.domain.User;
 import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.services.ConferenceStoreService;
 import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.services.PaperStoreService;
 import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.services.UserStoreService;
@@ -24,14 +28,25 @@ public class PaperController {
     private  UserStoreService serviceUser;
 
 
+    private ConversorPaperDTO maperPaper;
+    private ConversorConferenceDTO maperConference;
+    private ConversorUserDTO maperUser;
+
+    public PaperController() {
+        this.maperPaper = new ConversorPaperDTO();
+        this.maperConference = new ConversorConferenceDTO();
+        this.maperUser = new ConversorUserDTO();
+    }
+
     /**
      * @brief Guardar un Paper
      * @param objPaper Paper a guardar
      * @return Confirmación
      */
     @PostMapping("/paper")
-    public boolean storePaper (@RequestBody PaperDTO objPaper){
-        return servicePaper.storePaper(objPaper);
+    public PaperDTO storePaper (@RequestBody PaperDTO objPaper){
+        Paper paper=maperPaper.toPaper(objPaper,serviceUser.getUserById(objPaper.getIdAuthor()),serviceConference.getConferenceById(objPaper.getIdConference()));
+        return maperPaper.toPaperDTO(servicePaper.storePaper(paper));
     }
     /**
      * @brief Eliminar un Paper
@@ -41,8 +56,9 @@ public class PaperController {
 
     @RequestMapping(method = RequestMethod.DELETE, produces = "application/json")
     @ResponseBody
-    public boolean delatePaper (@RequestBody PaperDTO objPaper){
-        return servicePaper.delatePaper(objPaper);
+    public PaperDTO delatePaper (@RequestBody PaperDTO objPaper){
+        Paper paper=maperPaper.toPaper(objPaper,serviceUser.getUserById(objPaper.getIdAuthor()),serviceConference.getConferenceById(objPaper.getIdConference()));
+        return maperPaper.toPaperDTO(servicePaper.delatePaper(paper));
     }
 
     /**
@@ -51,32 +67,40 @@ public class PaperController {
      */
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public List<Paper> listPapers (){
-        return servicePaper.listPapers();
+    public List<PaperDTO> listPapers (){
+        return maperPaper.toPaperDTOList(servicePaper.listPapers());
     }
 
     @PostMapping("/user")
-    public boolean addConferece(@RequestBody UserDTO objUser){
-         return serviceUser.addUser(objUser);
+    public UserDTO addUser(@RequestBody UserDTO objUser){
+        User user=maperUser.toUser(objUser);
+        return maperUser.toUserDTO(serviceUser.addUser(user));
     }
 
     @PostMapping("/conference")
-    public boolean addConference(@RequestBody ConferenceDTO objConference){
-        return serviceConference.addConference(objConference);
+    public ConferenceDTO addConference(@RequestBody ConferenceDTO objConference){
+        Conference conference=maperConference.toConference(objConference);
+        return maperConference.toConferenceDTO(serviceConference.addConference(conference));
     }
 
     @PostMapping("/edit")
     public PaperDTO editPaper(@RequestBody PaperDTO objPaper){
-        return servicePaper.editPaper(objPaper);
+        Paper paper=maperPaper.toPaper(objPaper,serviceUser.getUserById(objPaper.getIdAuthor()),serviceConference.getConferenceById(objPaper.getIdConference()));
+        return maperPaper.toPaperDTO(servicePaper.editPaper(paper));
     }
 
     @GetMapping("/paperAuthor/{authorId}")
     public List<PaperDTO> getPapersByAuthor (@PathVariable int authorId){
-        return servicePaper.getPaperByAuthor(authorId);
+        return maperPaper.toPaperDTOList(servicePaper.getPaperByAuthor(authorId));
     }
 
     @GetMapping("/listconferences/{Userid}")
     public List<Integer> listConferencesByUser (@PathVariable int Userid){
         return serviceConference.conferencesParticipanUser(serviceUser.getUserById(Userid));
+    }
+
+    @GetMapping("/clonePaper/{PaperId}")
+    public PaperDTO clonePaper (@PathVariable int PaperId){
+        return maperPaper.toPaperDTO(servicePaper.clonePaper(PaperId));
     }
 }

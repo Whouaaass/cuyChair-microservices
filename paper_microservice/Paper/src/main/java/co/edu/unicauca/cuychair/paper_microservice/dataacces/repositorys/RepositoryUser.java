@@ -16,8 +16,11 @@ public class RepositoryUser implements IRepositoryUser {
     }
 
     @Override
-    public boolean addUser(User objUser) {
-        return listUser.add(objUser);
+    public User addUser(User objUser) {
+        if(listUser.add(objUser)) {
+            return objUser;
+        }
+        return null;
     }
 
     @Override
