@@ -1,8 +1,8 @@
 package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.entities;
 
-import java.util.List;
 
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.state.PaperReviewState;
+import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.state.Result;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,9 +18,21 @@ public class paperReview {
     private String comment;
     private PaperReviewState state;
 
-    boolean changeState(PaperReviewState prmState){
-        return true;//TODOO
+    public Result toModeration() {
+        return state.toModeration();
     }
 
-    User addReviewer(User prmUser){return prmUser;}
+    public Result toDraft() {
+        return state.toDraft();
+    }
+
+    public Result toPublished() {
+        return state.toPublished();
+    }
+
+    public Result toRejected() {
+        return state.toRejected();
+    }
+
+    //User addReviewer(User prmUser){return prmUser;}
 }
