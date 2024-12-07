@@ -83,7 +83,7 @@ public class PaperController {
         return maperConference.toConferenceDTO(serviceConference.addConference(conference));
     }
 
-    @PostMapping("/edit")
+    @PutMapping("/edit")
     public PaperDTO editPaper(@RequestBody PaperDTO objPaper){
         Paper paper=maperPaper.toPaper(objPaper,serviceUser.getUserById(objPaper.getIdAuthor()),serviceConference.getConferenceById(objPaper.getIdConference()));
         return maperPaper.toPaperDTO(servicePaper.editPaper(paper));
