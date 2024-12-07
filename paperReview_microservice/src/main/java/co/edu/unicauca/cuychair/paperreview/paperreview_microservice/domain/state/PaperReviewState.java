@@ -1,24 +1,28 @@
 package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.state;
 
-import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.paperReview;
-
-public abstract class PaperReviewState {
-
-    protected paperReview paperreview;
+public interface PaperReviewState{
+    /**
+     * @brief toModeration pasa el estado a moderacion 
+     * @return el resultado del paso a nuevo estado
+     */
+    Result toModeration();
 
     /**
-     * @brief hace una revisión al estado del paperReview
-     * con el poder de cambiarlo en la función
+     * @brief toDraft pasa el estado a Draft 
+     * @return el resultado del paso a nuevo estado
      */
-    void review() {
-
-    }
+    Result toDraft();
 
     /**
-     * @return estado del paperen un string
-     * @brief devuelve el estado del paper
+     * @brief toPublished pasa el estado a Published
+     * @return el resultado del paso a nuevo estado
      */
-    String getState() {
-        return null;
-    }
+    Result toPublished();
+
+    /**
+     * @brief toRejected pasa el estado a Rejected 
+     * @return el resultado del paso a nuevo estado
+     */
+    Result toRejected();
 }
+

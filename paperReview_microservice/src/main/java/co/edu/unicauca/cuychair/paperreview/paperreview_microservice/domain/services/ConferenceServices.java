@@ -1,8 +1,9 @@
 package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.services;
 
+import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.application.ports.input.ServiceConferencePort;
+import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.application.ports.output.ConferenceRepositoryPort;
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.Conference;
-import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.ports.input.ServiceConferencePort;
-import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.ports.output.ConferenceRepositoryPort;
+
 import org.springframework.stereotype.Service;
 
 @Service
