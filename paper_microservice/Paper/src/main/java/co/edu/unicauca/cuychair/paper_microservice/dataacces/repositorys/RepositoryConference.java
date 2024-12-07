@@ -33,10 +33,9 @@ public class RepositoryConference implements IRepositoryConference{
     }
 
     private boolean isEquals(Conference objConference1, Conference objConference2) {
-        if(objConference1.getTitle().equals(objConference2.getTitle()) && objConference1.getDate().equals(objConference2.getDate())){
-            return true;
-        }
-        return false;
+        return objConference1.getTitle().equals(objConference2.getTitle()) && objConference1.getDate().equals(objConference2.getDate())
+                && objConference1.getReviewers().size() == objConference2.getReviewers().size()
+                && objConference1.getAuthors().size() == objConference2.getAuthors().size();
     }
 
     @Override
