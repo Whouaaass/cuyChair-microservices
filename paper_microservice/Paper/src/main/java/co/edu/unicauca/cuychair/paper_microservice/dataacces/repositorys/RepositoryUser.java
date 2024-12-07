@@ -17,10 +17,29 @@ public class RepositoryUser implements IRepositoryUser {
 
     @Override
     public User addUser(User objUser) {
+        int index=listUser.indexOf(objUser);
+        if(index!=-1){
+            if(isEquals(objUser,listUser.get(index))){
+                listUser.remove(index);
+                return objUser;
+            }
+            listUser.set(index,objUser);
+            return objUser;
+        }
         if(listUser.add(objUser)) {
             return objUser;
         }
         return null;
+    }
+
+    private boolean isEquals(User objUser1, User objUser2) {
+        if(objUser1.getName().equals(objUser2.getName())
+        && objUser1.getLastName().equals(objUser2.getLastName())
+        && objUser1.getDescription().equals(objUser2.getDescription())
+        && objUser1.getEmail().equals(objUser2.getEmail())) {
+            return true;
+        }
+        return false;
     }
 
     @Override

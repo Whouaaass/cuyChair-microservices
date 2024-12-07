@@ -19,10 +19,24 @@ public class RepositoryConference implements IRepositoryConference{
 
     @Override
     public Conference addConference(Conference objConference) {
-        if(listConference.add(objConference)){
+        int index=listConference.indexOf(objConference);
+        if(index!=-1){
+            if(isEquals(objConference,listConference.get(index))){
+                listConference.remove(index);
+                return objConference;
+            }
+            listConference.set(index, objConference);
             return objConference;
         }
-        return null;
+        listConference.add(objConference);
+        return objConference;
+    }
+
+    private boolean isEquals(Conference objConference1, Conference objConference2) {
+        if(objConference1.getTitle().equals(objConference2.getTitle()) && objConference1.getDate().equals(objConference2.getDate())){
+            return true;
+        }
+        return false;
     }
 
     @Override
