@@ -1,7 +1,7 @@
 package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.infrastructure.adapters.input.maper;
 
+import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.entities.Conference;
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.infrastructure.adapters.input.dto.ConferenceDTO;
-import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.Conference;
 
 public class ConferenceDTOMaper {
     private UserDTOMaper userDTO;

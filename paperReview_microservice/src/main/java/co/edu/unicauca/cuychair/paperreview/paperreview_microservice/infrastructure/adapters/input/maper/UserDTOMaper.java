@@ -1,7 +1,7 @@
 package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.infrastructure.adapters.input.maper;
 
+import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.entities.User;
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.infrastructure.adapters.input.dto.UserDTO;
-import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.User;
 
 import java.util.ArrayList;
 import java.util.List;

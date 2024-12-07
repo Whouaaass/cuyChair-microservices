@@ -1,7 +1,7 @@
 package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.infrastructure.adapters.output.mapper;
 
+import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.entities.paperReview;
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.infrastructure.adapters.output.entities.PaperReviewEntity;
-import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.paperReview;
 
 public class PaperReviewMaper {
 

@@ -1,4 +1,4 @@
-package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain;
+package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.entities;
 
 import java.util.List;
 

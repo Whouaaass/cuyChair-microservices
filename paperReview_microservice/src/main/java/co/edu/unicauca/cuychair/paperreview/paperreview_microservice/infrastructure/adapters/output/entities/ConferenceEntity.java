@@ -1,12 +1,13 @@
 package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.infrastructure.adapters.output.entities;
 
-import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.Date;
+
+import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.entities.User;
 
 @Getter
 @Setter

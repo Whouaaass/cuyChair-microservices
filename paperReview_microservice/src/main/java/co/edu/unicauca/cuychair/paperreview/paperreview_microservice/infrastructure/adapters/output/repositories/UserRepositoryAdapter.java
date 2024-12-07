@@ -3,7 +3,7 @@ package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.infrastruc
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.infrastructure.adapters.output.entities.UserEntity;
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.infrastructure.adapters.output.mapper.UserRepositoryMaper;
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.application.ports.output.UserRepositoryPort;
-import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.User;
+import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.entities.User;
 
 import org.springframework.stereotype.Repository;
 

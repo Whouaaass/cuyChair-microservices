@@ -1,7 +1,7 @@
 package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.infrastructure.adapters.input.maper;
 
+import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.entities.Paper;
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.infrastructure.adapters.input.dto.PaperDTO;
-import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.Paper;
 
 public class PaperDTOMaper {
 

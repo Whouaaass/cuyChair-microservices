@@ -1,7 +1,7 @@
 package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.infrastructure.adapters.output.repositories;
 
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.application.ports.output.ConferenceRepositoryPort;
-import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.Conference;
+import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.entities.Conference;
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.infrastructure.adapters.output.entities.ConferenceEntity;
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.infrastructure.adapters.output.mapper.ConfeRepositoryMaper;
 
