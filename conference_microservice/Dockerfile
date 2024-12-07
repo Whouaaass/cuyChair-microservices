@@ -1,6 +1,6 @@
 # CONFERENCE MICROSERVICE DOCKERFILE
 # Use an official OpenJDK runtime as a parent image
-FROM openjdk:21-jre-slim
+FROM openjdk:21
 
 # Set the working directory in the container
 WORKDIR /app
@@ -8,7 +8,7 @@ WORKDIR /app
 # Copy the jar file into the container at /app
 COPY target/*.jar app.jar
 
-# Make port 8080 available to the world outside this container
+# Make port 8092 available to the world outside this container
 EXPOSE 8092
 
 # Create a group and user to run the application
