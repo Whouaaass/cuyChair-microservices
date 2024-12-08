@@ -34,5 +34,19 @@ public class paperReview {
         return state.toRejected();
     }
 
-    //User addReviewer(User prmUser){return prmUser;}
+    public Result changeState(String newState) {
+        String upperNewState = newState.toUpperCase();
+        switch(upperNewState){
+            case "DRAFT":
+            return toDraft();
+            case "MODERATION":
+                return toModeration();
+            case "PUBLISHED":
+                return toPublished();
+            case "REJECTED":
+                return toRejected();
+            default:
+                return new Result(false,"Estado invalido");
+        }
+    }
 }

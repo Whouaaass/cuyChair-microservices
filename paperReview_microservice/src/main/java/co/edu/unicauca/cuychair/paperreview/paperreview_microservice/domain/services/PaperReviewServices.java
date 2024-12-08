@@ -15,4 +15,17 @@ public class PaperReviewServices implements ServicePaperReviewPort {
     public paperReview addpaperReview(paperReview paperReview) {
         return repository.addpaperReview(paperReview);
     }
+
+    @Override
+    public paperReview getPaperReview(int paperId) {
+        return repository.getPaperReview(paperId);
+    }
+
+    @Override
+    public boolean changeState(int paperReviewId, String newState) {
+        return repository.changeState(paperReviewId, newState);
+    }
+
+    
+
 }
