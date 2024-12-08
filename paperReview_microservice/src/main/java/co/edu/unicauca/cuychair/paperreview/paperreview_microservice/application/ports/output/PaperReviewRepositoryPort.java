@@ -1,5 +1,7 @@
 package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.application.ports.output;
 
+import java.util.List;
+
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.entities.paperReview;
 
 public interface PaperReviewRepositoryPort {
@@ -21,5 +23,19 @@ public interface PaperReviewRepositoryPort {
      * @param newState String del nuevo estado
      * @return si la operacion tuvo exito
      */
-    public boolean changeState(int paperReviewId, String newState);
+    boolean changeState(int paperReviewId, String newState);
+    
+    /**
+     * @brief deletePaperReview borra el paperReview indicado
+     * @param paperReviewId id del paperReview a eliminar
+     * @return paperReview eliminado
+     */
+    paperReview deletePaperReview(int paperReviewId);
+
+    /**
+     * @brief lista los paperReview existentes
+     * @return la lista de los paperReview encontrados
+     */
+    List<paperReview> listPaperReview();
+
 }

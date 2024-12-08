@@ -4,6 +4,8 @@ import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.application
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.application.ports.output.PaperReviewRepositoryPort;
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.entities.paperReview;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 @Service
@@ -24,6 +26,16 @@ public class PaperReviewServices implements ServicePaperReviewPort {
     @Override
     public boolean changeState(int paperReviewId, String newState) {
         return repository.changeState(paperReviewId, newState);
+    }
+
+    @Override
+    public paperReview deletePaperReview(int paperReviewId) {
+        return repository.deletePaperReview(paperReviewId);
+    }
+
+    @Override
+    public List<paperReview> listPaperReview() {
+        return repository.listPaperReview();
     }
 
     
