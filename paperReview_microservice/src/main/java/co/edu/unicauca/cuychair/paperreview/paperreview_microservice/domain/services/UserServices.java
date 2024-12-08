@@ -4,11 +4,13 @@ import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.application
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.application.ports.output.UserRepositoryPort;
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.entities.User;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserServices implements ServiceUserPort {
 
+    @Autowired
     private UserRepositoryPort repository;
 
     @Override

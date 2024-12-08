@@ -12,15 +12,11 @@ import java.util.List;
 
 @Repository
 public class PaperRepositoryAdapter implements PaperRepositoryPort {
-    private List<PaperEntity> papers;
-    private PaperRepositoryMaper maper;
+    private List<PaperEntity> papers = new ArrayList<>();;
+    private PaperRepositoryMaper maper = new PaperRepositoryMaper();;
 
     @Override
-    public Paper addPaper(Paper paper) {
-        if(papers == null) {
-            this.papers = new ArrayList<>();
-            this.maper = new PaperRepositoryMaper();
-        }
+    public Paper addPaper(Paper paper) {        
         papers.add(maper.toPaperEntity(paper));
         return paper;
     }

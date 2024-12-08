@@ -17,7 +17,7 @@ public class ConferenceLisenerAdapter {
     public ConferenceLisenerAdapter(ServiceConferencePort services) {
         this.services = services;
     }
-    @RabbitListener(queues = { "${co.edu.unicauca.cuychair.user.conferenceDTO.queue}" })
+    @RabbitListener(queues = { "${cuychair.rabbitmq.queue.conference.review}" })
     public void listenConference(@Payload ConferenceDTO conferenceDTO) {
         ConferenceDTOMaper maper = new ConferenceDTOMaper();
         services.addConference(maper.DTOinConference(conferenceDTO));

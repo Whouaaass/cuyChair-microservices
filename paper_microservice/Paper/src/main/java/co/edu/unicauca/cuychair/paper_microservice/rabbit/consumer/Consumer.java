@@ -25,7 +25,7 @@ public class Consumer {
     @Autowired
     ConferenceStoreService conferenceStoreService;
 
-    @RabbitListener(queues = { "${co.edu.unicauca.cuychair.user.userDTO.queue}" })
+    @RabbitListener(queues = { "${cuychair.rabbitmq.queue.user.paper}" })
     public void receiveUser(@Payload UserDTO userDTO){
         ConversorUserDTO maperUser= new ConversorUserDTO();
         log.info("Received message {} User name: {}", userDTO, userDTO.getName());
@@ -34,7 +34,7 @@ public class Consumer {
         makeSlow();
     }
 
-    @RabbitListener(queues = { "${co.edu.unicauca.cuychair.user.conferenceDTO.queue}" })
+    @RabbitListener(queues = { "${cuychair.rabbitmq.queue.conference.paper}" })
     public void receiveConference(@Payload ConferenceDTO conferenceDTO){
         ConversorConferenceDTO maperConference= new ConversorConferenceDTO();
         log.info("Received message {} Conference title: {}", conferenceDTO, conferenceDTO.getTitle());
@@ -45,7 +45,7 @@ public class Consumer {
 
     private void makeSlow() {
         try {
-            Thread.sleep(5000);
+            Thread.sleep(100);
         } catch (InterruptedException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
