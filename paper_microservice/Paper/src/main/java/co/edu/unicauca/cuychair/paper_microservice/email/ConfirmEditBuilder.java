@@ -11,6 +11,7 @@ import org.simplejavamail.email.EmailBuilder;
 
 public class ConfirmEditBuilder extends Builder {
 
+    private String htmlText;
 
     @Override
     public Email senderAndReceptor() {
@@ -20,6 +21,15 @@ public class ConfirmEditBuilder extends Builder {
 
     @Override
     public Email subjectAndBody() {
+        htmlText="<html><body>" +
+                "<h1>Estimado Autor</h1>" +
+                "<p><strong>"+paper.getAuthor().getName()+" "+paper.getAuthor().getLastName()+"</strong></p>"+
+                "<h3>CurChair a guardado con éxito las modificaciones de su trabajo </h3>"+
+                "<p><strong>"+paper.getTitle()+"</strong></p>"+
+                "<h3>Perteneciente a la conferencia </h3>"+
+                "<p><strong>"+paper.getConference().getTitle()+"</strong></p>"+
+                "<h6>Por favor no contestar a este correo</h6>"+
+                "</body></html>";
         String nombreDestino="";
         String direccionDestino="";
         for (Recipient recipient : email.getRecipients()) {
@@ -28,8 +38,7 @@ public class ConfirmEditBuilder extends Builder {
         }
         this.email=EmailBuilder.startingBlank().from(email.getFromRecipient().getName(),email.getFromRecipient().getAddress()).to(nombreDestino,direccionDestino)
                 .withSubject("Notificación edición de Trabajo")
-                .withPlainText("Estimado Autor "+paper.getAuthor().getName()+"CurChair le informa que las modificaciones de su trabajo "+paper.getTitle()+"\n ,Perteneciente a la Conferencia "
-                        +paper.getConference().getTitle()+", fueron recibidas con éxito \n\n Por favor no contestar a este correo, cuyChair le desea un buen dia")
+                .withHTMLText(htmlText)
                 .buildEmail();
         return email;
     }
