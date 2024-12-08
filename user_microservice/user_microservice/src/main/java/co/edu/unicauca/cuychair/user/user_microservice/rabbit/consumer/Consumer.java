@@ -3,9 +3,7 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
-import co.edu.unicauca.cuychair.user.user_microservice.servicesFacade.DTO.ConferenceDTO;
 import co.edu.unicauca.cuychair.user.user_microservice.servicesFacade.DTO.UserDTO;
-
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -21,6 +19,7 @@ public class Consumer {
 
 	}
 	
+	/*
     @RabbitListener(queues = { "${co.edu.unicauca.cuychair.user.conferenceDTO.queue}" })
     public void receiveConferenceDTO(@Payload ConferenceDTO conferenceDTO) {
 
@@ -28,6 +27,7 @@ public class Consumer {
 		makeSlow();
 
 	}
+	*/
 
 	private void makeSlow() {
 		try {

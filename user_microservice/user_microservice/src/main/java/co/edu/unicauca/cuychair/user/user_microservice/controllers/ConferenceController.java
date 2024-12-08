@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import co.edu.unicauca.cuychair.user.user_microservice.servicesFacade.services.ConferenceService;
 import co.edu.unicauca.cuychair.user.user_microservice.servicesFacade.DTO.ConferenceDTO;
 
+/*
 @RestController
 @RequestMapping("/user_microservice/conference")
 public class ConferenceController {
@@ -66,3 +67,4 @@ public class ConferenceController {
     }
     
 }
+*/

@@ -1,24 +1,33 @@
 package co.edu.unicauca.cuychair.paper_microservice.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import co.edu.unicauca.cuychair.paper_microservice.controller.DTO.ConferenceDTO;
+import co.edu.unicauca.cuychair.paper_microservice.controller.DTO.PaperDTO;
+import co.edu.unicauca.cuychair.paper_microservice.controller.DTO.UserDTO;
 import co.edu.unicauca.cuychair.paper_microservice.controller.mapper.ConversorConferenceDTO;
 import co.edu.unicauca.cuychair.paper_microservice.controller.mapper.ConversorPaperDTO;
 import co.edu.unicauca.cuychair.paper_microservice.controller.mapper.ConversorUserDTO;
 import co.edu.unicauca.cuychair.paper_microservice.domain.Conference;
 import co.edu.unicauca.cuychair.paper_microservice.domain.Paper;
-import co.edu.unicauca.cuychair.paper_microservice.controller.DTO.ConferenceDTO;
-import co.edu.unicauca.cuychair.paper_microservice.controller.DTO.PaperDTO;
-import co.edu.unicauca.cuychair.paper_microservice.controller.DTO.UserDTO;
 import co.edu.unicauca.cuychair.paper_microservice.domain.User;
 import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.services.ConferenceStoreService;
 import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.services.PaperStoreService;
 import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.services.UserStoreService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
-@RequestMapping("/Paper")
+@RequestMapping("/api")
 public class PaperController {
     @Autowired
     private  PaperStoreService servicePaper;
