@@ -6,10 +6,10 @@ import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.infrastruct
 public class PaperReviewMaper {
 
     public paperReview topaperReview(PaperReviewEntity paperReviewEntity) {
-        return null;
+        return new paperReview(paperReviewEntity.getIdPaperReview(),paperReviewEntity.getPaper(),paperReviewEntity.getEvaluator(),paperReviewEntity.isReviewed(),paperReviewEntity.getComment(),paperReviewEntity.getState());
     }
 
     public PaperReviewEntity toPaperReviewEntity(paperReview paperReview) {
-        return null;
+        return new PaperReviewEntity(paperReview.getIdPaperReview(),paperReview.getPaper(),paperReview.getEvaluator(),paperReview.isReviewed(),paperReview.getComment(),paperReview.getState());
     }
 }
