@@ -13,15 +13,11 @@ import java.util.List;
 @Repository
 public class UserRepositoryAdapter implements UserRepositoryPort {
 
-    private List<UserEntity> users;
-    private UserRepositoryMaper maper;
+    private List<UserEntity> users = new ArrayList<>();;
+    private UserRepositoryMaper maper = new UserRepositoryMaper();;
 
     @Override
-    public User addUser(User user) {
-        if(users == null){
-            this.users = new ArrayList<>();
-            this.maper = new UserRepositoryMaper();
-        }
+    public User addUser(User user) {        
         users.add(maper.toUserEntity(user));
         return user;
     }
@@ -35,7 +31,7 @@ public class UserRepositoryAdapter implements UserRepositoryPort {
     @Override
     public User updateUser(User user) {
         int index = users.indexOf(maper.toUserEntity(user));
-        if(index == -1){
+        if (index == -1) {
             return null;
         }
         users.set(index, maper.toUserEntity(user));
@@ -44,8 +40,8 @@ public class UserRepositoryAdapter implements UserRepositoryPort {
 
     @Override
     public User findById(int id) {
-        for(UserEntity user : users){
-            if(user.getId() == id){
+        for (UserEntity user : users) {
+            if (user.getId() == id) {
                 return maper.toUser(user);
             }
         }

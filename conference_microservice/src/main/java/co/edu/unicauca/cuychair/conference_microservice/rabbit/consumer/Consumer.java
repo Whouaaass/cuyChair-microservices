@@ -17,32 +17,32 @@ import lombok.extern.slf4j.Slf4j;
 public class Consumer {
 
 	@Autowired
-	private ModelMapper	modelMapper;
+	private ModelMapper modelMapper;
 
 	@Autowired
 	private IUserService userService;
 
-	@RabbitListener(queues = { "${co.edu.unicauca.cuychair.user.conference.queue}" })
+	@RabbitListener(queues = { "${cuychair.rabbitmq.queue.user.conference}" })
 	public void receiveUserDTO(@Payload AMPQUserDTO userDTO) {
 		log.info("Received message {} User name: {}", userDTO, userDTO.getName());
 		UserDTO user = modelMapper.map(userDTO, UserDTO.class);
 
-		UserDTO savedUser = userService.save(user);			
+		UserDTO savedUser = userService.save(user);
 
 		log.info("User saved: {}", savedUser);
-		
+		makeSlow();
+	}
+
+	@RabbitListener(queues = { "${cuychair.rabbitmq.queue.conference.conference}" })
+	public void ReceiveConferenceDTO(@Payload AMPQConferenceDTO conferenceDTO) {
+		log.info("Received message {} Conference name: {}", conferenceDTO, conferenceDTO.getTitle());
 		makeSlow();
 	}
 
 	private void makeSlow() {
 		try {
 			Thread.sleep(500);
-		} catch (InterruptedException e) { }
-	}
-
-	@RabbitListener(queues = { "${co.edu.unicauca.cuychair.conference.queue}" })
-	public void ReceiveConferenceDTO(@Payload AMPQConferenceDTO conferenceDTO) {
-		log.info("Received message {} Conference name: {}", conferenceDTO, conferenceDTO.getTitle());
-		makeSlow();
+		} catch (InterruptedException e) {
+		}
 	}
 }

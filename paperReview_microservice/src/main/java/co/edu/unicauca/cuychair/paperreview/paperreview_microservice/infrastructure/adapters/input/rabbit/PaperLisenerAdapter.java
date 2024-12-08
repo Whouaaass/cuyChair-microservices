@@ -17,7 +17,7 @@ public class PaperLisenerAdapter {
     public PaperLisenerAdapter(ServicesPaperPort services) {
         this.services = services;
     }
-    @RabbitListener(queues = "${co.edu.unicauca.cuychair.paper.paperDTO.queue}")
+    @RabbitListener(queues = "${cuychair.rabbitmq.queue.paper.review}")
     public void listenPaper(@Payload PaperDTO paper) {
         PaperDTOMaper maper = new PaperDTOMaper();
         PaperDTO pa=maper.toPaperDTO(services.findById(paper.getId()));

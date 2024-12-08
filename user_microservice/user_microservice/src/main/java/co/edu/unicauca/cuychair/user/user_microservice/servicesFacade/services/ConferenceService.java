@@ -27,12 +27,14 @@ public class ConferenceService implements IConferenceService{
 	@Autowired
 	private Publisher publisher;
 	//Metodo para enviar conferencia a rabiitMQ
+    /*
 	public ConferenceDTO sendConferenceToRabbit(int id) {	
         ConferenceDTO conferenceDTO=getConference(id);
 		log.info("Message '{}'  Conference title: '{}' will be send ... ", conferenceDTO,conferenceDTO.getTitle());
 		this.publisher.sendConferenceDTO(conferenceDTO);
         return conferenceDTO;
-	}
+	}¨
+    */
 
     @Override
     public ConferenceDTO addConference(ConferenceDTO conferenceDTO) {

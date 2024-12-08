@@ -5,9 +5,24 @@ services:
       context: ./user_microservice/user_microservice
       dockerfile: Dockerfile
     ports:
-      - "8091:8091"    
+      - "8091:8091"
     depends_on:
       - rabbitmq
+    environment:
+      SPRING_RABBITMQ_HOST: rabbitmq
+      SPRING_RABBITMQ_PORT: 5672
+      SPRING_RABBITMQ_USERNAME: guest
+      SPRING_RABBITMQ_PASSWORD: guest
+
+  conference_microservice:
+    build:
+      context: ./conference_microservice
+      dockerfile: Dockerfile
+    ports:
+      - "8092:8092"
+    depends_on:
+      - rabbitmq
+      - user_microservice
     environment:
       SPRING_RABBITMQ_HOST: rabbitmq
       SPRING_RABBITMQ_PORT: 5672
@@ -19,49 +34,39 @@ services:
       context: ./paper_microservice/Paper
       dockerfile: Dockerfile
     ports:
-      - "8094:8094"    
-    depends_on:
-      - rabbitmq   
-    environment:
-      SPRING_RABBITMQ_HOST: rabbitmq
-      SPRING_RABBITMQ_PORT: 5672
-      SPRING_RABBITMQ_USERNAME: guest
-      SPRING_RABBITMQ_PASSWORD: guest 
-      
-
-  conference_microservice:
-    build:
-      context: ./conference_microservice
-      dockerfile: Dockerfile
-    ports:
-      - "8092:8092"    
+      - "8094:8094"
     depends_on:
       - rabbitmq
+      - user_microservice
+      - conference_microservice
     environment:
       SPRING_RABBITMQ_HOST: rabbitmq
       SPRING_RABBITMQ_PORT: 5672
       SPRING_RABBITMQ_USERNAME: guest
-      SPRING_RABBITMQ_PASSWORD: guest 
-      
+      SPRING_RABBITMQ_PASSWORD: guest
+
   paperreview_microservice:
     build:
       context: ./conference_microservice
       dockerfile: Dockerfile
     ports:
-      - "8093:8093"    
+      - "8093:8093"
     depends_on:
       - rabbitmq
+      - user_microservice
+      - conference_microservice
+      - paper_microservice
     environment:
       SPRING_RABBITMQ_HOST: rabbitmq
       SPRING_RABBITMQ_PORT: 5672
       SPRING_RABBITMQ_USERNAME: guest
-      SPRING_RABBITMQ_PASSWORD: guest 
+      SPRING_RABBITMQ_PASSWORD: guest
 
   rabbitmq:
     image: "rabbitmq:3-management"
     ports:
       - "5672:5672"
-      - "15672:15672"     
+      - "15672:15672"
 
 networks:
   cuychair-network:

@@ -2,7 +2,7 @@ package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.applicatio
 
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.entities.User;
 
-public interface UserRepositoryPort {
+public interface UserRepositoryPort{
     User addUser(User user);
     User removeUser(User user);
     User updateUser(User user);
