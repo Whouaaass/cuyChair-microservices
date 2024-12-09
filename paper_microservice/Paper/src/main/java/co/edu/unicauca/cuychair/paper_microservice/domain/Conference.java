@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Objects;
 
 @Setter
@@ -16,7 +15,7 @@ public class Conference {
     private Integer id;
     private String title;
     private String city;
-    private Date date;
+    private String date;
 
     private ArrayList<User> reviewers;
     private ArrayList<User> authors;

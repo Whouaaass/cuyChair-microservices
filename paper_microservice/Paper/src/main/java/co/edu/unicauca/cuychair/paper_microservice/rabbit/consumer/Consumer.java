@@ -1,7 +1,6 @@
 package co.edu.unicauca.cuychair.paper_microservice.rabbit.consumer;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import co.edu.unicauca.cuychair.paper_microservice.controller.DTO.ConferenceDTO;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -12,7 +11,6 @@ import org.springframework.stereotype.Component;
 import co.edu.unicauca.cuychair.paper_microservice.controller.DTO.UserDTO;
 import co.edu.unicauca.cuychair.paper_microservice.controller.mapper.ConversorConferenceDTO;
 import co.edu.unicauca.cuychair.paper_microservice.controller.mapper.ConversorUserDTO;
-import co.edu.unicauca.cuychair.paper_microservice.domain.Conference;
 import co.edu.unicauca.cuychair.paper_microservice.domain.User;
 import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.services.ConferenceStoreService;
 import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.services.UserStoreService;
@@ -34,6 +32,7 @@ public class Consumer {
         log.info("Received message {} User name: {}", userDTO, userDTO.getName());
         User user = maperUser.toUser(userDTO);
         userStoreService.addUser(user);
+        System.out.println("Resivido");
         makeSlow();
     }
 
@@ -43,13 +42,14 @@ public class Consumer {
         log.info("Received message {} Conference title: {}", conferenceDTO, conferenceDTO.getTitle());
         ArrayList<User> authors=new ArrayList<>();
         ArrayList<User> reviewers=new ArrayList<>();
-        for(int id: conferenceDTO.getAuthors()){
+        for(int id: conferenceDTO.getReviewerIds()){
             authors.add(userStoreService.getUserById(id));
         }
-        for(int id: conferenceDTO.getReviewers()){
+        for(int id: conferenceDTO.getAuthorIds()){
             reviewers.add(userStoreService.getUserById(id));
         }
-        conferenceStoreService.addConference(maperConference.toConference(conferenceDTO,authors,reviewers,userStoreService.getUserById(conferenceDTO.getOwner())));
+        conferenceStoreService.addConference(maperConference.toConference(conferenceDTO,authors,reviewers,userStoreService.getUserById(conferenceDTO.getOwnerId())));
+        System.out.println("Resivido");
         makeSlow();
     }
 

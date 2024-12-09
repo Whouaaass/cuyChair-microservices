@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 @Setter
 @Getter
@@ -14,11 +13,8 @@ public class ConferenceDTO {
     private int id;
     private String title;
     private String city;
-    private Date date;
-
-    private ArrayList<Integer> reviewers;
-    private ArrayList<Integer> authors;
-
-    private Integer owner;
-
+    private String date;
+    private ArrayList<Integer> authorIds;
+    private ArrayList<Integer> reviewerIds;
+    private Integer ownerId;
 }
