@@ -86,11 +86,11 @@ public class PaperController {
         return maperUser.toUserDTO(serviceUser.addUser(user));
     }
 
-    @PostMapping("/conference")
-    public ConferenceDTO addConference(@RequestBody ConferenceDTO objConference){
-        Conference conference=maperConference.toConference(objConference);
-        return maperConference.toConferenceDTO(serviceConference.addConference(conference));
-    }
+//    @PostMapping("/conference")
+//    public ConferenceDTO addConference(@RequestBody ConferenceDTO objConference){
+//        Conference conference=maperConference.toConference(objConference);
+//        return maperConference.toConferenceDTO(serviceConference.addConference(conference));
+//    }
 
     @PutMapping("/edit")
     public PaperDTO editPaper(@RequestBody PaperDTO objPaper){

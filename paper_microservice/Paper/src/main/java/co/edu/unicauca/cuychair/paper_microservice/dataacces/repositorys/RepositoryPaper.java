@@ -14,7 +14,7 @@ public class RepositoryPaper implements IRepositoryPaper{
 
     public RepositoryPaper() {
         this.paperList=new ArrayList<>();
-        this.indexCounter= new AtomicInteger(0);
+        this.indexCounter= new AtomicInteger(1);
     }
 
     @Override

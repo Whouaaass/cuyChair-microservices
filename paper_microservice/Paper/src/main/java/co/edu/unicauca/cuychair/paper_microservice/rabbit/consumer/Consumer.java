@@ -2,6 +2,7 @@ package co.edu.unicauca.cuychair.paper_microservice.rabbit.consumer;
 
 import java.util.ArrayList;
 
+import co.edu.unicauca.cuychair.paper_microservice.controller.DTO.ConferenceDTO;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.Payload;
@@ -10,9 +11,7 @@ import org.springframework.stereotype.Component;
 import co.edu.unicauca.cuychair.paper_microservice.controller.DTO.UserDTO;
 import co.edu.unicauca.cuychair.paper_microservice.controller.mapper.ConversorConferenceDTO;
 import co.edu.unicauca.cuychair.paper_microservice.controller.mapper.ConversorUserDTO;
-import co.edu.unicauca.cuychair.paper_microservice.domain.Conference;
 import co.edu.unicauca.cuychair.paper_microservice.domain.User;
-import co.edu.unicauca.cuychair.paper_microservice.rabbit.DTO.ConferenceDTO;
 import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.services.ConferenceStoreService;
 import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.services.UserStoreService;
 import lombok.extern.slf4j.Slf4j;
@@ -33,6 +32,7 @@ public class Consumer {
         log.info("Received message {} User name: {}", userDTO, userDTO.getName());
         User user = maperUser.toUser(userDTO);
         userStoreService.addUser(user);
+        System.out.println("Resivido");
         makeSlow();
     }
 
@@ -40,17 +40,16 @@ public class Consumer {
     public void receiveConference(@Payload ConferenceDTO conferenceDTO) {
         ConversorConferenceDTO maperConference = new ConversorConferenceDTO();
         log.info("Received message {} Conference title: {}", conferenceDTO, conferenceDTO.getTitle());
-
-        Conference conference = new Conference(
-            conferenceDTO.getId(),
-            "",
-            "",
-            new java.util.Date(),
-            new ArrayList<User>(),
-            new ArrayList<User>(),
-            new User()
-        );
-        conferenceStoreService.addConference(conference);
+        ArrayList<User> authors=new ArrayList<>();
+        ArrayList<User> reviewers=new ArrayList<>();
+        for(int id: conferenceDTO.getReviewerIds()){
+            authors.add(userStoreService.getUserById(id));
+        }
+        for(int id: conferenceDTO.getAuthorIds()){
+            reviewers.add(userStoreService.getUserById(id));
+        }
+        conferenceStoreService.addConference(maperConference.toConference(conferenceDTO,authors,reviewers,userStoreService.getUserById(conferenceDTO.getOwnerId())));
+        System.out.println("Resivido");
         makeSlow();
     }
 
