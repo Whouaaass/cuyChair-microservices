@@ -1,19 +1,21 @@
 package co.edu.unicauca.cuychair.paper_microservice.rabbit.consumer;
 
-import co.edu.unicauca.cuychair.paper_microservice.controller.DTO.ConferenceDTO;
+import java.util.ArrayList;
+
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.handler.annotation.Payload;
+import org.springframework.stereotype.Component;
+
 import co.edu.unicauca.cuychair.paper_microservice.controller.DTO.UserDTO;
 import co.edu.unicauca.cuychair.paper_microservice.controller.mapper.ConversorConferenceDTO;
 import co.edu.unicauca.cuychair.paper_microservice.controller.mapper.ConversorUserDTO;
 import co.edu.unicauca.cuychair.paper_microservice.domain.Conference;
 import co.edu.unicauca.cuychair.paper_microservice.domain.User;
+import co.edu.unicauca.cuychair.paper_microservice.rabbit.DTO.ConferenceDTO;
 import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.services.ConferenceStoreService;
 import co.edu.unicauca.cuychair.paper_microservice.servicesfacade.services.UserStoreService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.messaging.handler.annotation.Payload;
-import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
@@ -26,19 +28,28 @@ public class Consumer {
     ConferenceStoreService conferenceStoreService;
 
     @RabbitListener(queues = { "${cuychair.rabbitmq.queue.user.paper}" })
-    public void receiveUser(@Payload UserDTO userDTO){
-        ConversorUserDTO maperUser= new ConversorUserDTO();
+    public void receiveUser(@Payload UserDTO userDTO) {
+        ConversorUserDTO maperUser = new ConversorUserDTO();
         log.info("Received message {} User name: {}", userDTO, userDTO.getName());
-        User user=maperUser.toUser(userDTO);
+        User user = maperUser.toUser(userDTO);
         userStoreService.addUser(user);
         makeSlow();
     }
 
     @RabbitListener(queues = { "${cuychair.rabbitmq.queue.conference.paper}" })
-    public void receiveConference(@Payload ConferenceDTO conferenceDTO){
-        ConversorConferenceDTO maperConference= new ConversorConferenceDTO();
+    public void receiveConference(@Payload ConferenceDTO conferenceDTO) {
+        ConversorConferenceDTO maperConference = new ConversorConferenceDTO();
         log.info("Received message {} Conference title: {}", conferenceDTO, conferenceDTO.getTitle());
-        Conference conference=maperConference.toConference(conferenceDTO);
+
+        Conference conference = new Conference(
+            conferenceDTO.getId(),
+            "",
+            "",
+            new java.util.Date(),
+            new ArrayList<User>(),
+            new ArrayList<User>(),
+            new User()
+        );
         conferenceStoreService.addConference(conference);
         makeSlow();
     }
