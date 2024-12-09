@@ -27,6 +27,7 @@ public class PaperLisenerAdapter {
             }else{
                 services.updatePaper(maper.toPaper(paper));
             }
+            return;
         }
         services.addPaper(maper.toPaper(paper));
         makeSlow();

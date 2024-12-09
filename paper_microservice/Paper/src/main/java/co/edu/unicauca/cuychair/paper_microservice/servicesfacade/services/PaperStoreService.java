@@ -40,11 +40,12 @@ public class PaperStoreService {
      * @return Confirmación
      */
     public Paper storePaper (Paper objPaper){
-        this.directorSendEmail=new DirectorSendEmail(new ConfirmSendBuilder(),objPaper);
-        if(repositoryPaper.storePaper(objPaper)==null) {
+        Paper paper=repositoryPaper.storePaper(objPaper);
+        this.directorSendEmail=new DirectorSendEmail(new ConfirmSendBuilder(),paper);
+        if(paper==null) {
             return null;
         }
-        sendPaperDTORabbit(objPaper);
+        sendPaperDTORabbit(paper);
         directorSendEmail.buildAndSend();
         return objPaper;
     }

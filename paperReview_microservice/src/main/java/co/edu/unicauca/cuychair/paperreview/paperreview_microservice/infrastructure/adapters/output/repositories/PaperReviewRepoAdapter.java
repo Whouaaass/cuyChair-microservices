@@ -11,15 +11,18 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Repository
 public class PaperReviewRepoAdapter implements PaperReviewRepositoryPort {
     private List<PaperReviewEntity> paperReviews;
     
     private  PaperReviewMaper maper = new PaperReviewMaper();
+    private AtomicInteger indexCounter;
 
     public PaperReviewRepoAdapter(){
         this.paperReviews = new ArrayList<PaperReviewEntity>();
+        this.indexCounter = new AtomicInteger(1);
     }
 
     @Override
@@ -28,6 +31,7 @@ public class PaperReviewRepoAdapter implements PaperReviewRepositoryPort {
             this.paperReviews = new ArrayList<PaperReviewEntity>();
             maper = new PaperReviewMaper();
         }
+        paperReview.setIdPaperReview(this.indexCounter.getAndIncrement());
         if(paperReviews.add(maper.toPaperReviewEntity(paperReview))){
             return paperReview;
         }

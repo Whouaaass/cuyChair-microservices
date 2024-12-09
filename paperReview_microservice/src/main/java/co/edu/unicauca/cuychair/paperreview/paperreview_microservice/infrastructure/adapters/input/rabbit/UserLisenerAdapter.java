@@ -27,26 +27,25 @@ public class UserLisenerAdapter {
 
         UserDTOMaper maper = new UserDTOMaper();        
 
-        User user = services.findById(userDTO.getId());
-
-        if (user == null) {
-            services.addUser(maper.toUser(userDTO));
+        User userOld = services.findById(userDTO.getId());
+        User usNew = maper.toUser(userDTO);
+        if (userOld != null) {
+            if(isEquals(userOld,usNew)){
+                services.removeUser(usNew);
+                return;
+            }
+            services.updateUser(usNew);
             return;
         }
-
-        UserDTO us = maper.toUserDTO(user);
-
-        if (us.getName().equals(userDTO.getName())
-                && us.getPhone() == userDTO.getPhone()
-                && us.getLastName().equals(userDTO.getLastName())
-                && us.getDescription().equals(userDTO.getDescription())) {
-            services.removeUser(maper.toUser(userDTO));
-        } else {
-            services.updateUser(maper.toUser(userDTO));
-        }
-
+        services.addUser(usNew);
         makeSlow();
+    }
 
+    private boolean isEquals(User us1,User us2){
+        return us1.getName().equals(us2.getName())
+                && us1.getPhone() == us2.getPhone()
+                && us1.getLastName().equals(us2.getLastName())
+                && us1.getDescription().equals(us2.getDescription());
     }
 
     private void makeSlow() {
