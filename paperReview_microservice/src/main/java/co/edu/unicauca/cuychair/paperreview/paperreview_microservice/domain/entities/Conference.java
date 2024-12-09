@@ -7,7 +7,7 @@ public class Conference {
     private int id;
     private String title;
     private String city;
-    private Date date;
+    private String date;
 
     private ArrayList<User> reviewers;
     private ArrayList<User> authors;
@@ -16,7 +16,7 @@ public class Conference {
 
     public Conference(){}
 
-    public Conference(int id, String title, String city, Date date, ArrayList<User> reviewers, ArrayList<User> authors, User owner) {
+    public Conference(int id, String title, String city, String date, ArrayList<User> reviewers, ArrayList<User> authors, User owner) {
         this.id = id;
         this.title = title;
         this.city = city;
@@ -50,11 +50,11 @@ public class Conference {
         this.city = city;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

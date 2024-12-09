@@ -29,10 +29,10 @@ public class ConferenceLisenerAdapter {
         ConferenceDTOMaper maper = new ConferenceDTOMaper();
         ArrayList<User> authors=new ArrayList<>();
         ArrayList<User> reviwers=new ArrayList<>();
-        for(int id: conferenceDTO.getAuthors()){
+        for(int id: conferenceDTO.getReviewerIds()){
             authors.add(serviceUsers.findById(id));
         }
-        for(int id: conferenceDTO.getReviewers()){
+        for(int id: conferenceDTO.getAuthorIds()){
             reviwers.add(serviceUsers.findById(id));
         }
         Conference confeOld=services.findById(conferenceDTO.getId());

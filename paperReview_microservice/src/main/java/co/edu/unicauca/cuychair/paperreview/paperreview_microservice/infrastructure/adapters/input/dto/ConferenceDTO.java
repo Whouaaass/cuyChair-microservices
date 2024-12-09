@@ -14,8 +14,8 @@ public class ConferenceDTO {
     private int id;
     private String title;
     private String city;
-    private Date date;
-    private ArrayList<Integer> reviewers;
-    private ArrayList<Integer> authors;
+    private String date;
+    private ArrayList<Integer> authorIds;
+    private ArrayList<Integer> reviewerIds;
     private Integer owner;
 }

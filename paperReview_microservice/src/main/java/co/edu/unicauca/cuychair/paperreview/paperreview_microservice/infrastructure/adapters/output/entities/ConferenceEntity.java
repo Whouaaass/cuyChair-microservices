@@ -16,7 +16,7 @@ public class ConferenceEntity {
     private int id;
     private String title;
     private String city;
-    private Date date;
+    private String date;
 
     private ArrayList<User> reviewers;
     private ArrayList<User> authors;
