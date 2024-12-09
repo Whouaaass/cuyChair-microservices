@@ -15,7 +15,12 @@ import java.util.List;
 @Repository
 public class PaperReviewRepoAdapter implements PaperReviewRepositoryPort {
     private List<PaperReviewEntity> paperReviews;
-    private  PaperReviewMaper maper;
+    
+    private  PaperReviewMaper maper = new PaperReviewMaper();
+
+    public PaperReviewRepoAdapter(){
+        this.paperReviews = new ArrayList<PaperReviewEntity>();
+    }
 
     @Override
     public paperReview addpaperReview(paperReview paperReview) {

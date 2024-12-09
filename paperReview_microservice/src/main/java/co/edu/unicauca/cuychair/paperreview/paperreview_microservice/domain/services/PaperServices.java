@@ -4,11 +4,12 @@ import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.application
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.application.ports.output.PaperRepositoryPort;
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.entities.Paper;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class PaperServices implements ServicesPaperPort {
-
+    @Autowired
     private PaperRepositoryPort repository;
 
     @Override

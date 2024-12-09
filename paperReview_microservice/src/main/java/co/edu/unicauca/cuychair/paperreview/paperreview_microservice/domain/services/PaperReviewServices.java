@@ -6,11 +6,12 @@ import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.enti
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class PaperReviewServices implements ServicePaperReviewPort {
-
+    @Autowired
     private PaperReviewRepositoryPort repository;
 
     @Override

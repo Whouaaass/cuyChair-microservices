@@ -1,5 +1,7 @@
 package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.infrastructure.adapters.input;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,6 +25,11 @@ public class PaperReviewRestAdaper {
     public PaperReviewRestAdaper(ServicePaperReviewPort service) {
         this.service = service;
     }
+    @GetMapping("/test")
+    public String testEndpoint() {
+        return "The endpoint is working!";
+    }
+
     @GetMapping("/changeState/{paperReviewId}/{newState}") // Ruta completa: /paperReview/changeState/{paperReviewId}/{newState}
     public boolean changeState(@PathVariable int paperReviewId, @PathVariable String newState) {
         return service.changeState(paperReviewId, newState);

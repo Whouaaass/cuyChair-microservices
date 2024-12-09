@@ -4,11 +4,12 @@ import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.application
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.application.ports.output.ConferenceRepositoryPort;
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.entities.Conference;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ConferenceServices implements ServiceConferencePort {
-
+    @Autowired
     private ConferenceRepositoryPort repository;
 
     @Override
