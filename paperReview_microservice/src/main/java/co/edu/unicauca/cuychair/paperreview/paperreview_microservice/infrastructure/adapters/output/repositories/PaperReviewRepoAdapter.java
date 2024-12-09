@@ -68,5 +68,26 @@ public class PaperReviewRepoAdapter implements PaperReviewRepositoryPort {
         return maper.toPaperReviewList(paperReviews);
     }
 
+    @Override
+    public paperReview getPaperReviewByPaper(int paperId) {
+        for(int i = 0;i < paperReviews.size();i++){
+            if(paperReviews.get(i).getPaper().getId()==paperId){
+                return maper.topaperReview(paperReviews.get(i));
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<paperReview> listPaperReviewsByConference(int conferenceId) {
+        List<paperReview> conferencePaperReviewList = new ArrayList<paperReview>();
+        for(int i = 0;i < paperReviews.size();i++){
+            if(paperReviews.get(i).getPaper().getConference()==conferenceId){
+                conferencePaperReviewList.add(maper.topaperReview(paperReviews.get(i)));
+            }
+        }
+        return conferencePaperReviewList;
+    }
+
 
 }

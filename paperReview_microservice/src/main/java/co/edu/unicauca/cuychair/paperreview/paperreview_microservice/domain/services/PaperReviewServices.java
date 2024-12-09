@@ -39,6 +39,14 @@ public class PaperReviewServices implements ServicePaperReviewPort {
         return repository.listPaperReview();
     }
 
-    
+    @Override
+    public paperReview getPaperReviewByPaper(int paperId) {
+        return repository.getPaperReviewByPaper(paperId);
+    }
+
+    @Override
+    public List<paperReview> listPaperReviewsByConference(int conferenceId) {
+        return repository.listPaperReviewsByConference(conferenceId);
+    }
 
 }

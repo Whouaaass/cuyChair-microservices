@@ -58,7 +58,7 @@ public class PaperReviewRestAdaper {
     }
 
     @GetMapping("/listByConference/{conferenceId}") // Ruta completa: /paperReview/listByReviewer/{reviewerId}
-    public List<paperReview> listPaperReviewsByReviewer(@PathVariable int conferenceId) {
+    public List<paperReview> listPaperReviewsByConference(@PathVariable int conferenceId) {
         return null; // service.listPaperReviewByConference(conferenceId);
     }    
 }

@@ -2,6 +2,8 @@ package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.applicatio
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.PathVariable;
+
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.entities.paperReview;
 
 public interface ServicePaperReviewPort {
@@ -39,4 +41,16 @@ public interface ServicePaperReviewPort {
      * @return la lista de los paperReview encontrados
      */
     List<paperReview> listPaperReview();
+    /**
+     * @brief getPaperReviewByPaper trae un paperReview segun su paper de origen
+     * @param paperId El id del paper en cuestion
+     * @return paperReview encontrado
+     */
+    public paperReview getPaperReviewByPaper(int paperId);
+    /**
+     * @brief listPaperReviewsByReviewer lista los paperReview según su conferencia
+     * @param conferenceId 
+     * @return
+     */
+    public List<paperReview> listPaperReviewsByConference(@PathVariable int conferenceId);
 }
