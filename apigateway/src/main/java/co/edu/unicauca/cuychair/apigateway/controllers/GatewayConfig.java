@@ -1,4 +1,4 @@
-package co.edu.unicauca.cuychair.apigateway;
+package co.edu.unicauca.cuychair.apigateway.controllers;
 
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
