@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.entities.paperReview;
+import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.state.Result;
 
 public interface PaperReviewRepositoryPort {
     /**
@@ -19,14 +20,14 @@ public interface PaperReviewRepositoryPort {
      * @return paperReviewEncontrado
      */
     paperReview getPaperReview(int paperId);
-    /**
+        /**
      * @brief changeState cambia el estado del paperReview
      * @param paperReviewId es el id del paperReview
      * @param newState String del nuevo estado
-     * @return si la operacion tuvo exito
+     * @return si la operacion tuvo exito junto un comentario del resultado
      */
-    boolean changeState(int paperReviewId, String newState);
-    
+    public Result changeState(int paperReviewId, String newState);
+
     /**
      * @brief deletePaperReview borra el paperReview indicado
      * @param paperReviewId id del paperReview a eliminar

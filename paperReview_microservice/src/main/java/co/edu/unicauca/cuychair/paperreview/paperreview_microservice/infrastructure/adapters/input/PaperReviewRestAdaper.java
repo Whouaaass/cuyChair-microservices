@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.application.ports.input.ServicePaperReviewPort;
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.entities.paperReview;
+import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.state.Result;
 
 
 @RestController
@@ -27,8 +28,7 @@ public class PaperReviewRestAdaper {
     }
     
     @PatchMapping("/changeState/{paperReviewId}/{newState}") // Ruta completa: /paperReview/changeState/{paperReviewId}/{newState}
-    public boolean changeState(@PathVariable int paperReviewId, @PathVariable String newState, @RequestBody String comment) {
-
+    public Result changeState(@PathVariable int paperReviewId, @PathVariable String newState, @RequestBody String comment) {
         return service.changeState(paperReviewId, newState);
     }
 
@@ -44,7 +44,7 @@ public class PaperReviewRestAdaper {
 
     @GetMapping("/getByPaper/{paperId}") // Ruta completa: /paperReview/getByPaper/{paperId}
     public paperReview getPaperReviewByPaper(@PathVariable int paperId) {
-        return null; //service.getPaperReviewByPaper(paperId);
+        return service.getPaperReviewByPaper(paperId);
     }
 
     @DeleteMapping("/delete/{paperReviewId}") // Ruta completa: /paperReview/delete/{paperReviewId}
@@ -59,6 +59,6 @@ public class PaperReviewRestAdaper {
 
     @GetMapping("/listByConference/{conferenceId}") // Ruta completa: /paperReview/listByReviewer/{reviewerId}
     public List<paperReview> listPaperReviewsByConference(@PathVariable int conferenceId) {
-        return null; // service.listPaperReviewByConference(conferenceId);
+        return service.listPaperReviewsByConference(conferenceId);
     }    
 }

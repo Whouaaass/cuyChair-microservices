@@ -3,6 +3,7 @@ package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.ser
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.application.ports.input.ServicePaperReviewPort;
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.application.ports.output.PaperReviewRepositoryPort;
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.entities.paperReview;
+import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.state.Result;
 
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class PaperReviewServices implements ServicePaperReviewPort {
     }
 
     @Override
-    public boolean changeState(int paperReviewId, String newState) {
+    public Result changeState(int paperReviewId, String newState) {
         return repository.changeState(paperReviewId, newState);
     }
 

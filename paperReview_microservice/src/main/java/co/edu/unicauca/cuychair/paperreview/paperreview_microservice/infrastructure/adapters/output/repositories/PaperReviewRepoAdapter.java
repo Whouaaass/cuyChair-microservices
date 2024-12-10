@@ -49,10 +49,10 @@ public class PaperReviewRepoAdapter implements PaperReviewRepositoryPort {
     }
 
     @Override
-    public boolean changeState(int paperReviewId, String newState){
+    public Result changeState(int paperReviewId, String newState){
         int idx = getPaperReview(paperReviewId).getPaper().getId();
         Result result= maper.topaperReview(paperReviews.get(idx)).changeState(newState);
-        return result.isChangeValid();
+        return result;
     }
 
     @Override
