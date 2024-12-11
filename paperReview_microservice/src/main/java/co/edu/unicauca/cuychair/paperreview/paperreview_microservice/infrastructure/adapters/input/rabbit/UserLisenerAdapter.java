@@ -38,6 +38,7 @@ public class UserLisenerAdapter {
             return;
         }
         services.addUser(usNew);
+        System.out.println("Recibido");
         makeSlow();
     }
 

@@ -36,16 +36,18 @@ public class ConferenceLisenerAdapter {
             reviwers.add(serviceUsers.findById(id));
         }
         Conference confeOld=services.findById(conferenceDTO.getId());
-        Conference confeNew=maper.DTOinConference(conferenceDTO,authors,reviwers,serviceUsers.findById(conferenceDTO.getOwner()));
+        Conference confeNew=maper.DTOinConference(conferenceDTO,authors,reviwers,serviceUsers.findById(conferenceDTO.getOwnerId()));
         if(confeOld!=null){
             if(isEquals(confeOld,confeNew)){
                 services.removeConference(confeNew);
                 return;
             }
             services.updateConference(confeNew);
+            System.out.println("Recibido");
             return;
         }
         services.addConference(confeNew);
+        System.out.println("Recibido");
         makeSlow();
     }
 

@@ -1,6 +1,7 @@
 package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.infrastructure.adapters.input.rabbit;
 
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.application.ports.input.ServicesPaperPort;
+import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.entities.Paper;
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.infrastructure.adapters.input.dto.PaperDTO;
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.infrastructure.adapters.input.maper.PaperDTOMaper;
 import lombok.extern.slf4j.Slf4j;
@@ -20,16 +21,20 @@ public class PaperLisenerAdapter {
     @RabbitListener(queues = "${cuychair.rabbitmq.queue.paper.review}")
     public void listenPaper(@Payload PaperDTO paper) {
         PaperDTOMaper maper = new PaperDTOMaper();
-        PaperDTO pa=maper.toPaperDTO(services.findById(paper.getId()));
-        if(pa!=null) {
-            if(pa.getTitle().equals(paper.getTitle()) && pa.getSubTitle().equals(paper.getSubTitle()) && pa.getAbstract().equals(paper.getAbstract())) {
-                services.removePaper(maper.toPaper(paper));
-            }else{
-                services.updatePaper(maper.toPaper(paper));
+        Paper find=services.findById(paper.getId());
+        if(find!=null) {
+            PaperDTO pa = maper.toPaperDTO(find);
+            if (pa != null) {
+                if (pa.getTitle().equals(paper.getTitle()) && pa.getSubTitle().equals(paper.getSubTitle()) && pa.getAbstract().equals(paper.getAbstract())) {
+                    services.removePaper(maper.toPaper(paper));
+                } else {
+                    services.updatePaper(maper.toPaper(paper));
+                }
+                return;
             }
-            return;
         }
         services.addPaper(maper.toPaper(paper));
+        System.out.println("Recibido");
         makeSlow();
     }
 

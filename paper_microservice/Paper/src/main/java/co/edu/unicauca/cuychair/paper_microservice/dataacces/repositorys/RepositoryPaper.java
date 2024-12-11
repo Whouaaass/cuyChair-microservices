@@ -24,7 +24,7 @@ public class RepositoryPaper implements IRepositoryPaper{
             return null;
         }
         paperList.add(objPaper);
-        return objPaper;
+        return paperList.getLast();
     }
 
     @Override
