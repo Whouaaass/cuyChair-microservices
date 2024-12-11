@@ -3,7 +3,7 @@ package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.sta
 public class Draft implements PaperReviewState{
     @Override
     public Result toModeration() {
-        return new Result(true,"Articulo enviado a moderacion");
+        return new Result(true,"Articulo enviado a moderacion","MODERATION");
     }
 
     @Override

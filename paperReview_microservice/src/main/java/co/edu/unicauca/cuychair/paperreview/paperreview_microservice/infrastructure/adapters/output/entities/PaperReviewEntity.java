@@ -11,13 +11,26 @@ import java.util.List;
 
 @Getter
 @Setter
-@AllArgsConstructor
+//@AllArgsConstructor
 public class PaperReviewEntity {
     private int idPaperReview;
     private Paper paper;
     private User evaluator;
     private boolean reviewed;
     private String comment;
+    private String currentState;
     private PaperReviewState state;
+
+
+    public PaperReviewEntity(int idPaperReview, Paper paper, User evaluator, boolean reviewed, String comment, String currentState, PaperReviewState state) {
+        this.idPaperReview = idPaperReview;
+        this.paper = paper;
+        this.evaluator = evaluator;
+        this.reviewed = false;
+        this.comment = comment;
+        this.currentState = currentState;
+        this.state = state;
+    }
+
 
 }

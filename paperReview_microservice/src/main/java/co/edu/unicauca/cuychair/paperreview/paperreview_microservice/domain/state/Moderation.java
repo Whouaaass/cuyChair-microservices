@@ -8,16 +8,16 @@ public class Moderation implements PaperReviewState{
 
     @Override
     public Result toDraft() {
-        return new Result(true,"Articulo enviado a borrador");
+        return new Result(true,"Articulo enviado a borrador","DRAFT");
     }
 
     @Override
     public Result toPublished() {
-        return new Result(true,"Articulo publicado");
+        return new Result(true,"Articulo publicado","PUBLISHED");
     }
 
     @Override
     public Result toRejected() {
-        return new Result(true,"Articulo rechazado");
+        return new Result(true,"Articulo rechazado","REJECTED");
     }
 }

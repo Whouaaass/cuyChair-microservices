@@ -9,11 +9,23 @@ import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.infrastruct
 public class PaperReviewMaper {
 
     public paperReview topaperReview(PaperReviewEntity paperReviewEntity) {
-        return new paperReview(paperReviewEntity.getIdPaperReview(),paperReviewEntity.getPaper(),paperReviewEntity.getEvaluator(),paperReviewEntity.isReviewed(),paperReviewEntity.getComment(),paperReviewEntity.getState());
-    }
+        return new paperReview(paperReviewEntity.getIdPaperReview(),
+        paperReviewEntity.getPaper(),
+        paperReviewEntity.getEvaluator(),
+        paperReviewEntity.isReviewed(),
+        paperReviewEntity.getComment(),
+        paperReviewEntity.getCurrentState()
+        /*paperReviewEntity.getState()*/);
+        }
 
     public PaperReviewEntity toPaperReviewEntity(paperReview paperReview) {
-        return new PaperReviewEntity(paperReview.getIdPaperReview(),paperReview.getPaper(),paperReview.getEvaluator(),paperReview.isReviewed(),paperReview.getComment(),paperReview.getState());
+        return new PaperReviewEntity(paperReview.getIdPaperReview(),
+        paperReview.getPaper(),
+        paperReview.getEvaluator(),
+        paperReview.isReviewed(),
+        paperReview.getComment(),
+        paperReview.getCurrentState(),
+        paperReview.getState());
     }
     // Convierte una lista de PaperReviewEntity a una lista de PaperReview
     public List<paperReview> toPaperReviewList(List<PaperReviewEntity> paperReviewEntities) {
