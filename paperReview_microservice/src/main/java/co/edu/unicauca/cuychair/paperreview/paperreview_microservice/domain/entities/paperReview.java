@@ -31,13 +31,11 @@ public class paperReview {
         this.reviewed = reviewed;
         this.comment = comment;
         if(currentState==null){
-            System.out.println("Inicializando currentState en moderation");
             this.currentState = "MODERATION";
         }else{
             this.currentState = currentState;
         }  
         if(this.state==null&&state==null){
-            System.out.println("Inicializando State interfaz en moderation desde paperReview");
             this.state = new Moderation();
         }else{
             this.state = state;
@@ -46,7 +44,6 @@ public class paperReview {
 
     public Result toModeration() {
         Result r = state.toModeration();
-        System.out.println("TOMODERATION RESULT:"+r.getComment());
         if(r.isChangeValid()){
             state = new Moderation();
         }
@@ -54,21 +51,15 @@ public class paperReview {
     }
 
     public Result toDraft() {
-        System.out.println("Estado entrante:"+state.getClass());
         Result r = state.toDraft();
-        System.out.println("TODRAFT RESULT:"+r.getComment());
-        System.out.println("Draft antes del if");
         if(r.isChangeValid()){
             state = new Draft();
-            System.out.println("Entro y sobrevivio a la asignacion");
         }
-        System.out.println("Estado final"+state.getClass());
         return r;
     }
 
     public Result toPublished() {
         Result r = state.toPublished();
-        System.out.println("TOPUBLISHED RESULT:"+r.getComment());
         if(r.isChangeValid()){
             state = new Published();
         }

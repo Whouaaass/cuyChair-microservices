@@ -52,20 +52,15 @@ public class PaperReviewRepoAdapter implements PaperReviewRepositoryPort {
     public Result changeState(int paperReviewId, String newState){
         int idx=-1;
         Result result = null;
-        System.out.println("\n\n\nPruebas para change state-Repositorio");
         for(int i=0;i<paperReviews.size();i++){
             if(paperReviews.get(i).getIdPaperReview()==paperReviewId){
                 paperReview paperReview = maper.topaperReview(paperReviews.get(i));
                 result = paperReview.changeState(newState);
                 paperReviews.set(i, maper.toPaperReviewEntity(paperReview));
                 idx=i;
-                System.out.println("Estado repo: "+paperReviews.get(i).getCurrentState()+" Estado temporal"+paperReview.getCurrentState());
                 break;
             }
         }
-        System.out.println("Cambios de estado:\nRepositorio:"+
-        paperReviews.get(idx).getState().getClass()+"paperReview temporal: "+paperReviews.get(idx).getState().getClass());
-        System.out.println("Result:"+result.getComment());
         return result;
     }
 
