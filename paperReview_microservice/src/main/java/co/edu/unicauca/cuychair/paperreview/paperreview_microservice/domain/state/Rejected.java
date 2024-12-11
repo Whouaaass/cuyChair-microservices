@@ -1,5 +1,7 @@
 package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.state;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
+@JsonTypeName("Rejected")
 public class Rejected implements PaperReviewState{
 
     @Override

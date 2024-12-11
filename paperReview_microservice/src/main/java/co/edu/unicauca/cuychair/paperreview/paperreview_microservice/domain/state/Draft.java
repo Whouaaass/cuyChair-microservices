@@ -1,9 +1,12 @@
 package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.state;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
+
+@JsonTypeName("Draft")
 public class Draft implements PaperReviewState{
     @Override
     public Result toModeration() {
-        return new Result(true,"Articulo enviado a moderacion","MODERATION");
+        return new Result(true,"Articulo enviado a moderacion");
     }
 
     @Override

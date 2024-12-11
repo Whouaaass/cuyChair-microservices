@@ -7,16 +7,15 @@ import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.enti
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.infrastructure.adapters.output.entities.PaperReviewEntity;
 
 public class PaperReviewMaper {
-
     public paperReview topaperReview(PaperReviewEntity paperReviewEntity) {
         return new paperReview(paperReviewEntity.getIdPaperReview(),
         paperReviewEntity.getPaper(),
         paperReviewEntity.getEvaluator(),
         paperReviewEntity.isReviewed(),
         paperReviewEntity.getComment(),
-        paperReviewEntity.getCurrentState()
-        /*paperReviewEntity.getState()*/);
-        }
+        paperReviewEntity.getCurrentState(),
+        paperReviewEntity.getState());
+    }
 
     public PaperReviewEntity toPaperReviewEntity(paperReview paperReview) {
         return new PaperReviewEntity(paperReview.getIdPaperReview(),

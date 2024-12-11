@@ -1,5 +1,8 @@
 package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.state;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
+
+@JsonTypeName("Moderation")
 public class Moderation implements PaperReviewState{
     @Override
     public Result toModeration() {
@@ -8,16 +11,16 @@ public class Moderation implements PaperReviewState{
 
     @Override
     public Result toDraft() {
-        return new Result(true,"Articulo enviado a borrador","DRAFT");
+        return new Result(true,"Articulo enviado a borrador");
     }
 
     @Override
     public Result toPublished() {
-        return new Result(true,"Articulo publicado","PUBLISHED");
+        return new Result(true,"Articulo publicado");
     }
 
     @Override
     public Result toRejected() {
-        return new Result(true,"Articulo rechazado","REJECTED");
+        return new Result(true,"Articulo rechazado");
     }
 }

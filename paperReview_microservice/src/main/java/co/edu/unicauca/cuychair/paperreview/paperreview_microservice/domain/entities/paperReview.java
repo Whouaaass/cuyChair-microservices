@@ -4,8 +4,11 @@ package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.ent
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 
+import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.state.Draft;
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.state.Moderation;
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.state.PaperReviewState;
+import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.state.Published;
+import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.state.Rejected;
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.state.Result;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,29 +24,63 @@ public class paperReview {
     private String currentState;
     private PaperReviewState state;//TODO
 
-    public paperReview(int idPaperReview, Paper paper, User evaluator, boolean reviewed, String comment, String currentState){
+    public paperReview(int idPaperReview, Paper paper, User evaluator, boolean reviewed, String comment, String currentState, PaperReviewState state){
         this.idPaperReview = idPaperReview;
         this.paper = paper;
         this.evaluator = evaluator;
-        this.reviewed = false;
+        this.reviewed = reviewed;
         this.comment = comment;
-        this.currentState = "MODERATION";
+        if(currentState==null){
+            System.out.println("Inicializando currentState en moderation");
+            this.currentState = "MODERATION";
+        }else{
+            this.currentState = currentState;
+        }  
+        if(this.state==null&&state==null){
+            System.out.println("Inicializando State interfaz en moderation desde paperReview");
+            this.state = new Moderation();
+        }else{
+            this.state = state;
+        }
     }
 
     public Result toModeration() {
-        return state.toModeration();
+        Result r = state.toModeration();
+        System.out.println("TOMODERATION RESULT:"+r.getComment());
+        if(r.isChangeValid()){
+            state = new Moderation();
+        }
+        return r;
     }
 
     public Result toDraft() {
-        return state.toDraft();
+        System.out.println("Estado entrante:"+state.getClass());
+        Result r = state.toDraft();
+        System.out.println("TODRAFT RESULT:"+r.getComment());
+        System.out.println("Draft antes del if");
+        if(r.isChangeValid()){
+            state = new Draft();
+            System.out.println("Entro y sobrevivio a la asignacion");
+        }
+        System.out.println("Estado final"+state.getClass());
+        return r;
     }
 
     public Result toPublished() {
-        return state.toPublished();
+        Result r = state.toPublished();
+        System.out.println("TOPUBLISHED RESULT:"+r.getComment());
+        if(r.isChangeValid()){
+            state = new Published();
+        }
+        return r;
     }
 
     public Result toRejected() {
-        return state.toRejected();
+        Result r = state.toRejected();
+        if(r.isChangeValid()){
+            state = new Rejected();
+        }
+        return r;
     }
 
     public Result changeState(String newState){
@@ -52,29 +89,34 @@ public class paperReview {
         switch(upperNewState){
             case "DRAFT":
                 r = toDraft();
-                System.out.println("\nRetornando");
+                if(r.isChangeValid()){
+                    this.currentState="DRAFT";
+                }
                 return r;//Si lo mandan a draft aún no cuenta como revisado
             case "MODERATION":
                 r = toModeration();
+                if(r.isChangeValid()){
+                    this.currentState="MODERATION";
+                }
                 return r;//En moderación aún no es revisado
             case "PUBLISHED":
                 r = toPublished();
-                break;
+                if(r.isChangeValid()){
+                    this.currentState="PUBLISHED";
+                }
+                this.reviewed=true;
+                return r;
             case "REJECTED":
                 r = toRejected();
-                break;
+                if(r.isChangeValid()){
+                    this.currentState="REJECTED";
+                }
+                this.reviewed=true;
+                return r;
             default:
                 System.out.println("\nEstado invalido para change state");
                 return new Result(false,"Estado invalido");
         }
-        System.out.println("\nVerificando si el cambio es valido");
-        if(r.isChangeValid()){
-            System.out.println("Entro al if");
-            this.reviewed=true;
-            this.currentState=r.getNewState();
-        }
-        System.out.println("Retornando");
-        return r;//Si el estado del artículo cambia a rechazado o publicado significa que ya ha sido revisado
     }
 
 }
