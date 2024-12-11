@@ -23,6 +23,9 @@ public class RepositoryPaper implements IRepositoryPaper{
         if(objPaper.getAuthor()==null || objPaper.getConference()==null){
             return null;
         }
+        if(!objPaper.getConference().getAuthors().contains(objPaper.getAuthor())){
+            return null;
+        }
         paperList.add(objPaper);
         return paperList.getLast();
     }

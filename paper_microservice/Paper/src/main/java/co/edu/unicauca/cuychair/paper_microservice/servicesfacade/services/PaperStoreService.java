@@ -11,6 +11,9 @@ import co.edu.unicauca.cuychair.paper_microservice.email.DirectorSendEmail;
 import co.edu.unicauca.cuychair.paper_microservice.rabbit.publisher.Publisher;
 import co.edu.unicauca.cuychair.paper_microservice.controller.DTO.PaperDTO;
 import co.edu.unicauca.cuychair.paper_microservice.controller.mapper.ConversorPaperDTO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,6 +24,10 @@ public class PaperStoreService {
     private final IRepositoryPaper repositoryPaper;
     private final Publisher publisher;
     private DirectorSendEmail directorSendEmail;
+
+    @Autowired
+    @Lazy
+    private PaperStoreService self;
 
 
     public PaperStoreService(IRepositoryPaper repositoryPaper, Publisher publisher) {
@@ -34,6 +41,14 @@ public class PaperStoreService {
         publisher.sendPaperDTO(paper);
     }
 
+    @Async
+    public void sendEmail(){
+        directorSendEmail.buildAndSend();
+    }
+
+    public void UseSendEmail(){
+        self.sendEmail();
+    }
     /**
      * @brief Guardar un Paper
      * @param objPaper Paper a guardar
@@ -46,7 +61,7 @@ public class PaperStoreService {
             return null;
         }
         sendPaperDTORabbit(paper);
-        directorSendEmail.buildAndSend();
+        UseSendEmail();
         return objPaper;
     }
     /**
@@ -61,7 +76,7 @@ public class PaperStoreService {
             return null;
         }
         sendPaperDTORabbit(objPaper);
-        directorSendEmail.buildAndSend();
+        UseSendEmail();
         return objPaper;
     }
 
@@ -79,7 +94,7 @@ public class PaperStoreService {
             return null;
         }
         sendPaperDTORabbit(objPaper);
-        directorSendEmail.buildAndSend();
+        UseSendEmail();
         return objPaper;
     }
 
