@@ -25,10 +25,11 @@ public interface ServicePaperReviewPort {
     /**
      * @brief changeState cambia el estado del paperReview
      * @param paperReviewId es el id del paperReview
+     * @param reviewerId es el id del revisor
      * @param newState String del nuevo estado
      * @return si la operacion tuvo exito
      */
-    public Result changeState(int paperReviewId, String newState);
+    public Result changeState(int paperReviewId, int reviewerId, String newState);
 
     /**
      * @brief deletePaperReview borra el paperReview indicado

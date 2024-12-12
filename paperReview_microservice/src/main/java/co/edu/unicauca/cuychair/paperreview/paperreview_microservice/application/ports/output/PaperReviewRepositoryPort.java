@@ -23,10 +23,11 @@ public interface PaperReviewRepositoryPort {
         /**
      * @brief changeState cambia el estado del paperReview
      * @param paperReviewId es el id del paperReview
+     * @param reviewerId id del revisor 
      * @param newState String del nuevo estado
      * @return si la operacion tuvo exito junto un comentario del resultado
      */
-    public Result changeState(int paperReviewId, String newState);
+    public Result changeState(int paperReviewId, int reviewerId,String newState);
 
     /**
      * @brief deletePaperReview borra el paperReview indicado

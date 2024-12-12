@@ -26,8 +26,8 @@ public class PaperReviewServices implements ServicePaperReviewPort {
     }
 
     @Override
-    public Result changeState(int paperReviewId, String newState) {
-        return repository.changeState(paperReviewId, newState);
+    public Result changeState(int paperReviewId, int reviewerId, String newState) {
+        return repository.changeState(paperReviewId, reviewerId, newState);
     }
 
     @Override

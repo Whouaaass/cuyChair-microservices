@@ -27,9 +27,9 @@ public class PaperReviewRestAdaper {
         this.service = service;
     }
     //Importante, funciona con el id del paperReview, no del paper
-    @PatchMapping("/changeState/{paperReviewId}/{newState}") // Ruta completa: /paperReview/changeState/{paperReviewId}/{newState}
-    public Result changeState(@PathVariable int paperReviewId, @PathVariable String newState) {
-        return service.changeState(paperReviewId, newState);
+    @PatchMapping("/changeState/{paperReviewId}/{reviewerId}/{newState}") // Ruta completa: /paperReview/changeState/{paperReviewId}/{newState}
+    public Result changeState(@PathVariable int paperReviewId,@PathVariable int reviewerId,@PathVariable String newState) {
+        return service.changeState(paperReviewId, reviewerId,newState);
     }
 
     @PostMapping("/add") // Ruta completa: /paperReview/add
