@@ -3,6 +3,7 @@ package co.edu.unicauca.cuychair.user.user_microservice.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -108,4 +109,8 @@ public class UserController {
         return userService.userExist(id);
     }
     
+    @GetMapping("/login")
+    public ResponseEntity<?> login(@RequestParam String email, @RequestParam String password) {
+        return ResponseEntity.ok(this.userService.login(email, password));
+    }
 }

@@ -79,4 +79,7 @@ public class UserService implements IUserService{
         return userRepository.userExist(id);
     }
 
+    public boolean login(String email, String password){
+        return this.userRepository.login(email,password);
+    }
 }

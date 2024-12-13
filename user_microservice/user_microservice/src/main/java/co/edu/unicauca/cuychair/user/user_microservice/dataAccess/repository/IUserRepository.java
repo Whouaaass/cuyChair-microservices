@@ -53,4 +53,11 @@ public interface IUserRepository {
      * @return idx en el repositorio del usuario
      */
     public int getIdx(int id);
+    /**
+     * @brief verifica si un logeo esta bien
+     * @param email
+     * @param password
+     * @return resultado del logeo
+     */
+    public boolean login(String email, String password);
 }

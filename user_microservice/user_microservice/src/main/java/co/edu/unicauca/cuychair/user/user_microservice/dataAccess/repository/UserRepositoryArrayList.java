@@ -87,4 +87,8 @@ public class UserRepositoryArrayList implements IUserRepository{
         return (getIdx(id)!=-1);
     }
     
+    public boolean login(String email,String password){
+        UserEntity user = getUserByEmail(email);
+        return (user.getPassword()==password);
+    }
 }
