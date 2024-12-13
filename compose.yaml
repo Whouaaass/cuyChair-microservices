@@ -1,4 +1,11 @@
 services:
+  rabbitmq:
+    network:
+      - rabbitmq-network    
+    image: "rabbitmq:3-management"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
 
   keycloak:
     container_name: keycloak
@@ -52,7 +59,7 @@ services:
   paper_microservice:
     build:
       context: ./paper_microservice/Paper
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile    
     ports:
       - "8094:8094"
     depends_on:
@@ -68,7 +75,7 @@ services:
   paperreview_microservice:
     build:
       context: ./conference_microservice
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile    
     ports:
       - "8093:8093"
     depends_on:
@@ -82,14 +89,16 @@ services:
       SPRING_RABBITMQ_USERNAME: guest
       SPRING_RABBITMQ_PASSWORD: guest
 
-  rabbitmq:
-    image: "rabbitmq:3-management"
+  gateway:
+    build:
+      context: ./gateway
+      dockerfile: Dockerfile    
     ports:
-      - "5672:5672"
-      - "15672:15672"
-
-networks:
-  cuychair-network:
-    driver: bridge
-  rabbitmq-network:
-    driver: bridge
+      - "8080:8080"
+    depends_on:
+      - user_microservice
+      - conference_microservice
+      - paper_microservice
+      - paperreview_microservice
+      - keycloak
+      - rabbitmq  
