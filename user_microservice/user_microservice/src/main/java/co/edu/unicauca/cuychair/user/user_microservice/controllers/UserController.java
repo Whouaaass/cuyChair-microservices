@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import co.edu.unicauca.cuychair.user.user_microservice.servicesFacade.DTO.LoginDTO;
 import co.edu.unicauca.cuychair.user.user_microservice.servicesFacade.DTO.UserDTO;
 import co.edu.unicauca.cuychair.user.user_microservice.servicesFacade.services.UserService;
 
@@ -110,7 +111,8 @@ public class UserController {
     }
     
     @GetMapping("/login")
-    public ResponseEntity<?> login(@RequestParam String email, @RequestParam String password) {
-        return ResponseEntity.ok(this.userService.login(email, password));
+    public ResponseEntity<?> login(@RequestBody LoginDTO loginDTO) {
+        this.userService.login(loginDTO);
+        return ResponseEntity.ok();
     }
 }

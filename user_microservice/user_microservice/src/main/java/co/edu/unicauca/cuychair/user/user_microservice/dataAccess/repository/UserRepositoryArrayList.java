@@ -7,6 +7,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import org.springframework.stereotype.Repository;
 
 import co.edu.unicauca.cuychair.user.user_microservice.domain.UserEntity;
+import co.edu.unicauca.cuychair.user.user_microservice.servicesFacade.DTO.LoginDTO;
 
 @Repository
 public class UserRepositoryArrayList implements IUserRepository{
@@ -87,8 +88,8 @@ public class UserRepositoryArrayList implements IUserRepository{
         return (getIdx(id)!=-1);
     }
     
-    public boolean login(String email,String password){
-        UserEntity user = getUserByEmail(email);
-        return (user.getPassword()==password);
+    public boolean login(LoginDTO loginDTO){
+        UserEntity user = getUserByEmail(loginDTO.getEmail());
+        return (user.getPassword()==loginDTO.getPassword());
     }
 }

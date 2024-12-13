@@ -3,6 +3,7 @@ package co.edu.unicauca.cuychair.user.user_microservice.dataAccess.repository;
 import java.util.List;
 
 import co.edu.unicauca.cuychair.user.user_microservice.domain.UserEntity;
+import co.edu.unicauca.cuychair.user.user_microservice.servicesFacade.DTO.LoginDTO;
 
 public interface IUserRepository {
     /**
@@ -55,9 +56,8 @@ public interface IUserRepository {
     public int getIdx(int id);
     /**
      * @brief verifica si un logeo esta bien
-     * @param email
-     * @param password
+     * @param loginDTO
      * @return resultado del logeo
      */
-    public boolean login(String email, String password);
+    public boolean login(LoginDTO loginDTO);
 }

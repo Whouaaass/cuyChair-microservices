@@ -9,6 +9,7 @@ import co.edu.unicauca.cuychair.user.user_microservice.dataAccess.repository.IUs
 import co.edu.unicauca.cuychair.user.user_microservice.domain.UserEntity;
 import co.edu.unicauca.cuychair.user.user_microservice.rabbit.publisher.Publisher;
 import co.edu.unicauca.cuychair.user.user_microservice.servicesFacade.DTO.ConversorUserDTO;
+import co.edu.unicauca.cuychair.user.user_microservice.servicesFacade.DTO.LoginDTO;
 import co.edu.unicauca.cuychair.user.user_microservice.servicesFacade.DTO.UserDTO;
 
 @Slf4j
@@ -79,7 +80,7 @@ public class UserService implements IUserService{
         return userRepository.userExist(id);
     }
 
-    public boolean login(String email, String password){
-        return this.userRepository.login(email,password);
+    public boolean login(LoginDTO loginDTO){
+        return this.userRepository.login(loginDTO);
     }
 }
