@@ -110,9 +110,8 @@ public class UserController {
         return userService.userExist(id);
     }
     
-    @GetMapping("/login")
+    @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginDTO loginDTO) {
-        this.userService.login(loginDTO);
-        return ResponseEntity.ok();
+        return ResponseEntity.ok(this.userService.login(loginDTO));
     }
 }
