@@ -2,6 +2,7 @@ package co.edu.unicauca.cuychair.user.user_microservice.dataAccess.repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import org.springframework.stereotype.Repository;
 
@@ -10,10 +11,11 @@ import co.edu.unicauca.cuychair.user.user_microservice.domain.UserEntity;
 @Repository
 public class UserRepositoryArrayList implements IUserRepository{
     private ArrayList<UserEntity> userList;
-    
+    private final AtomicInteger idCounter;
     
     public UserRepositoryArrayList(){
         this.userList = new ArrayList<UserEntity>();
+        this.idCounter = new AtomicInteger(1);
         uploadDefaultData();
     }
 
@@ -42,6 +44,7 @@ public class UserRepositoryArrayList implements IUserRepository{
 
     @Override
     public UserEntity addUser(UserEntity user) {
+        user.setId(idCounter.getAndIncrement());
         userList.add(user);
         return user;
     }
