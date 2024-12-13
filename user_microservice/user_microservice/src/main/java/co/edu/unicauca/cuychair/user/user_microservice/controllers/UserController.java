@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import co.edu.unicauca.cuychair.user.user_microservice.domain.UserEntity;
 import co.edu.unicauca.cuychair.user.user_microservice.servicesFacade.DTO.LoginDTO;
 import co.edu.unicauca.cuychair.user.user_microservice.servicesFacade.DTO.UserDTO;
 import co.edu.unicauca.cuychair.user.user_microservice.servicesFacade.services.UserService;
@@ -113,9 +114,10 @@ public class UserController {
     
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginDTO loginDTO) {
-        if(this.userService.login(loginDTO)){
-            return new ResponseEntity<>(HttpStatus.OK);
+        UserDTO user = this.userService.login(loginDTO);
+        if(user!=null){
+            return new ResponseEntity<>(user,HttpStatus.OK);
         }
-        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 }

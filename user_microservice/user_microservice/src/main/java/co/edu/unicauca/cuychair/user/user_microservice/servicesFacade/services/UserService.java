@@ -80,7 +80,8 @@ public class UserService implements IUserService{
         return userRepository.userExist(id);
     }
 
-    public boolean login(LoginDTO loginDTO){
-        return this.userRepository.login(loginDTO);
+    public UserDTO login(LoginDTO loginDTO){
+        UserDTO userDTO = conversorUserDTO.converseUserInDTO(userRepository.login(loginDTO));
+        return userDTO;
     }
 }

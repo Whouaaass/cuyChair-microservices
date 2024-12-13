@@ -59,5 +59,5 @@ public interface IUserRepository {
      * @param loginDTO
      * @return resultado del logeo
      */
-    public boolean login(LoginDTO loginDTO);
+    public UserEntity login(LoginDTO loginDTO);
 }

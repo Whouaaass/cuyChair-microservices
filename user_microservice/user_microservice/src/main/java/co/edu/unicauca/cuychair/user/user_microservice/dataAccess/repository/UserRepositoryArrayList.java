@@ -88,8 +88,14 @@ public class UserRepositoryArrayList implements IUserRepository{
         return (getIdx(id)!=-1);
     }
     
-    public boolean login(LoginDTO loginDTO){
+    public UserEntity login(LoginDTO loginDTO){
         UserEntity user = getUserByEmail(loginDTO.getEmail());
-        return (user.getPassword()==loginDTO.getPassword());
+        if(user==null){
+            return null;
+        }
+        if(user.getPassword()==loginDTO.getPassword()){
+            return user;
+        }
+        return null;
     }
 }
