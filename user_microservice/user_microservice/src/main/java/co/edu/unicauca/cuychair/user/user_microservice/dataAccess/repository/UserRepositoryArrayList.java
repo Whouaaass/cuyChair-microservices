@@ -91,10 +91,9 @@ public class UserRepositoryArrayList implements IUserRepository{
     public UserEntity login(LoginDTO loginDTO){
         UserEntity user = getUserByEmail(loginDTO.getEmail());
         if(user==null){
-            UserEntity u = new UserEntity();
-            return user;
+            return null;
         }
-        if(user.getPassword()==loginDTO.getPassword()){
+        if(user.getPassword().equals(loginDTO.getPassword())){
             return user;
         }
         return null;
