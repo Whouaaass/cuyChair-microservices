@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,7 +28,7 @@ public class PaperReviewRestAdaper {
         this.service = service;
     }
     //Importante, funciona con el id del paperReview, no del paper
-    @PatchMapping("/changeState/{paperReviewId}/{reviewerId}/{newState}") // Ruta completa: /paperReview/changeState/{paperReviewId}/{newState}
+    @PutMapping("/changeState/{paperReviewId}/{reviewerId}/{newState}") // Ruta completa: /paperReview/changeState/{paperReviewId}/{newState}
     public Result changeState(@PathVariable int paperReviewId,@PathVariable int reviewerId,@PathVariable String newState) {
         return service.changeState(paperReviewId, reviewerId,newState);
     }
