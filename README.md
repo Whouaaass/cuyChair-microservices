@@ -39,6 +39,8 @@ make build
 
 [Documentación caracteristicas de usabilidad](https://docs.google.com/document/d/1t1SPB97FQIfBaC0ebXdAZMeYV0YEodbuVYu55hysFlo/edit?tab=t.0)
 
+[Informe Thinking aloud](https://docs.google.com/document/d/1tASSWj2--O9J28BdLxib8TeDR8qKCwGRDsKNPWjV4xI/edit?tab=t.0)
+
 ## Más sobre el proyecto
 [Backlog en Taiga](https://tree.taiga.io/project/julianmunoz-ingenieria-de-software-proyecto/)  
 [Documentación hexagonal](https://docs.google.com/document/d/1NJrGFLo4_dWvO4RC3BdVi6tiEJbnImug/edit)  
