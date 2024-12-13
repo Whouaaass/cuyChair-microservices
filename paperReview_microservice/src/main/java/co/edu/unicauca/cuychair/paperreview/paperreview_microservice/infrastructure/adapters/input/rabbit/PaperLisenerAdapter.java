@@ -40,7 +40,7 @@ public class PaperLisenerAdapter {
         services.addPaper(maper.toPaper(paper));
         System.out.println("Recibido");
         Paper pa=maper.toPaper(paper);
-        paperReview review=new paperReview(0,pa,null,false,"","",null);
+        paperReview review=new paperReview(0,pa,null,false,"",null,null);
         servicesPaperReview.addpaperReview(review);
         makeSlow();
     }
