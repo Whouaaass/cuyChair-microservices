@@ -1,7 +1,9 @@
 package co.edu.unicauca.cuychair.paperreview.paperreview_microservice.infrastructure.adapters.input.rabbit;
 
+import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.application.ports.input.ServicePaperReviewPort;
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.application.ports.input.ServicesPaperPort;
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.entities.Paper;
+import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.domain.entities.paperReview;
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.infrastructure.adapters.input.dto.PaperDTO;
 import co.edu.unicauca.cuychair.paperreview.paperreview_microservice.infrastructure.adapters.input.maper.PaperDTOMaper;
 import lombok.extern.slf4j.Slf4j;
@@ -14,9 +16,11 @@ import org.springframework.stereotype.Component;
 public class PaperLisenerAdapter {
 
     private final ServicesPaperPort services;
+    private final ServicePaperReviewPort servicesPaperReview;
 
-    public PaperLisenerAdapter(ServicesPaperPort services) {
+    public PaperLisenerAdapter(ServicesPaperPort services, ServicePaperReviewPort servicesPaperReview) {
         this.services = services;
+        this.servicesPaperReview=servicesPaperReview;
     }
     @RabbitListener(queues = "${cuychair.rabbitmq.queue.paper.review}")
     public void listenPaper(@Payload PaperDTO paper) {
@@ -35,6 +39,9 @@ public class PaperLisenerAdapter {
         }
         services.addPaper(maper.toPaper(paper));
         System.out.println("Recibido");
+        Paper pa=maper.toPaper(paper);
+        paperReview review=new paperReview(0,pa,null,false,"","",null);
+        servicesPaperReview.addpaperReview(review);
         makeSlow();
     }
 

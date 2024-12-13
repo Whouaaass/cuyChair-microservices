@@ -71,7 +71,7 @@
         <dependency>
             <groupId>org.keycloak</groupId>
             <artifactId>keycloak-admin-client</artifactId>
-            <version>23.0.7</version>			
+            <version>23.0.7</version>
         </dependency>
 
         <!-- Spring boot auto reload -->
