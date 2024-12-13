@@ -38,24 +38,35 @@ public class Consumer {
 
     @RabbitListener(queues = { "${cuychair.rabbitmq.queue.conference.paper}" })
     public void receiveConference(@Payload ConferenceDTO conferenceDTO) {
+        makeSlow();
         ConversorConferenceDTO maperConference = new ConversorConferenceDTO();
         log.info("Received message {} Conference title: {}", conferenceDTO, conferenceDTO.getTitle());
         ArrayList<User> authors=new ArrayList<>();
         ArrayList<User> reviewers=new ArrayList<>();
         for(int id: conferenceDTO.getReviewerIds()){
-            authors.add(userStoreService.getUserById(id));
+            try {
+                authors.add(userStoreService.getUserById(id));                
+            } catch (Exception e) {
+                // TODO: handle exception
+            }
         }
         for(int id: conferenceDTO.getAuthorIds()){
-            reviewers.add(userStoreService.getUserById(id));
+            try {
+                reviewers.add(userStoreService.getUserById(id));                
+            } catch (Exception e) {
+                // TODO: handle exception
+            }
         }
+        try {
         conferenceStoreService.addConference(maperConference.toConference(conferenceDTO,authors,reviewers,userStoreService.getUserById(conferenceDTO.getOwnerId())));
-        System.out.println("Resivido");
-        makeSlow();
+        } catch (Exception e) {
+            log.atWarn().log("Invalid Conference with id {}: {}", conferenceDTO.getId(), e.getMessage());
+        }        
     }
 
     private void makeSlow() {
         try {
-            Thread.sleep(100);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

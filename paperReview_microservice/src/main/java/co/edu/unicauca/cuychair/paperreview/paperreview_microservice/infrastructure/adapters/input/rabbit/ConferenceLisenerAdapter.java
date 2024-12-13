@@ -26,29 +26,36 @@ public class ConferenceLisenerAdapter {
     }
     @RabbitListener(queues = { "${cuychair.rabbitmq.queue.conference.review}" })
     public void listenConference(@Payload ConferenceDTO conferenceDTO) {
+        makeSlow();
         ConferenceDTOMaper maper = new ConferenceDTOMaper();
         ArrayList<User> authors=new ArrayList<>();
         ArrayList<User> reviwers=new ArrayList<>();
         for(int id: conferenceDTO.getReviewerIds()){
-            authors.add(serviceUsers.findById(id));
+            try {
+                authors.add(serviceUsers.findById(id));                
+            } catch (Exception e) {}
         }
         for(int id: conferenceDTO.getAuthorIds()){
-            reviwers.add(serviceUsers.findById(id));
+            try{
+                reviwers.add(serviceUsers.findById(id));
+            } catch (Exception e) {}
         }
-        Conference confeOld=services.findById(conferenceDTO.getId());
-        Conference confeNew=maper.DTOinConference(conferenceDTO,authors,reviwers,serviceUsers.findById(conferenceDTO.getOwnerId()));
-        if(confeOld!=null){
-            if(isEquals(confeOld,confeNew)){
-                services.removeConference(confeNew);
+        try {
+            Conference confeOld=services.findById(conferenceDTO.getId());
+            Conference confeNew=maper.DTOinConference(conferenceDTO,authors,reviwers,serviceUsers.findById(conferenceDTO.getOwnerId()));            
+            if(confeOld!=null){
+                if(isEquals(confeOld,confeNew)){
+                    services.removeConference(confeNew);
+                    return;
+                }
+                services.updateConference(confeNew);
+                System.out.println("Recibido");
                 return;
             }
-            services.updateConference(confeNew);
-            System.out.println("Recibido");
-            return;
-        }
-        services.addConference(confeNew);
-        System.out.println("Recibido");
-        makeSlow();
+            services.addConference(confeNew);            
+        } catch (Exception e) {
+            log.atError().log("Problem with conference {}: {}", conferenceDTO.getId(), e.getMessage());
+        }         
     }
 
     private boolean isEquals(Conference objConference1, Conference objConference2) {
@@ -59,7 +66,7 @@ public class ConferenceLisenerAdapter {
 
     private void makeSlow() {
         try {
-            Thread.sleep(5000);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
