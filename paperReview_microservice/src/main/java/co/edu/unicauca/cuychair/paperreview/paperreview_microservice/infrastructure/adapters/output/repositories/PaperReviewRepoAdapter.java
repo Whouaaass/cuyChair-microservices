@@ -56,9 +56,9 @@ public class PaperReviewRepoAdapter implements PaperReviewRepositoryPort {
         }
         for(int i=0;i<paperReviews.size();i++){
             if(paperReviews.get(i).getIdPaperReview()==paperReviewId){
-                if(paperReviews.get(i).getEvaluator().getId()!=reviewerId){//Evalua si corresponde el evaluador con el solicitante
+                /*if(paperReviews.get(i).getEvaluator().getId()!=reviewerId){//Evalua si corresponde el evaluador con el solicitante
                     return new Result(false,"Evaluador no autorizado");
-                }
+                }*/
                 paperReview paperReview = maper.topaperReview(paperReviews.get(i));
                 result = paperReview.changeState(newState);
                 paperReviews.set(i, maper.toPaperReviewEntity(paperReview));
