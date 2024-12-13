@@ -79,4 +79,11 @@ public interface IConferenceService {
      */
     public List<ConferenceDTO> findByUserParticipant(Integer userId);
 
+    /**
+     * Obtiene las conferencias en las que un usuario es revisor
+     * @param reviewerId id de revisor
+     * @return Lista de conferencias
+     */
+    public List<ConferenceDTO> findByReviewer(Integer userId);
+
 }

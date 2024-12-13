@@ -1,0 +1,151 @@
+{
+	"info": {
+		"_postman_id": "8e96ebdd-cf82-45ff-9a5e-5caacf30c799",
+		"name": "CuyChair-UserMicroservice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38742537",
+		"_collection_link": "https://cuychair.postman.co/workspace/CuyChair-Workspace~c504e516-ef9c-4ebd-8c0a-419d3af0a930/collection/38742537-8e96ebdd-cf82-45ff-9a5e-5caacf30c799?action=share&source=collection_link&creator=38742537"
+	},
+	"item": [
+		{
+			"name": "Añadir usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{    \r\n    \"name\": \"Juan4\",\r\n    \"lastName\": \"Meneses\",\r\n    \"email\": \"@gmail.com\",\r\n    \"password\": \"CONTRA123\",\r\n    \"description\": \"Un tipo ramdom1\",\r\n    \"phone\": 310382822\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api_url}}/user/addUser",
+					"host": [
+						"{{api_url}}"
+					],
+					"path": [
+						"user",
+						"addUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Usuarios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api_url}}/user/listUsers",
+					"host": [
+						"{{api_url}}"
+					],
+					"path": [
+						"user",
+						"listUsers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"@gmail.com\",\r\n    \"password\": \"CONTRA123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api_url}}/user/login?email=ss&password=2dadsf",
+					"host": [
+						"{{api_url}}"
+					],
+					"path": [
+						"user",
+						"login"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "ss"
+						},
+						{
+							"key": "password",
+							"value": "2dadsf"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener por email",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api_url}}/user/getUserByEmail?email=@gmail.com",
+					"host": [
+						"{{api_url}}"
+					],
+					"path": [
+						"user",
+						"getUserByEmail"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "@gmail.com"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "localhost:8091\n",
+			"type": "string"
+		},
+		{
+			"key": "api_url",
+			"value": "{{base_url}}/api",
+			"type": "string"
+		}
+	]
+}

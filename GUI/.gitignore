@@ -1,0 +1,6 @@
+# carpeta de compilacion
+target
+
+# carpetas de entorno de desarrollo
+.idea
+vscode

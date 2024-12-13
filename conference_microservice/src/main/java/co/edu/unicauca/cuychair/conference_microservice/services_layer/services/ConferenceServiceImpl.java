@@ -141,6 +141,16 @@ public class ConferenceServiceImpl implements IConferenceService {
         return this.conferenceRepository.deleteConference(id) != null;
     }
 
+    @Override
+    public List<ConferenceDTO> findByReviewer(Integer userId) {
+        User user = userRepository.getUserById(userId);
+        if (user == null) return null;
+        Set<Conference> confeset = new HashSet<>();        
+        confeset.addAll(user.getReviewedConferences());          
+        List<Conference> confeList = List.copyOf(confeset);
+        return modelMapper.map(confeList, new TypeToken<List<ConferenceDTO>>() {}.getType());
+    }
+
     private ConferenceDTO conferenceToDTO(Conference conference) {
         ConferenceDTO conferenceDTO = this.modelMapper.map(conference, ConferenceDTO.class);
         conferenceDTO.setReviewers(modelMapper.map(conference.getReviewers(), new TypeToken<List<UserDTO>>() {}.getType()));

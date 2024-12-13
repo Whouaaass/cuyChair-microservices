@@ -100,4 +100,9 @@ public class ConferenceRestController {
     public ResponseEntity<?> getReviewers(@PathVariable Integer id) {
         return ResponseEntity.ok(userService.findByRoleInConference(id, "reviewer"));
     }
+
+    @GetMapping("/getByReviewer/{reviewerId}")
+    public ResponseEntity<?> getConferencesByReviewer(@PathVariable Integer reviewerId) {
+        return ResponseEntity.ok(conferenceService.findByReviewer(reviewerId));
+    }
 }

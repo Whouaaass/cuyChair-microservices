@@ -22,7 +22,7 @@ public class ConferenceRepository {
     public ConferenceRepository() {
         this.conferenceList = new ArrayList<>();
         this.idCounter = new AtomicInteger(1);
-        addTestRegisters();
+        //addTestRegisters();
     }
 
     /**

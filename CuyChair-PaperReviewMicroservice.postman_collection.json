@@ -1,0 +1,173 @@
+{
+	"info": {
+		"_postman_id": "1e119291-41ed-4f22-af5b-5a4a83b07135",
+		"name": "CuyChair-PaperReviewMicroservice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38742537",
+		"_collection_link": "https://cuychair.postman.co/workspace/CuyChair-Workspace~c504e516-ef9c-4ebd-8c0a-419d3af0a930/collection/40286023-1e119291-41ed-4f22-af5b-5a4a83b07135?action=share&source=collection_link&creator=38742537"
+	},
+	"item": [
+		{
+			"name": "AddPaperReview",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"idPaperReview\": 1,\r\n  \"paper\": {\r\n    \"id\": 100,\r\n    \"title\": \"Exploring AI in Modern Applications\",\r\n    \"abstract\": \"This paper discusses the advancements in artificial intelligence and its applications across various industries.\",\r\n    \"subtitle\": \"A Comprehensive Study\",\r\n    \"author\": 101,\r\n    \"conference\": 2023\r\n  },\r\n  \"evaluator\": {\r\n    \"id\": 201,\r\n    \"name\": \"Dr. Jane Smith\",\r\n    \"email\": \"jane.smith@example.com\"\r\n  },\r\n  \"reviewed\": true,\r\n  \"comment\": \"The paper is well-structured and offers valuable insights, but the conclusion could be more detailed.\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseUrl}}/paperReview/add",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"paperReview",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPaperReview",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseUrl}}/paperReview/get/1",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"paperReview",
+						"get",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPaperReviewByPaper",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseUrl}}/paperReview/getByPaper/100",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"paperReview",
+						"getByPaper",
+						"100"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "changeState",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseUrl}}/paperReview/changeState/1/201/DRAFT",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"paperReview",
+						"changeState",
+						"1",
+						"201",
+						"DRAFT"
+					]
+				},
+				"description": "DRAFT can be replaced to -> PUBLISHED/MODERATION/"
+			},
+			"response": []
+		},
+		{
+			"name": "lista de revisiones",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseUrl}}/paperReview/list",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"paperReview",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "lista por conferencia",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseUrl}}/paperReview/listByConference/4",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"paperReview",
+						"listByConference",
+						"4"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BaseUrl",
+			"value": "localhost:8093",
+			"type": "string"
+		}
+	]
+}

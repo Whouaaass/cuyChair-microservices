@@ -1,0 +1,167 @@
+{
+	"info": {
+		"_postman_id": "3dc5b501-ad85-4a32-bddb-c69b362f46d3",
+		"name": "CuyChair-PaperMicroservice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38742537",
+		"_collection_link": "https://cuychair.postman.co/workspace/CuyChair-Workspace~c504e516-ef9c-4ebd-8c0a-419d3af0a930/collection/38742537-3dc5b501-ad85-4a32-bddb-c69b362f46d3?action=share&source=collection_link&creator=38742537"
+	},
+	"item": [
+		{
+			"name": "ingresar usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":12,\r\n    \"name\":\"jo\",\r\n    \"lastNmae\":\"lop\",\r\n    \"email\":\"juanmoran@unicauca.edu.co\",\r\n    \"password\":\"ji\",\r\n    \"description\":\"Hola\",\r\n    \"phone\":123\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/user",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ingresar conferencia",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 100,\r\n    \"title\": \"Conferencia\",\r\n    \"city\": \"Ciudad por defecto\",\r\n    \"date\": \"2024-12-07T14:30:00.000Z\",\r\n    \"reviewers\": [\r\n        {\r\n            \"id\": 12,\r\n            \"name\": \"jo\",\r\n            \"lastNmae\": \"lop\",\r\n            \"email\": \"juanmoran@unicauca.edu.co\",\r\n            \"password\": \"ji\",\r\n            \"description\": \"Hola\",\r\n            \"phone\": 123\r\n        }\r\n    ],\r\n    \"authors\": [\r\n        {\r\n            \"id\": 12,\r\n            \"name\": \"jo\",\r\n            \"lastNmae\": \"lop\",\r\n            \"email\": \"juanmoran@unicauca.edu.co\",\r\n            \"password\": \"ji\",\r\n            \"description\": \"Hola\",\r\n            \"phone\": 123\r\n        }\r\n    ],\r\n    \"owner\": {\r\n        \"id\": 12,\r\n        \"name\": \"jo\",\r\n        \"lastNmae\": \"lop\",\r\n        \"email\": \"juanmoran@unicauca.edu.co\",\r\n        \"password\": \"ji\",\r\n        \"description\": \"Hola\",\r\n        \"phone\": 123\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/conference",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"conference"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ingresar paper",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 123,\r\n    \"title\": \"Titulo defecto\",\r\n    \"Abstract\": \"Abstract defecto\",\r\n    \"subTitle\": \"subTitle defecto\",\r\n    \"idAuthor\": 123,\r\n    \"idConference\": 6\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/paper",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"paper"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "clonar paper",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/clonePaper/0",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"clonePaper",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar Paper",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 0,\r\n    \"title\": \"Titulo pepe\",\r\n    \"subTitle\": \"subTitle papas\",\r\n    \"idAuthor\": 12,\r\n    \"idConference\": 100,\r\n    \"abstract\": \"Abstract loko\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/edit",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"edit"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "localhost:8094",
+			"type": "string"
+		}
+	]
+}

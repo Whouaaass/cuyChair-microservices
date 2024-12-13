@@ -1,0 +1,239 @@
+{
+	"info": {
+		"_postman_id": "0dc088e1-2d5e-4cbf-9478-231f9df246d6",
+		"name": "CuyChair-ConferenceMicroservice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38742537",
+		"_collection_link": "https://cuychair.postman.co/workspace/CuyChair-Workspace~c504e516-ef9c-4ebd-8c0a-419d3af0a930/collection/38742537-0dc088e1-2d5e-4cbf-9478-231f9df246d6?action=share&source=collection_link&creator=38742537"
+	},
+	"item": [
+		{
+			"name": "Conferences",
+			"item": [
+				{
+					"name": "listAllConferences",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/conference",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"conference"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createConference",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{    \r\n    \"title\": \"PaPsto 1\",\r\n    \"subject\": \"Licores\",\r\n    \"city\": \"Subject 1\",\r\n    \"date\": \"2004-10-10\",\r\n    \"ownerId\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/conference",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"conference"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getConferenceById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/conference/5",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"conference",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addAuthor",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"conferenceId\": 4,\r\n    \"userId\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/conference/addAuthor",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"conference",
+								"addAuthor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteExample",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/conference/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"conference",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateConference",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Otra conferencia\",\r\n    \"subject\": \"algo\",\r\n    \"city\": \"asdfsdf\",\r\n    \"date\": \"2003-10-10\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/conference/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"conference",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list by reviewer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/conference/getByReviewer/4",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"conference",
+								"getByReviewer",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "listar usuarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/user",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "localhost:8092\n",
+			"type": "string"
+		}
+	]
+}
