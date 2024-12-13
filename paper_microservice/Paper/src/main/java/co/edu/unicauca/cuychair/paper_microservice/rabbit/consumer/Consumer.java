@@ -45,14 +45,14 @@ public class Consumer {
         ArrayList<User> reviewers=new ArrayList<>();
         for(int id: conferenceDTO.getReviewerIds()){
             try {
-                authors.add(userStoreService.getUserById(id));                
+                reviewers.add(userStoreService.getUserById(id));                
             } catch (Exception e) {
                 // TODO: handle exception
             }
         }
         for(int id: conferenceDTO.getAuthorIds()){
             try {
-                reviewers.add(userStoreService.getUserById(id));                
+                authors.add(userStoreService.getUserById(id));                
             } catch (Exception e) {
                 // TODO: handle exception
             }

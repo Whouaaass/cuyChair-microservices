@@ -56,7 +56,9 @@ public class PaperStoreService {
      */
     public Paper storePaper (Paper objPaper){
         Paper paper=repositoryPaper.storePaper(objPaper);
-        this.directorSendEmail=new DirectorSendEmail(new ConfirmSendBuilder(),paper);
+        try {
+            this.directorSendEmail=new DirectorSendEmail(new ConfirmSendBuilder(),paper);
+        } catch (Exception e) {}
         if(paper==null) {
             return null;
         }
